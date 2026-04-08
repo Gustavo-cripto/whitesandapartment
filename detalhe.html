@@ -225,33 +225,42 @@
     .rules-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      gap: 14px;
     }
     .rule-card {
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 14px 12px;
+      background: #efe3cf;
+      border: 1px solid rgba(31, 42, 55, 0.08);
+      border-radius: 24px;
+      padding: 14px 12px 16px;
+      min-height: 222px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
     }
     .rule-num {
       margin: 0;
-      font-size: clamp(2rem, 3vw, 2.4rem);
-      line-height: 1;
+      font-family: "Bodoni Moda", "Didot", "Times New Roman", Georgia, serif;
+      font-size: clamp(3rem, 4vw, 3.35rem);
+      line-height: .88;
       font-weight: 500;
       letter-spacing: 1px;
     }
     .rule-title {
-      margin: 8px 0 6px;
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: .8px;
+      margin: 8px 0 8px;
       text-transform: uppercase;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      letter-spacing: 1.1px;
+      font-size: 1.95rem;
+      font-weight: 700;
+      line-height: .92;
     }
     .rule-text {
       margin: 0;
-      line-height: 1.35;
-      font-size: .98rem;
+      line-height: 1.1;
+      font-size: 1.07rem;
+      max-width: 95%;
     }
     .rule-card.last {
       grid-column: 1 / -1;
@@ -274,12 +283,23 @@
       .extra-location {
         grid-template-columns: 1fr;
       }
-      .rules-grid {
-        grid-template-columns: 1fr;
-      }
+      .rules-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .rule-card.last {
         max-width: none;
       }
+      .rule-card {
+        min-height: 208px;
+        border-radius: 22px;
+      }
+      .rule-title {
+        font-size: clamp(1.18rem, 3.6vw, 1.45rem);
+      }
+      .rule-text {
+        font-size: clamp(0.90rem, 2.8vw, 1rem);
+      }
+    }
+    @media (max-width: 420px) {
+      .rules-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
