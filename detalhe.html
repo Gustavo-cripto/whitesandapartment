@@ -197,6 +197,31 @@
       display: block;
       background: #fff;
     }
+    .info-sections {
+      display: grid;
+      gap: 12px;
+    }
+    .info-item {
+      background: #e5d7bb;
+      border: 1px solid #b79f72;
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .info-item-title {
+      margin: 0 0 6px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .info-item-title .icon {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .info-item-text {
+      margin: 0;
+      line-height: 1.5;
+    }
     @media (max-width: 760px) {
       .top-row {
         justify-content: flex-start;
@@ -261,7 +286,7 @@
           info: {
             title: "Informação",
             subtitle: "Dados importantes para a estadia.",
-            html: "<ul class='list'><li>AL registado em conformidade com a legislação portuguesa.</li><li>Zona central de Albufeira e perto da praia.</li><li>Para qualquer dúvida, usa os contactos do alojamento.</li></ul>"
+            html: "<div class='info-sections'><div class='info-item'><p class='info-item-title'><span class='icon'>🅿️</span>Parque</p><p class='info-item-text'>Na mesma rua onde estamos e nas redondezas poderá estacionar gratuitamente (estacionamento de rua). Tem também um parque pago a 130 metros. Localização parque: <a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/gmK6iXghkyXu6mPLA'>Abrir localização</a></p></div><div class='info-item'><p class='info-item-title'><span class='icon'>🧹</span>Serviço de limpeza</p><p class='info-item-text'>Fornecemos roupa de cama e toalhas de banho para a sua estadia. Para estadias mais longas, ao 8º dia fornecemos gratuitamente troca de roupa e uma breve limpeza.</p></div><div class='info-item'><p class='info-item-title'><span class='icon'>🗑️</span>O lixo - contentores</p><p class='info-item-text'>Existem numa rua mais abaixo contentores específicos para deixar o seu lixo. Localização: <a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/SYxqfTYpkznRy9Ky6'>Abrir localização</a></p></div></div>"
           },
           rules: {
             title: "Regras da casa",
