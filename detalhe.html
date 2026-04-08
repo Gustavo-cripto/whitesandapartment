@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>White Sand Apartments | Detalhe</title>
+  <style>
+    :root {
+      --bg: #f0f7ff;
+      --panel: #ffffff;
+      --text: #1f2a37;
+      --muted: #5f6c7b;
+      --main: #15b8cc;
+      --main-dark: #0b87a2;
+      --line: #d8e6f2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      background-image:
+        linear-gradient(rgba(244, 248, 255, 0.05), rgba(244, 248, 255, 0.08)),
+        url("./fundo-praia.png");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+    }
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    .hero {
+      background: linear-gradient(140deg, rgba(236, 228, 210, 0.92), rgba(231, 221, 200, 0.9));
+      color: #1f2a37;
+      border-radius: 16px;
+      padding: 14px;
+      border: 1px solid rgba(168, 151, 120, 0.35);
+    }
+    .top-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .back {
+      text-decoration: none;
+      color: #1f2a37;
+      border: 1px solid rgba(31, 42, 55, 0.25);
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 12px 0 6px;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    }
+    .subtitle { margin: 0; opacity: .94; }
+    .card {
+      margin-top: 12px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .list { margin: 0; padding-left: 18px; }
+    .list li { margin-bottom: 7px; }
+    .line { margin: 6px 0; }
+    .link {
+      color: #0f7f9d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .link:hover { text-decoration: underline; }
+    .lang-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .lang-btn {
+      border: 1px solid rgba(31, 42, 55, 0.35);
+      background: rgba(255, 255, 255, 0.9);
+      color: #1f2a37;
+      border-radius: 999px;
+      padding: 4px 10px 6px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 64px;
+      min-height: 48px;
+      gap: 2px;
+    }
+    .lang-btn.active {
+      background: #1f2a37;
+      color: #fff;
+      border-color: #1f2a37;
+    }
+    .lang-flag {
+      font-size: 1.15rem;
+      line-height: 1;
+      display: block;
+    }
+    .lang-code {
+      line-height: 1;
+      font-size: 0.82rem;
+    }
+    .welcome-layout {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1.4fr 1fr;
+      align-items: stretch;
+    }
+    .welcome-block {
+      background: linear-gradient(140deg, rgba(236, 228, 210, 0.92), rgba(231, 221, 200, 0.9));
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px 18px;
+      line-height: 1.6;
+      margin: 0;
+      min-height: 210px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      text-align: center;
+      font-size: clamp(1.03rem, 1.4vw, 1.15rem);
+      padding-bottom: 42px;
+    }
+    .welcome-image-slot {
+      background: rgba(255, 255, 255, 0.72);
+      border: 2px dashed rgba(31, 42, 55, 0.25);
+      border-radius: 12px;
+      min-height: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #4b5563;
+      font-weight: 600;
+      padding: 0;
+      overflow: hidden;
+    }
+    .welcome-image-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 760px) {
+      .top-row {
+        justify-content: flex-start;
+      }
+      .welcome-layout {
+        grid-template-columns: 1fr;
+      }
+      .welcome-image-slot {
+        min-height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="top-row">
+        <a class="back" href="./" data-i18n="back">← Voltar</a>
+        <div class="lang-row">
+          <button class="lang-btn active" data-lang="pt"><span class="lang-flag">🇵🇹</span><span class="lang-code">PT</span></button>
+          <button class="lang-btn" data-lang="en"><span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span></button>
+          <button class="lang-btn" data-lang="fr"><span class="lang-flag">🇫🇷</span><span class="lang-code">FR</span></button>
+          <button class="lang-btn" data-lang="es"><span class="lang-flag">🇪🇸</span><span class="lang-code">ES</span></button>
+          <button class="lang-btn" data-lang="de"><span class="lang-flag">🇩🇪</span><span class="lang-code">DE</span></button>
+        </div>
+      </div>
+      <h1 id="title">Detalhe</h1>
+      <p class="subtitle" id="subtitle">Informação do tópico selecionado.</p>
+    </section>
+
+    <section class="card" id="content"></section>
+  </main>
+
+  <script>
+    const text = {
+      pt: {
+        back: "← Voltar",
+        fallbackTitle: "Informação",
+        fallbackSubtitle: "Tópico não encontrado.",
+        sections: {
+          welcome: {
+            title: "Bem-vindo",
+            subtitle: "Resumo do alojamento White Sand Apartments.",
+            html: "<div class='welcome-layout'><p class='welcome-block'>White Sand Apartamentos, totalmente remodelados, com uma decoração moderna, de tipologia T1, T2 e T0, localiza-se numa das zonas mais privilegiadas de Albufeira, perto de todos os serviços e apenas a 300 m da praia! Com todas as comodidades que estes oferecem queremos lhe proporcionar uma ótima experiência para tornar a sua estadia o mais cômoda possível e acima de tudo que descanse e desfrute de umas belas férias!</p><div class='welcome-image-slot'><img src='./welcome-all.png' alt='Apartamento White Sand'></div></div>"
+          },
+          check: {
+            title: "Check-in / Check-out",
+            subtitle: "Horários e processo de entrada/saída.",
+            html: "<p class='line'><strong>Check-in:</strong> 16:00 - 18:00</p><p class='line'><strong>Check-out:</strong> 08:00 - 10:00</p><p class='line'>As chaves são entregues presencialmente ou por cofre (código enviado antes da chegada).</p>"
+          },
+          location: {
+            title: "Localização",
+            subtitle: "Morada e mapa do apartamento.",
+            html: "<p class='line'><strong>Morada:</strong> Rua do MFA, n.15 Apto B, 8200-157 Albufeira</p><p class='line'><strong>Coordenadas:</strong> 37.0891053, -8.2507170</p><p class='line'><a class='link' target='_blank' rel='noreferrer' href='https://goo.gl/maps/sj565hq985biABaD6'>Abrir no Google Maps</a></p>"
+          },
+          info: {
+            title: "Informação",
+            subtitle: "Dados importantes para a estadia.",
+            html: "<ul class='list'><li>AL registado em conformidade com a legislação portuguesa.</li><li>Zona central de Albufeira e perto da praia.</li><li>Para qualquer dúvida, usa os contactos do alojamento.</li></ul>"
+          },
+          rules: {
+            title: "Regras da casa",
+            subtitle: "Regras principais para uma estadia tranquila.",
+            html: "<ul class='list'><li>Silêncio entre as 22:00 e as 08:00.</li><li>Não alojar hóspedes extra sem consentimento prévio.</li><li>Não fumar no interior do apartamento.</li><li>Não levar itens do inventário.</li><li>Não são permitidos animais.</li></ul>"
+          },
+          amenities: {
+            title: "Comodidades",
+            subtitle: "Equipamentos disponíveis no apartamento.",
+            html: "<ul class='list'><li>Cozinha equipada (forno, placa, micro-ondas).</li><li>Máquina de lavar roupa.</li><li>Wi-Fi, TV e ar condicionado.</li></ul>"
+          },
+          wifi: {
+            title: "Wi-Fi",
+            subtitle: "Dados de ligação à internet.",
+            html: "<p class='line'><strong>Rede:</strong> WhiteSand-B</p><p class='line'><strong>Password:</strong> albufeira2020B</p>"
+          },
+          safety: {
+            title: "Segurança",
+            subtitle: "Números de emergência e contactos úteis.",
+            html: "<ul class='list'><li><strong>Emergência:</strong> 112</li><li>SNS24: 808 24 24 24</li><li>Hospital Lusíadas Albufeira: 289 892 040</li><li>Bombeiros: 289 586 333</li><li>Polícia: 289 590 790</li></ul>"
+          },
+          transport: {
+            title: "Transportes",
+            subtitle: "Como chegar e deslocar-se na zona.",
+            html: "<ul class='list'><li>Aeroporto de Faro: 45 km (30-40 min).</li><li>Taxi Albufeira: 289 583 230.</li><li>Paragem de autocarro linha 10 a cerca de 50m.</li><li>Comboio: estação Ferreiras-Albufeira (<a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>cp.pt</a>).</li></ul>"
+          },
+          visit: {
+            title: "Visitação",
+            subtitle: "Locais turísticos para visitar.",
+            html: "<ul class='list'><li>Praia dos Pescadores e Praia da Galé.</li><li>Marina de Albufeira e Praia da Falésia.</li><li>Grutas de Benagil e Castelo de Silves.</li></ul>"
+          },
+          activities: {
+            title: "Atividades",
+            subtitle: "Ideias para aproveitar a estadia.",
+            html: "<ul class='list'><li>Passeios de barco e visitas às grutas.</li><li>Experiências de praia e desportos aquáticos.</li><li>Passeios no centro histórico de Albufeira.</li></ul>"
+          },
+          eat: {
+            title: "Comer & Beber",
+            subtitle: "Restaurantes recomendados.",
+            html: "<ul class='list'><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/rA4cq7F3agYmyYcy6'>Franguinho de Albufeira</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/w9gtzSM2WV5ixY5YA'>Tasca do Viegas</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/uXt8f8Lu8vPBQv7c6'>Clay Oven</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/5GTwm6RyKvPDEC338'>Taberna do Pescador</a></li></ul>"
+          },
+          bars: {
+            title: "Bares & Clubes",
+            subtitle: "Vida noturna e zonas de entretenimento.",
+            html: "<ul class='list'><li>Explora a zona da Oura e Old Town.</li><li>Pede-nos sugestões atualizadas de bares e clubes.</li></ul>"
+          },
+          shopping: {
+            title: "Compras",
+            subtitle: "Supermercados e centros comerciais.",
+            html: "<ul class='list'><li>Lidl / Aldi (aprox. 1 km).</li><li>Continente / Pingo Doce (aprox. 1,1 km).</li><li>Algarve Shopping e MAR Shopping Algarve.</li></ul>"
+          },
+          emergency: {
+            title: "Emergência",
+            subtitle: "Contactos imediatos em caso urgente.",
+            html: "<ul class='list'><li><strong>112</strong> (ambulância, polícia, bombeiros).</li><li>Indicar morada: Rua do MFA n.15 Apto B, Albufeira.</li><li>Depois do 112, contactar o anfitrião.</li></ul>"
+          },
+          checkout: {
+            title: "Check-out",
+            subtitle: "Antes de sair do alojamento.",
+            html: "<ul class='list'><li>Check-out entre as 08:00 e as 10:00.</li><li>Fechar janelas, desligar luzes e AC.</li><li>Deixar chaves conforme instruções recebidas.</li></ul>"
+          },
+          contacts: {
+            title: "Contactos",
+            subtitle: "Canais de contacto rápido.",
+            html: "<ul class='list'><li><a class='link' href='tel:+351910000000'>+351 910 000 000</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://wa.me/351910000000'>WhatsApp</a></li><li><a class='link' href='mailto:reservas@whitesand.pt'>reservas@whitesand.pt</a></li></ul>"
+          },
+          pdf: {
+            title: "Versão PDF",
+            subtitle: "Abrir ou descarregar o folheto em PDF.",
+            html: "<p class='line'><a class='link' target='_blank' rel='noreferrer' href='./Book-WS-B.pdf'>Abrir PDF</a></p>"
+          }
+        }
+      },
+      en: {
+        back: "← Back",
+        fallbackTitle: "Information",
+        fallbackSubtitle: "Topic not found.",
+        sections: {
+          welcome: { title: "Welcome", subtitle: "White Sand Apartments overview.", html: "<div class='welcome-layout'><p class='welcome-block'>White Sand Apartments, totally refurbished, with a modern decoration, of type T1, T2 and T0, located in one of the most privileged areas of Albufeira, close to all services and just 300 m from the beach! With all the amenities that these offer we want to provide you with a great experience to make your stay as comfortable as possible and above all that you rest and enjoy a beautiful vacation!</p><div class='welcome-image-slot'><img src='./welcome-all.png' alt='White Sand apartment'></div></div>" },
+          check: { title: "Check-in / Check-out", subtitle: "Arrival and departure details.", html: "<p class='line'><strong>Check-in:</strong> 16:00 - 18:00</p><p class='line'><strong>Check-out:</strong> 08:00 - 10:00</p><p class='line'>Keys are delivered in person or via key safe (code sent before arrival).</p>" },
+          location: { title: "Location", subtitle: "Address and map.", html: "<p class='line'><strong>Address:</strong> Rua do MFA, n.15 Apto B, 8200-157 Albufeira</p><p class='line'><strong>Coordinates:</strong> 37.0891053, -8.2507170</p><p class='line'><a class='link' target='_blank' rel='noreferrer' href='https://goo.gl/maps/sj565hq985biABaD6'>Open in Google Maps</a></p>" },
+          info: { title: "Information", subtitle: "Important stay details.", html: "<ul class='list'><li>Registered local accommodation according to Portuguese law.</li><li>Central Albufeira area and close to the beach.</li><li>Use the contact section if you need any help.</li></ul>" },
+          rules: { title: "House rules", subtitle: "Main rules for a peaceful stay.", html: "<ul class='list'><li>Quiet hours from 10:00 PM to 08:00 AM.</li><li>No extra guests without prior consent.</li><li>No smoking inside the apartment.</li><li>Do not take house inventory items.</li><li>Pets are not allowed.</li></ul>" },
+          amenities: { title: "Amenities", subtitle: "Apartment facilities available.", html: "<ul class='list'><li>Equipped kitchen (oven, hob, microwave).</li><li>Washing machine.</li><li>Wi-Fi, TV and air conditioning.</li></ul>" },
+          wifi: { title: "Wi-Fi", subtitle: "Internet access details.", html: "<p class='line'><strong>Network:</strong> WhiteSand-B</p><p class='line'><strong>Password:</strong> albufeira2020B</p>" },
+          safety: { title: "Safety", subtitle: "Emergency and useful contacts.", html: "<ul class='list'><li><strong>Emergency:</strong> 112</li><li>Health line: 808 24 24 24</li><li>Lusíadas Hospital Albufeira: 289 892 040</li><li>Fire brigade: 289 586 333</li><li>Police: 289 590 790</li></ul>" },
+          transport: { title: "Transport", subtitle: "How to arrive and move around.", html: "<ul class='list'><li>Faro Airport: 45 km (30-40 min).</li><li>Taxi Albufeira: 289 583 230.</li><li>Bus line 10 about 50m away.</li><li>Train: Ferreiras-Albufeira station (<a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>cp.pt</a>).</li></ul>" },
+          visit: { title: "Sightseeing", subtitle: "Places worth visiting.", html: "<ul class='list'><li>Praia dos Pescadores and Praia da Galé.</li><li>Albufeira Marina and Praia da Falésia.</li><li>Benagil Caves and Silves Castle.</li></ul>" },
+          activities: { title: "Activities", subtitle: "Ideas for your stay.", html: "<ul class='list'><li>Boat trips and cave tours.</li><li>Beach experiences and water sports.</li><li>Walks in Albufeira old town.</li></ul>" },
+          eat: { title: "Eat & Drink", subtitle: "Recommended restaurants.", html: "<ul class='list'><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/rA4cq7F3agYmyYcy6'>Franguinho de Albufeira</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/w9gtzSM2WV5ixY5YA'>Tasca do Viegas</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/uXt8f8Lu8vPBQv7c6'>Clay Oven</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/5GTwm6RyKvPDEC338'>Taberna do Pescador</a></li></ul>" },
+          bars: { title: "Bars & Clubs", subtitle: "Nightlife suggestions.", html: "<ul class='list'><li>Explore Oura and Old Town nightlife areas.</li><li>Ask us for updated bars and clubs recommendations.</li></ul>" },
+          shopping: { title: "Shopping", subtitle: "Supermarkets and malls.", html: "<ul class='list'><li>Lidl / Aldi (about 1 km).</li><li>Continente / Pingo Doce (about 1.1 km).</li><li>Algarve Shopping and MAR Shopping Algarve.</li></ul>" },
+          emergency: { title: "Emergency", subtitle: "Immediate contacts for urgent situations.", html: "<ul class='list'><li><strong>112</strong> (ambulance, police, firefighters).</li><li>State address: Rua do MFA n.15 Apto B, Albufeira.</li><li>After 112, contact the host.</li></ul>" },
+          checkout: { title: "Check-out", subtitle: "Before leaving the apartment.", html: "<ul class='list'><li>Check-out between 08:00 and 10:00.</li><li>Close windows and turn off lights/AC.</li><li>Leave keys as instructed.</li></ul>" },
+          contacts: { title: "Contacts", subtitle: "Quick contact channels.", html: "<ul class='list'><li><a class='link' href='tel:+351910000000'>+351 910 000 000</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://wa.me/351910000000'>WhatsApp</a></li><li><a class='link' href='mailto:reservas@whitesand.pt'>reservas@whitesand.pt</a></li></ul>" },
+          pdf: { title: "PDF Version", subtitle: "Open or download the PDF guide.", html: "<p class='line'><a class='link' target='_blank' rel='noreferrer' href='./Book-WS-B.pdf'>Open PDF</a></p>" }
+        }
+      },
+      fr: {
+        back: "← Retour",
+        fallbackTitle: "Information",
+        fallbackSubtitle: "Sujet introuvable.",
+        sections: {
+          welcome: { title: "Bienvenue", subtitle: "Resume de l'hebergement.", html: "<div class='welcome-layout'><p class='welcome-block'>Appartements White Sand, totalement rénovés, avec une décoration moderne, de type T1, T2 et T0, situés dans l'un des quartiers les plus privilégiés d'Albufeira, à proximité de tous les services et à seulement 300 m de la plage! Avec toutes les commodités que celles-ci offrent, nous voulons vous offrir une expérience formidable pour rendre votre séjour aussi confortable que possible et surtout que vous vous reposiez et passiez de belles vacances!</p><div class='welcome-image-slot'><img src='./welcome-all.png' alt='Appartement White Sand'></div></div>" },
+          check: { title: "Check-in / Check-out", subtitle: "Details d'arrivee et de depart.", html: "<p class='line'><strong>Check-in:</strong> 16:00 - 18:00</p><p class='line'><strong>Check-out:</strong> 08:00 - 10:00</p><p class='line'>Cles remises en personne ou via coffre a cles (code envoye avant l'arrivee).</p>" },
+          location: { title: "Localisation", subtitle: "Adresse et carte.", html: "<p class='line'><strong>Adresse:</strong> Rua do MFA, n.15 Apto B, 8200-157 Albufeira</p><p class='line'><strong>Coordonnees:</strong> 37.0891053, -8.2507170</p><p class='line'><a class='link' target='_blank' rel='noreferrer' href='https://goo.gl/maps/sj565hq985biABaD6'>Ouvrir sur Google Maps</a></p>" },
+          info: { title: "Information", subtitle: "Informations importantes du sejour.", html: "<ul class='list'><li>Hebergement local en conformite avec la loi portugaise.</li><li>Zone centrale d'Albufeira et proche de la plage.</li><li>Utilisez la section contacts en cas de besoin.</li></ul>" },
+          rules: { title: "Regles de la maison", subtitle: "Regles principales pour un sejour paisible.", html: "<ul class='list'><li>Silence entre 22h00 et 08h00.</li><li>Pas d'invites supplementaires sans accord prealable.</li><li>Interdiction de fumer a l'interieur.</li><li>Ne pas emporter les objets de l'inventaire.</li><li>Animaux non autorises.</li></ul>" },
+          amenities: { title: "Commodites", subtitle: "Equipements disponibles.", html: "<ul class='list'><li>Cuisine equipee (four, plaque, micro-ondes).</li><li>Machine a laver.</li><li>Wi-Fi, TV et climatisation.</li></ul>" },
+          wifi: { title: "Wi-Fi", subtitle: "Acces internet.", html: "<p class='line'><strong>Reseau:</strong> WhiteSand-B</p><p class='line'><strong>Mot de passe:</strong> albufeira2020B</p>" },
+          safety: { title: "Securite", subtitle: "Urgences et contacts utiles.", html: "<ul class='list'><li><strong>Urgence:</strong> 112</li><li>Ligne sante: 808 24 24 24</li><li>Hopital Lusíadas Albufeira: 289 892 040</li><li>Pompiers: 289 586 333</li><li>Police: 289 590 790</li></ul>" },
+          transport: { title: "Transports", subtitle: "Comment arriver et se deplacer.", html: "<ul class='list'><li>Aeroport de Faro: 45 km (30-40 min).</li><li>Taxi Albufeira: 289 583 230.</li><li>Bus ligne 10 a environ 50m.</li><li>Train: gare Ferreiras-Albufeira (<a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>cp.pt</a>).</li></ul>" },
+          visit: { title: "Visite", subtitle: "Lieux a visiter.", html: "<ul class='list'><li>Praia dos Pescadores et Praia da Galé.</li><li>Marina d'Albufeira et Praia da Falésia.</li><li>Grottes de Benagil et Chateau de Silves.</li></ul>" },
+          activities: { title: "Activites", subtitle: "Idees pour votre sejour.", html: "<ul class='list'><li>Sorties en bateau et grottes.</li><li>Plage et sports nautiques.</li><li>Balades dans le centre historique.</li></ul>" },
+          eat: { title: "Manger & Boire", subtitle: "Restaurants recommandes.", html: "<ul class='list'><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/rA4cq7F3agYmyYcy6'>Franguinho de Albufeira</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/w9gtzSM2WV5ixY5YA'>Tasca do Viegas</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/uXt8f8Lu8vPBQv7c6'>Clay Oven</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/5GTwm6RyKvPDEC338'>Taberna do Pescador</a></li></ul>" },
+          bars: { title: "Bars & Clubs", subtitle: "Suggestions de vie nocturne.", html: "<ul class='list'><li>Explorez Oura et la vieille ville la nuit.</li><li>Demandez-nous les meilleures suggestions du moment.</li></ul>" },
+          shopping: { title: "Achats", subtitle: "Supermarches et centres commerciaux.", html: "<ul class='list'><li>Lidl / Aldi (environ 1 km).</li><li>Continente / Pingo Doce (environ 1,1 km).</li><li>Algarve Shopping et MAR Shopping Algarve.</li></ul>" },
+          emergency: { title: "Urgence", subtitle: "Contacts immediats.", html: "<ul class='list'><li><strong>112</strong> (ambulance, police, pompiers).</li><li>Indiquer l'adresse: Rua do MFA n.15 Apto B, Albufeira.</li><li>Apres 112, contacter l'hote.</li></ul>" },
+          checkout: { title: "Check-out", subtitle: "Avant de quitter l'appartement.", html: "<ul class='list'><li>Check-out entre 08:00 et 10:00.</li><li>Fermer les fenetres et eteindre lumiere/climatisation.</li><li>Laisser les cles selon les instructions.</li></ul>" },
+          contacts: { title: "Contacts", subtitle: "Canaux de contact rapide.", html: "<ul class='list'><li><a class='link' href='tel:+351910000000'>+351 910 000 000</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://wa.me/351910000000'>WhatsApp</a></li><li><a class='link' href='mailto:reservas@whitesand.pt'>reservas@whitesand.pt</a></li></ul>" },
+          pdf: { title: "Version PDF", subtitle: "Ouvrir ou telecharger le guide en PDF.", html: "<p class='line'><a class='link' target='_blank' rel='noreferrer' href='./Book-WS-B.pdf'>Ouvrir le PDF</a></p>" }
+        }
+      },
+      es: {
+        back: "← Volver",
+        fallbackTitle: "Informacion",
+        fallbackSubtitle: "Tema no encontrado.",
+        sections: {
+          welcome: { title: "Bienvenido", subtitle: "Resumen del alojamiento White Sand Apartments.", html: "<div class='welcome-layout'><p class='welcome-block'>Apartamentos White Sand, totalmente reformados, con una decoración moderna, de tipo T1, T2 y T0, situados en una de las zonas más privilegiadas de Albufeira, cerca de todos los servicios y a tan solo 300 m de la playa! Con todas las comodidades que estos ofrecen queremos brindarte una gran experiencia para que tu estadía sea lo más cómoda posible y sobre todo que descanses y disfrutes de unas hermosas vacaciones!</p><div class='welcome-image-slot'><img src='./welcome-all.png' alt='Apartamento White Sand'></div></div>" },
+          check: { title: "Check-in / Check-out", subtitle: "Detalles de llegada y salida.", html: "<p class='line'><strong>Check-in:</strong> 16:00 - 18:00</p><p class='line'><strong>Check-out:</strong> 08:00 - 10:00</p><p class='line'>Las llaves se entregan en persona o mediante caja de llaves (codigo enviado antes de la llegada).</p>" },
+          location: { title: "Ubicacion", subtitle: "Direccion y mapa.", html: "<p class='line'><strong>Direccion:</strong> Rua do MFA, n.15 Apto B, 8200-157 Albufeira</p><p class='line'><strong>Coordenadas:</strong> 37.0891053, -8.2507170</p><p class='line'><a class='link' target='_blank' rel='noreferrer' href='https://goo.gl/maps/sj565hq985biABaD6'>Abrir en Google Maps</a></p>" },
+          info: { title: "Informacion", subtitle: "Datos importantes para la estancia.", html: "<ul class='list'><li>Alojamiento local registrado conforme a la legislacion portuguesa.</li><li>Zona central de Albufeira y cerca de la playa.</li><li>Usa la seccion de contactos si necesitas ayuda.</li></ul>" },
+          rules: { title: "Normas de la casa", subtitle: "Normas principales para una estancia tranquila.", html: "<ul class='list'><li>Silencio entre las 22:00 y las 08:00.</li><li>No alojar huespedes extra sin consentimiento previo.</li><li>No fumar dentro del apartamento.</li><li>No llevarse articulos del inventario.</li><li>No se admiten animales.</li></ul>" },
+          amenities: { title: "Comodidades", subtitle: "Equipamiento disponible en el apartamento.", html: "<ul class='list'><li>Cocina equipada (horno, placa, microondas).</li><li>Lavadora.</li><li>Wi-Fi, TV y aire acondicionado.</li></ul>" },
+          wifi: { title: "Wi-Fi", subtitle: "Datos de conexion a internet.", html: "<p class='line'><strong>Red:</strong> WhiteSand-B</p><p class='line'><strong>Contrasena:</strong> albufeira2020B</p>" },
+          safety: { title: "Seguridad", subtitle: "Emergencias y contactos utiles.", html: "<ul class='list'><li><strong>Emergencia:</strong> 112</li><li>Linea de salud: 808 24 24 24</li><li>Hospital Lusíadas Albufeira: 289 892 040</li><li>Bomberos: 289 586 333</li><li>Policia: 289 590 790</li></ul>" },
+          transport: { title: "Transporte", subtitle: "Como llegar y moverse por la zona.", html: "<ul class='list'><li>Aeropuerto de Faro: 45 km (30-40 min).</li><li>Taxi Albufeira: 289 583 230.</li><li>Bus linea 10 a unos 50m.</li><li>Tren: estacion Ferreiras-Albufeira (<a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>cp.pt</a>).</li></ul>" },
+          visit: { title: "Visitas", subtitle: "Lugares para visitar.", html: "<ul class='list'><li>Praia dos Pescadores y Praia da Galé.</li><li>Marina de Albufeira y Praia da Falésia.</li><li>Grutas de Benagil y Castillo de Silves.</li></ul>" },
+          activities: { title: "Actividades", subtitle: "Ideas para disfrutar de tu estancia.", html: "<ul class='list'><li>Paseos en barco y visitas a grutas.</li><li>Experiencias de playa y deportes acuaticos.</li><li>Paseos por el centro historico de Albufeira.</li></ul>" },
+          eat: { title: "Comer y Beber", subtitle: "Restaurantes recomendados.", html: "<ul class='list'><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/rA4cq7F3agYmyYcy6'>Franguinho de Albufeira</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/w9gtzSM2WV5ixY5YA'>Tasca do Viegas</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/uXt8f8Lu8vPBQv7c6'>Clay Oven</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/5GTwm6RyKvPDEC338'>Taberna do Pescador</a></li></ul>" },
+          bars: { title: "Bares y Clubes", subtitle: "Sugerencias de vida nocturna.", html: "<ul class='list'><li>Explora la zona de Oura y el casco antiguo por la noche.</li><li>Pidenos recomendaciones actualizadas de bares y clubes.</li></ul>" },
+          shopping: { title: "Compras", subtitle: "Supermercados y centros comerciales.", html: "<ul class='list'><li>Lidl / Aldi (aprox. 1 km).</li><li>Continente / Pingo Doce (aprox. 1,1 km).</li><li>Algarve Shopping y MAR Shopping Algarve.</li></ul>" },
+          emergency: { title: "Emergencia", subtitle: "Contactos inmediatos para casos urgentes.", html: "<ul class='list'><li><strong>112</strong> (ambulancia, policia, bomberos).</li><li>Indica la direccion: Rua do MFA n.15 Apto B, Albufeira.</li><li>Despues del 112, contacta al anfitrion.</li></ul>" },
+          checkout: { title: "Check-out", subtitle: "Antes de salir del alojamiento.", html: "<ul class='list'><li>Check-out entre las 08:00 y las 10:00.</li><li>Cerrar ventanas y apagar luces/aire acondicionado.</li><li>Dejar las llaves segun las instrucciones recibidas.</li></ul>" },
+          contacts: { title: "Contactos", subtitle: "Canales de contacto rapido.", html: "<ul class='list'><li><a class='link' href='tel:+351910000000'>+351 910 000 000</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://wa.me/351910000000'>WhatsApp</a></li><li><a class='link' href='mailto:reservas@whitesand.pt'>reservas@whitesand.pt</a></li></ul>" },
+          pdf: { title: "Version PDF", subtitle: "Abrir o descargar la guia en PDF.", html: "<p class='line'><a class='link' target='_blank' rel='noreferrer' href='./Book-WS-B.pdf'>Abrir PDF</a></p>" }
+        }
+      },
+      de: {
+        back: "← Zurueck",
+        fallbackTitle: "Information",
+        fallbackSubtitle: "Thema nicht gefunden.",
+        sections: {
+          welcome: { title: "Willkommen", subtitle: "Ueberblick ueber die Unterkunft.", html: "<div class='welcome-layout'><p class='welcome-block'>White Sand Apartments, komplett renoviert und modern eingerichtet, in den Typen T1, T2 und T0, befinden sich in einer der privilegiertesten Gegenden von Albufeira, nahe aller Dienstleistungen und nur 300 m vom Strand entfernt! Mit allen angebotenen Annehmlichkeiten moechten wir dir ein grossartiges Erlebnis bieten, damit dein Aufenthalt so komfortabel wie moeglich ist und du vor allem ausruhst und einen wunderschoenen Urlaub geniesst!</p><div class='welcome-image-slot'><img src='./welcome-all.png' alt='White Sand Wohnung'></div></div>" },
+          check: { title: "Check-in / Check-out", subtitle: "Anreise- und Abreiseinfos.", html: "<p class='line'><strong>Check-in:</strong> 16:00 - 18:00</p><p class='line'><strong>Check-out:</strong> 08:00 - 10:00</p><p class='line'>Schluesseluebergabe persoenlich oder per Schluesseltresor (Code vor Anreise).</p>" },
+          location: { title: "Lage", subtitle: "Adresse und Karte.", html: "<p class='line'><strong>Adresse:</strong> Rua do MFA, n.15 Apto B, 8200-157 Albufeira</p><p class='line'><strong>Koordinaten:</strong> 37.0891053, -8.2507170</p><p class='line'><a class='link' target='_blank' rel='noreferrer' href='https://goo.gl/maps/sj565hq985biABaD6'>In Google Maps oeffnen</a></p>" },
+          info: { title: "Information", subtitle: "Wichtige Infos fuer den Aufenthalt.", html: "<ul class='list'><li>Registrierte Unterkunft nach portugiesischem Recht.</li><li>Zentrale Lage in Albufeira, nahe am Strand.</li><li>Bei Fragen bitte den Kontaktbereich nutzen.</li></ul>" },
+          rules: { title: "Hausregeln", subtitle: "Wichtige Regeln fuer einen ruhigen Aufenthalt.", html: "<ul class='list'><li>Ruhezeit von 22:00 bis 08:00 Uhr.</li><li>Keine zusaetzlichen Gaeste ohne vorherige Zustimmung.</li><li>Rauchen in der Wohnung verboten.</li><li>Keine Inventargegenstaende mitnehmen.</li><li>Haustiere sind nicht erlaubt.</li></ul>" },
+          amenities: { title: "Komfort", subtitle: "Ausstattung der Unterkunft.", html: "<ul class='list'><li>Voll ausgestattete Kueche (Ofen, Kochfeld, Mikrowelle).</li><li>Waschmaschine.</li><li>Wi-Fi, TV und Klimaanlage.</li></ul>" },
+          wifi: { title: "Wi-Fi", subtitle: "Internetzugang.", html: "<p class='line'><strong>Netzwerk:</strong> WhiteSand-B</p><p class='line'><strong>Passwort:</strong> albufeira2020B</p>" },
+          safety: { title: "Sicherheit", subtitle: "Notfall und wichtige Kontakte.", html: "<ul class='list'><li><strong>Notfall:</strong> 112</li><li>Gesundheitslinie: 808 24 24 24</li><li>Lusíadas Krankenhaus Albufeira: 289 892 040</li><li>Feuerwehr: 289 586 333</li><li>Polizei: 289 590 790</li></ul>" },
+          transport: { title: "Transport", subtitle: "Anreise und Fortbewegung.", html: "<ul class='list'><li>Flughafen Faro: 45 km (30-40 Min).</li><li>Taxi Albufeira: 289 583 230.</li><li>Buslinie 10 etwa 50m entfernt.</li><li>Zug: Bahnhof Ferreiras-Albufeira (<a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>cp.pt</a>).</li></ul>" },
+          visit: { title: "Besuch", subtitle: "Sehenswerte Orte.", html: "<ul class='list'><li>Praia dos Pescadores und Praia da Galé.</li><li>Marina Albufeira und Praia da Falésia.</li><li>Benagil-Hoehlen und Burg Silves.</li></ul>" },
+          activities: { title: "Aktivitaeten", subtitle: "Ideen fuer den Aufenthalt.", html: "<ul class='list'><li>Bootstouren und Hoehlenbesuche.</li><li>Strandaktivitaeten und Wassersport.</li><li>Spaziergaenge in der Altstadt von Albufeira.</li></ul>" },
+          eat: { title: "Essen & Trinken", subtitle: "Empfohlene Restaurants.", html: "<ul class='list'><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/rA4cq7F3agYmyYcy6'>Franguinho de Albufeira</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/w9gtzSM2WV5ixY5YA'>Tasca do Viegas</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/uXt8f8Lu8vPBQv7c6'>Clay Oven</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/5GTwm6RyKvPDEC338'>Taberna do Pescador</a></li></ul>" },
+          bars: { title: "Bars & Clubs", subtitle: "Tipps fuer das Nachtleben.", html: "<ul class='list'><li>Oura und Altstadt fuer Nachtleben erkunden.</li><li>Fragen Sie uns nach aktuellen Empfehlungen.</li></ul>" },
+          shopping: { title: "Einkauf", subtitle: "Supermaerkte und Einkaufszentren.", html: "<ul class='list'><li>Lidl / Aldi (ca. 1 km).</li><li>Continente / Pingo Doce (ca. 1,1 km).</li><li>Algarve Shopping und MAR Shopping Algarve.</li></ul>" },
+          emergency: { title: "Notfall", subtitle: "Sofortige Kontakte.", html: "<ul class='list'><li><strong>112</strong> (Krankenwagen, Polizei, Feuerwehr).</li><li>Adresse nennen: Rua do MFA n.15 Apto B, Albufeira.</li><li>Nach 112 den Gastgeber kontaktieren.</li></ul>" },
+          checkout: { title: "Check-out", subtitle: "Vor dem Verlassen der Unterkunft.", html: "<ul class='list'><li>Check-out zwischen 08:00 und 10:00.</li><li>Fenster schliessen, Licht und Klima ausschalten.</li><li>Schluessel gemaess Anweisungen hinterlassen.</li></ul>" },
+          contacts: { title: "Kontakte", subtitle: "Schnellkontakt-Kanaele.", html: "<ul class='list'><li><a class='link' href='tel:+351910000000'>+351 910 000 000</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://wa.me/351910000000'>WhatsApp</a></li><li><a class='link' href='mailto:reservas@whitesand.pt'>reservas@whitesand.pt</a></li></ul>" },
+          pdf: { title: "PDF-Version", subtitle: "PDF-Flyer oeffnen oder herunterladen.", html: "<p class='line'><a class='link' target='_blank' rel='noreferrer' href='./Book-WS-B.pdf'>PDF oeffnen</a></p>" }
+        }
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const sec = params.get("sec") || "welcome";
+    let lang = params.get("lang") || "pt";
+    if (!text[lang]) lang = "pt";
+
+    function render() {
+      const dict = text[lang];
+      const item = dict.sections[sec];
+      const title = document.getElementById("title");
+      const subtitle = document.getElementById("subtitle");
+      const content = document.getElementById("content");
+      const back = document.querySelector(".back");
+
+      back.textContent = dict.back;
+      back.href = `./?lang=${lang}`;
+
+      if (!item) {
+        title.textContent = dict.fallbackTitle;
+        subtitle.textContent = dict.fallbackSubtitle;
+        content.innerHTML = "";
+      } else {
+        title.textContent = item.title;
+        subtitle.textContent = item.subtitle;
+        content.innerHTML = item.html;
+      }
+
+      document.documentElement.lang = lang === "pt" ? "pt-PT" : lang;
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+    }
+
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        lang = btn.dataset.lang;
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", lang);
+        window.history.replaceState({}, "", url);
+        render();
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>

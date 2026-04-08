@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>White Sand Apartments | Welcome Book</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,700,0,0" />
+  <style>
+    :root {
+      --bg: #f0f7ff;
+      --panel: #ffffff;
+      --text: #1f2a37;
+      --muted: #5f6c7b;
+      --main: #15b8cc;
+      --main-dark: #0b87a2;
+      --chip: #e8fbff;
+      --line: #d8e6f2;
+      --shadow: 0 10px 24px rgba(3, 29, 53, 0.12);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      background-image:
+        linear-gradient(rgba(244, 248, 255, 0.08), rgba(244, 248, 255, 0.12)),
+        url("./fundo-praia.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+    }
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px;
+    }
+    .top {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .hero {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.28)),
+        url("./logo-whitesand.png");
+      background-size: contain;
+      background-position: center 44%;
+      background-repeat: no-repeat;
+      color: #1f2a37;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px 12px;
+      min-height: 250px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      line-height: 1.18;
+      position: relative;
+      z-index: 1;
+    }
+    .lang-row {
+      margin-top: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      position: absolute;
+      z-index: 1;
+      justify-content: center;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 8px;
+      width: max-content;
+    }
+    .lang-btn {
+      border: 1px solid rgba(31, 42, 55, 0.35);
+      background: rgba(255, 255, 255, 0.9);
+      color: #1f2a37;
+      border-radius: 999px;
+      padding: 4px 10px 6px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 64px;
+      min-height: 48px;
+      gap: 2px;
+    }
+    .lang-btn.active {
+      background: #1f2a37;
+      color: #fff;
+      border-color: #1f2a37;
+    }
+    .lang-flag {
+      font-size: 1.15rem;
+      line-height: 1;
+      display: block;
+    }
+    .lang-code {
+      line-height: 1;
+      font-size: 0.82rem;
+    }
+    .phone {
+      margin: 4px auto 0;
+      width: 100%;
+      max-width: 100%;
+      min-height: calc(100vh - 210px);
+    }
+    .phone-head {
+      background: transparent;
+      padding: 10px 14px;
+      text-align: center;
+      font-weight: 700;
+      color: #1f2a37;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+    }
+    .screen {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(92px, 108px));
+      justify-content: center;
+      gap: 14px;
+      background: transparent;
+      min-height: calc(100vh - 270px);
+    }
+    .tile {
+      border: 0;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      aspect-ratio: 1 / 1;
+      width: 108px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 6px;
+      text-align: center;
+      gap: 6px;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .tile:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    }
+    .icon {
+      font-family: "Material Symbols Rounded";
+      font-size: 46px;
+      line-height: 1;
+      color: #111;
+      font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 24;
+    }
+    .label {
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .2px;
+      color: #111;
+    }
+    .section {
+      margin-top: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .section h2 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      color: #165070;
+    }
+    .muted { color: var(--muted); margin: 0; }
+    .line { margin: 6px 0; }
+    .list {
+      margin: 6px 0 0;
+      padding-left: 18px;
+    }
+    .list li { margin-bottom: 6px; }
+    .link {
+      color: #0f7f9d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .link:hover { text-decoration: underline; }
+    .alert {
+      background: #fff3f3;
+      border: 1px solid #ffc8c8;
+      color: #b42020;
+      border-radius: 12px;
+      padding: 10px;
+      font-weight: 700;
+      margin: 8px 0 0;
+    }
+    .hide { display: none; }
+    .footer {
+      margin: 16px 0 8px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .bottom-note {
+      margin: 12px auto 4px;
+      max-width: 980px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.76);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      font-weight: 600;
+      color: #1f2a37;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="top">
+      <article class="hero">
+        <div class="lang-row">
+          <button class="lang-btn active" data-lang="pt"><span class="lang-flag">🇵🇹</span><span class="lang-code">PT</span></button>
+          <button class="lang-btn" data-lang="en"><span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span></button>
+          <button class="lang-btn" data-lang="fr"><span class="lang-flag">🇫🇷</span><span class="lang-code">FR</span></button>
+          <button class="lang-btn" data-lang="es"><span class="lang-flag">🇪🇸</span><span class="lang-code">ES</span></button>
+          <button class="lang-btn" data-lang="de"><span class="lang-flag">🇩🇪</span><span class="lang-code">DE</span></button>
+        </div>
+      </article>
+
+      <article class="phone">
+        <div class="phone-head" data-i18n="bookTitle">Livro de Boas vindas</div>
+        <div class="screen">
+          <a class="tile" href="./detalhe.html?sec=welcome"><span class="icon">home</span><span class="label" data-i18n="navWelcome">WELCOME</span></a>
+          <a class="tile" href="./detalhe.html?sec=check"><span class="icon">key</span><span class="label" data-i18n="navCheck">CHECK-IN</span></a>
+          <a class="tile" href="./detalhe.html?sec=location"><span class="icon">location_on</span><span class="label" data-i18n="navLocation">LOCATION</span></a>
+          <a class="tile" href="./detalhe.html?sec=info"><span class="icon">chat</span><span class="label" data-i18n="navInfo">INFO</span></a>
+          <a class="tile" href="./detalhe.html?sec=rules"><span class="icon">edit_note</span><span class="label" data-i18n="navRules">HOUSE RULES</span></a>
+          <a class="tile" href="./detalhe.html?sec=amenities"><span class="icon">weekend</span><span class="label" data-i18n="navAmenities">AMENITIES</span></a>
+          <a class="tile" href="./detalhe.html?sec=wifi"><span class="icon">wifi</span><span class="label" data-i18n="navWifi">WI-FI</span></a>
+          <a class="tile" href="./detalhe.html?sec=safety"><span class="icon">warning</span><span class="label" data-i18n="navSafety">SAFETY</span></a>
+          <a class="tile" href="./detalhe.html?sec=transport"><span class="icon">train</span><span class="label" data-i18n="navTransport">TRANSPORT</span></a>
+          <a class="tile" href="./detalhe.html?sec=visit"><span class="icon">photo_camera</span><span class="label" data-i18n="navVisit">VISIT</span></a>
+          <a class="tile" href="./detalhe.html?sec=activities"><span class="icon">map</span><span class="label" data-i18n="navActivities">ACTIVITIES</span></a>
+          <a class="tile" href="./detalhe.html?sec=eat"><span class="icon">restaurant</span><span class="label" data-i18n="navEat">EAT</span></a>
+          <a class="tile" href="./detalhe.html?sec=bars"><span class="icon">local_bar</span><span class="label" data-i18n="navBars">BARS</span></a>
+          <a class="tile" href="./detalhe.html?sec=shopping"><span class="icon">shopping_bag</span><span class="label" data-i18n="navShopping">SHOPPING</span></a>
+          <a class="tile" href="./detalhe.html?sec=emergency"><span class="icon">priority_high</span><span class="label" data-i18n="navEmergency">EMERGENCY</span></a>
+          <a class="tile" href="./detalhe.html?sec=checkout"><span class="icon">luggage</span><span class="label" data-i18n="navCheckout">CHECK-OUT</span></a>
+          <a class="tile" href="./detalhe.html?sec=contacts"><span class="icon">call</span><span class="label" data-i18n="navContact">CONTACT</span></a>
+          <a class="tile" href="./Book-WS-B.pdf" target="_blank" rel="noreferrer"><span class="icon">description</span><span class="label" data-i18n="navPdf">PDF</span></a>
+        </div>
+      </article>
+    </section>
+    <p class="bottom-note" data-i18n="heroText">
+      Livro digital interativo para hóspedes com informação essencial sempre disponível no telemóvel.
+    </p>
+  </main>
+
+  <script>
+    const i18n = {
+      pt: {
+        heroTitle: "O que inclui?",
+        heroText: "Livro digital interativo para hóspedes com informação essencial sempre disponível no telemóvel.",
+        homeLongText: "White Sand Apartments, totally refurbished, with a modern decoration, of type T1, T2 and T0, located in one of the most privileged areas of Albufeira, close to all services and just 300 m from the beach! With all the amenities that these offer we want to provide you with a great experience to make your stay as comfortable as possible and above all that you rest and enjoy a beautiful vacation!",
+        homeLongTextFr: "Appartements White Sand, totalement rénovés, avec une décoration moderne, de type T1, T2 et T0, situés dans l'un des quartiers les plus privilégiés d'Albufeira, à proximité de tous les services et à seulement 300 m de la plage! Avec toutes les commodités que celles-ci offrent, nous voulons vous offrir une expérience formidable pour rendre votre séjour aussi confortable que possible et surtout que vous vous reposiez et passiez de belles vacances!",
+        homeLongTextEs: "Apartamentos White Sand, totalmente reformados, con una decoración moderna, de tipo T1, T2 y T0, situados en una de las zonas más privilegiadas de Albufeira, cerca de todos los servicios y a tan solo 300 m de la playa! Con todas las comodidades que estos ofrecen queremos brindarte una gran experiencia para que tu estadía sea lo más cómoda posible y sobre todo que descanses y disfrutes de unas hermosas vacaciones!",
+        homeLongTextPtFull: "White Sand Apartamentos, totalmente remodelados, com uma decoração moderna, de tipologia T1, T2 e T0, localiza-se numa das zonas mais privilegiadas de Albufeira, perto de todos os serviços e apenas a 300 m da praia! Com todas as comodidades que estes oferecem queremos lhe proporcionar uma ótima experiência para tornar a sua estadia o mais cômoda possível e acima de tudo que descanse e desfrute de umas belas férias!",
+        homeImageSlot: "Espaço reservado para imagem",
+        bookTitle: "Livro de Boas vindas",
+        navWelcome: "BEM-VINDO",
+        navCheck: "CHECK-IN",
+        navLocation: "LOCALIZAÇÃO",
+        navInfo: "INFORMAÇÃO",
+        navRules: "REGRAS",
+        navAmenities: "COMODIDADES",
+        navWifi: "WI-FI",
+        navSafety: "SEGURANÇA",
+        navTransport: "TRANSPORTES",
+        navVisit: "VISITAÇÃO",
+        navActivities: "ATIVIDADES",
+        navEat: "COMER",
+        navBars: "BARES",
+        navShopping: "COMPRAS",
+        navEmergency: "EMERGÊNCIA",
+        navCheckout: "CHECK-OUT",
+        navContact: "CONTACTO",
+        navPdf: "PDF",
+        sWelcomeTitle: "Bem-vindo",
+        sWelcomeText: "Os White Sand Apartments foram totalmente remodelados e ficam numa zona privilegiada de Albufeira, perto dos serviços e a cerca de 300m da praia.",
+        sCheckTitle: "Check-in / Check-out",
+        checkIn: "Check-in:",
+        checkOut: "Check-out:",
+        sCheckText: "As chaves são entregues presencialmente ou via cofre de chaves (código enviado antes da chegada).",
+        sWifiTitle: "Wi-Fi",
+        wifiNetwork: "Rede:",
+        wifiPass: "Password:",
+        sRulesTitle: "Regras da casa",
+        r1: "Silêncio entre as 22:00 e as 08:00.",
+        r2: "Não alojar hóspedes extra sem consentimento prévio.",
+        r3: "Não fumar dentro do apartamento.",
+        r4: "Não levar itens do inventário.",
+        r5: "Não são permitidos animais.",
+        sSafetyTitle: "Segurança e emergência",
+        sSafetyAlert: "Em caso de emergência, ligue 112 e indique: Rua do MFA n.15 Apto B, 8200-157 Albufeira.",
+        safety1: "SNS24: 808 24 24 24",
+        safety2: "Hospital Lusíadas Albufeira: 289 892 040",
+        safety3: "Bombeiros: 289 586 333 | Polícia: 289 590 790",
+        sTransportTitle: "Transportes",
+        t1: "Aeroporto de Faro: 45 km (30-40 min).",
+        t2: "Taxi Albufeira: 289 583 230.",
+        t3: "Autocarro linha 10 a cerca de 50m.",
+        t4: "Comboio: estação Ferreiras-Albufeira (<a class='link' href='https://www.cp.pt' target='_blank' rel='noreferrer'>cp.pt</a>).",
+        sEatTitle: "Restaurantes recomendados",
+        sContactTitle: "Contactos rápidos",
+        pdfLink: "📄 Abrir versão PDF",
+        footer: "White Sand Apartments • Livro Digital de Boas-Vindas"
+      },
+      en: {
+        heroTitle: "What’s inside?",
+        heroText: "Interactive digital guest book with essential information always available on mobile.",
+        homeLongText: "White Sand Apartments, totally refurbished, with a modern decoration, of type T1, T2 and T0, located in one of the most privileged areas of Albufeira, close to all services and just 300 m from the beach! With all the amenities that these offer we want to provide you with a great experience to make your stay as comfortable as possible and above all that you rest and enjoy a beautiful vacation!",
+        homeLongTextFr: "Appartements White Sand, totalement rénovés, avec une décoration moderne, de type T1, T2 et T0, situés dans l'un des quartiers les plus privilégiés d'Albufeira, à proximité de tous les services et à seulement 300 m de la plage! Avec toutes les commodités que celles-ci offrent, nous voulons vous offrir une expérience formidable pour rendre votre séjour aussi confortable que possible et surtout que vous vous reposiez et passiez de belles vacances!",
+        homeLongTextEs: "Apartamentos White Sand, totalmente reformados, con una decoración moderna, de tipo T1, T2 y T0, situados en una de las zonas más privilegiadas de Albufeira, cerca de todos los servicios y a tan solo 300 m de la playa! Con todas las comodidades que estos ofrecen queremos brindarte una gran experiencia para que tu estadía sea lo más cómoda posible y sobre todo que descanses y disfrutes de unas hermosas vacaciones!",
+        homeLongTextPtFull: "White Sand Apartamentos, totalmente remodelados, com uma decoração moderna, de tipologia T1, T2 e T0, localiza-se numa das zonas mais privilegiadas de Albufeira, perto de todos os serviços e apenas a 300 m da praia! Com todas as comodidades que estes oferecem queremos lhe proporcionar uma ótima experiência para tornar a sua estadia o mais cômoda possível e acima de tudo que descanse e desfrute de umas belas férias!",
+        homeImageSlot: "Image placeholder",
+        bookTitle: "Welcome Book",
+        navWelcome: "WELCOME",
+        navCheck: "CHECK-IN",
+        navLocation: "LOCATION",
+        navInfo: "INFO",
+        navRules: "RULES",
+        navAmenities: "AMENITIES",
+        navWifi: "WI-FI",
+        navSafety: "SAFETY",
+        navTransport: "TRANSPORT",
+        navVisit: "VISIT",
+        navActivities: "ACTIVITIES",
+        navEat: "EAT",
+        navBars: "BARS",
+        navShopping: "SHOPPING",
+        navEmergency: "EMERGENCY",
+        navCheckout: "CHECK-OUT",
+        navContact: "CONTACT",
+        navPdf: "PDF",
+        sWelcomeTitle: "Welcome",
+        sWelcomeText: "White Sand Apartments are fully refurbished and located in a privileged area of Albufeira, close to services and about 300m from the beach.",
+        sCheckTitle: "Check-in / Check-out",
+        checkIn: "Check-in:",
+        checkOut: "Check-out:",
+        sCheckText: "Keys are handed over in person or through a key safe (code sent before arrival).",
+        sWifiTitle: "Wi-Fi",
+        wifiNetwork: "Network:",
+        wifiPass: "Password:",
+        sRulesTitle: "House rules",
+        r1: "Quiet hours from 10:00 PM to 08:00 AM.",
+        r2: "No extra guests without prior consent.",
+        r3: "No smoking inside the apartment.",
+        r4: "Do not take house inventory items.",
+        r5: "Pets are not allowed.",
+        sSafetyTitle: "Safety and emergency",
+        sSafetyAlert: "In an emergency call 112 and provide: Rua do MFA n.15 Apto B, 8200-157 Albufeira.",
+        safety1: "Health line: 808 24 24 24",
+        safety2: "Lusíadas Albufeira Hospital: 289 892 040",
+        safety3: "Fire brigade: 289 586 333 | Police: 289 590 790",
+        sTransportTitle: "Transport",
+        t1: "Faro Airport: 45 km (30-40 min).",
+        t2: "Taxi Albufeira: 289 583 230.",
+        t3: "Bus line 10 around 50m away.",
+        t4: "Train: Ferreiras-Albufeira station (<a class='link' href='https://www.cp.pt' target='_blank' rel='noreferrer'>cp.pt</a>).",
+        sEatTitle: "Recommended restaurants",
+        sContactTitle: "Quick contacts",
+        pdfLink: "📄 Open PDF version",
+        footer: "White Sand Apartments • Digital Welcome Book"
+      },
+      fr: {
+        heroTitle: "Qu’est-ce qu’il y a?",
+        heroText: "Carnet digital interactif avec les informations essentielles toujours disponibles sur mobile.",
+        homeLongText: "White Sand Apartments, totally refurbished, with a modern decoration, of type T1, T2 and T0, located in one of the most privileged areas of Albufeira, close to all services and just 300 m from the beach! With all the amenities that these offer we want to provide you with a great experience to make your stay as comfortable as possible and above all that you rest and enjoy a beautiful vacation!",
+        homeLongTextFr: "Appartements White Sand, totalement rénovés, avec une décoration moderne, de type T1, T2 et T0, situés dans l'un des quartiers les plus privilégiés d'Albufeira, à proximité de tous les services et à seulement 300 m de la plage! Avec toutes les commodités que celles-ci offrent, nous voulons vous offrir une expérience formidable pour rendre votre séjour aussi confortable que possible et surtout que vous vous reposiez et passiez de belles vacances!",
+        homeLongTextEs: "Apartamentos White Sand, totalmente reformados, con una decoración moderna, de tipo T1, T2 y T0, situados en una de las zonas más privilegiadas de Albufeira, cerca de todos los servicios y a tan solo 300 m de la playa! Con todas las comodidades que estos ofrecen queremos brindarte una gran experiencia para que tu estadía sea lo más cómoda posible y sobre todo que descanses y disfrutes de unas hermosas vacaciones!",
+        homeLongTextPtFull: "White Sand Apartamentos, totalmente remodelados, com uma decoração moderna, de tipologia T1, T2 e T0, localiza-se numa das zonas mais privilegiadas de Albufeira, perto de todos os serviços e apenas a 300 m da praia! Com todas as comodidades que estes oferecem queremos lhe proporcionar uma ótima experiência para tornar a sua estadia o mais cômoda possível e acima de tudo que descanse e desfrute de umas belas férias!",
+        homeImageSlot: "Espace reserve pour image",
+        bookTitle: "Livre de bienvenue",
+        navWelcome: "BIENVENUE",
+        navCheck: "CHECK-IN",
+        navLocation: "LOCALISATION",
+        navInfo: "INFO",
+        navRules: "REGLES",
+        navAmenities: "COMMODITES",
+        navWifi: "WI-FI",
+        navSafety: "SECURITE",
+        navTransport: "TRANSPORT",
+        navVisit: "VISITE",
+        navActivities: "ACTIVITES",
+        navEat: "MANGER",
+        navBars: "BARS",
+        navShopping: "ACHATS",
+        navEmergency: "URGENCE",
+        navCheckout: "CHECK-OUT",
+        navContact: "CONTACT",
+        navPdf: "PDF",
+        sWelcomeTitle: "Bienvenue",
+        sWelcomeText: "Les White Sand Apartments sont entierement renoves et situes dans une zone privilegiee d'Albufeira, proche des services et a environ 300m de la plage.",
+        sCheckTitle: "Check-in / Check-out",
+        checkIn: "Check-in:",
+        checkOut: "Check-out:",
+        sCheckText: "Les cles sont remises en personne ou via coffre a cles (code envoye avant l'arrivee).",
+        sWifiTitle: "Wi-Fi",
+        wifiNetwork: "Reseau:",
+        wifiPass: "Mot de passe:",
+        sRulesTitle: "Regles de la maison",
+        r1: "Heures de silence de 22h00 a 08h00.",
+        r2: "Pas d'invites supplementaires sans accord prealable.",
+        r3: "Interdiction de fumer dans l'appartement.",
+        r4: "Ne pas emporter les objets de l'inventaire.",
+        r5: "Animaux non autorises.",
+        sSafetyTitle: "Securite et urgence",
+        sSafetyAlert: "En cas d'urgence, appelez le 112 et indiquez: Rua do MFA n.15 Apto B, 8200-157 Albufeira.",
+        safety1: "Ligne sante: 808 24 24 24",
+        safety2: "Hopital Lusíadas Albufeira: 289 892 040",
+        safety3: "Pompiers: 289 586 333 | Police: 289 590 790",
+        sTransportTitle: "Transports",
+        t1: "Aeroport de Faro: 45 km (30-40 min).",
+        t2: "Taxi Albufeira: 289 583 230.",
+        t3: "Bus ligne 10 a environ 50m.",
+        t4: "Train: gare Ferreiras-Albufeira (<a class='link' href='https://www.cp.pt' target='_blank' rel='noreferrer'>cp.pt</a>).",
+        sEatTitle: "Restaurants recommandes",
+        sContactTitle: "Contacts rapides",
+        pdfLink: "📄 Ouvrir la version PDF",
+        footer: "White Sand Apartments • Carnet digital de bienvenue"
+      },
+      es: {
+        heroTitle: "Que incluye?",
+        heroText: "Libro digital interactivo para huespedes con informacion esencial siempre disponible en el movil.",
+        homeLongText: "White Sand Apartments, totally refurbished, with a modern decoration, of type T1, T2 and T0, located in one of the most privileged areas of Albufeira, close to all services and just 300 m from the beach! With all the amenities that these offer we want to provide you with a great experience to make your stay as comfortable as possible and above all that you rest and enjoy a beautiful vacation!",
+        homeLongTextFr: "Appartements White Sand, totalement rénovés, avec une décoration moderne, de type T1, T2 et T0, situés dans l'un des quartiers les plus privilégiés d'Albufeira, à proximité de tous les services et à seulement 300 m de la plage! Avec toutes les commodités que celles-ci offrent, nous voulons vous offrir une expérience formidable pour rendre votre séjour aussi confortable que possible et surtout que vous vous reposiez et passiez de belles vacances!",
+        homeLongTextEs: "Apartamentos White Sand, totalmente reformados, con una decoración moderna, de tipo T1, T2 y T0, situados en una de las zonas más privilegiadas de Albufeira, cerca de todos los servicios y a tan solo 300 m de la playa! Con todas las comodidades que estos ofrecen queremos brindarte una gran experiencia para que tu estadía sea lo más cómoda posible y sobre todo que descanses y disfrutes de unas hermosas vacaciones!",
+        homeLongTextPtFull: "White Sand Apartamentos, totalmente remodelados, com uma decoração moderna, de tipologia T1, T2 e T0, localiza-se numa das zonas mais privilegiadas de Albufeira, perto de todos os serviços e apenas a 300 m da praia! Com todas as comodidades que estes oferecem queremos lhe proporcionar uma ótima experiência para tornar a sua estadia o mais cômoda possível e acima de tudo que descanse e desfrute de umas belas férias!",
+        homeImageSlot: "Espacio reservado para imagen",
+        bookTitle: "Libro de Bienvenida",
+        navWelcome: "BIENVENIDO",
+        navCheck: "CHECK-IN",
+        navLocation: "UBICACION",
+        navInfo: "INFORMACION",
+        navRules: "NORMAS",
+        navAmenities: "COMODIDADES",
+        navWifi: "WI-FI",
+        navSafety: "SEGURIDAD",
+        navTransport: "TRANSPORTE",
+        navVisit: "VISITAS",
+        navActivities: "ACTIVIDADES",
+        navEat: "COMER",
+        navBars: "BARES",
+        navShopping: "COMPRAS",
+        navEmergency: "EMERGENCIA",
+        navCheckout: "CHECK-OUT",
+        navContact: "CONTACTO",
+        navPdf: "PDF",
+        sWelcomeTitle: "Bienvenido",
+        sWelcomeText: "White Sand Apartments estan totalmente reformados y ubicados en una zona privilegiada de Albufeira, cerca de servicios y a unos 300m de la playa.",
+        sCheckTitle: "Check-in / Check-out",
+        checkIn: "Check-in:",
+        checkOut: "Check-out:",
+        sCheckText: "Las llaves se entregan en persona o mediante caja de llaves (codigo enviado antes de la llegada).",
+        sWifiTitle: "Wi-Fi",
+        wifiNetwork: "Red:",
+        wifiPass: "Contrasena:",
+        sRulesTitle: "Normas de la casa",
+        r1: "Silencio entre las 22:00 y las 08:00.",
+        r2: "No alojar huespedes extra sin consentimiento previo.",
+        r3: "No fumar dentro del apartamento.",
+        r4: "No llevarse articulos del inventario.",
+        r5: "No se admiten animales.",
+        sSafetyTitle: "Seguridad y emergencia",
+        sSafetyAlert: "En caso de emergencia, llame al 112 e indique: Rua do MFA n.15 Apto B, 8200-157 Albufeira.",
+        safety1: "Linea de salud: 808 24 24 24",
+        safety2: "Hospital Lusíadas Albufeira: 289 892 040",
+        safety3: "Bomberos: 289 586 333 | Policia: 289 590 790",
+        sTransportTitle: "Transporte",
+        t1: "Aeropuerto de Faro: 45 km (30-40 min).",
+        t2: "Taxi Albufeira: 289 583 230.",
+        t3: "Bus linea 10 a unos 50m.",
+        t4: "Tren: estacion Ferreiras-Albufeira (<a class='link' href='https://www.cp.pt' target='_blank' rel='noreferrer'>cp.pt</a>).",
+        sEatTitle: "Restaurantes recomendados",
+        sContactTitle: "Contactos rapidos",
+        pdfLink: "📄 Abrir version PDF",
+        footer: "White Sand Apartments • Libro Digital de Bienvenida"
+      },
+      de: {
+        heroTitle: "Was ist drin?",
+        heroText: "Interaktives digitales Gaestebuch mit allen wichtigen Infos, jederzeit auf dem Handy verfuegbar.",
+        homeLongText: "White Sand Apartments, totally refurbished, with a modern decoration, of type T1, T2 and T0, located in one of the most privileged areas of Albufeira, close to all services and just 300 m from the beach! With all the amenities that these offer we want to provide you with a great experience to make your stay as comfortable as possible and above all that you rest and enjoy a beautiful vacation!",
+        homeLongTextFr: "Appartements White Sand, totalement rénovés, avec une décoration moderne, de type T1, T2 et T0, situés dans l'un des quartiers les plus privilégiés d'Albufeira, à proximité de tous les services et à seulement 300 m de la plage! Avec toutes les commodités que celles-ci offrent, nous voulons vous offrir une expérience formidable pour rendre votre séjour aussi confortable que possible et surtout que vous vous reposiez et passiez de belles vacances!",
+        homeLongTextEs: "Apartamentos White Sand, totalmente reformados, con una decoración moderna, de tipo T1, T2 y T0, situados en una de las zonas más privilegiadas de Albufeira, cerca de todos los servicios y a tan solo 300 m de la playa! Con todas las comodidades que estos ofrecen queremos brindarte una gran experiencia para que tu estadía sea lo más cómoda posible y sobre todo que descanses y disfrutes de unas hermosas vacaciones!",
+        homeLongTextPtFull: "White Sand Apartamentos, totalmente remodelados, com uma decoração moderna, de tipologia T1, T2 e T0, localiza-se numa das zonas mais privilegiadas de Albufeira, perto de todos os serviços e apenas a 300 m da praia! Com todas as comodidades que estes oferecem queremos lhe proporcionar uma ótima experiência para tornar a sua estadia o mais cômoda possível e acima de tudo que descanse e desfrute de umas belas férias!",
+        homeImageSlot: "Bildplatzhalter",
+        bookTitle: "Willkommensbuch",
+        navWelcome: "WILLKOMMEN",
+        navCheck: "CHECK-IN",
+        navLocation: "LAGE",
+        navInfo: "INFO",
+        navRules: "REGELN",
+        navAmenities: "KOMFORT",
+        navWifi: "WI-FI",
+        navSafety: "SICHERHEIT",
+        navTransport: "TRANSPORT",
+        navVisit: "BESUCH",
+        navActivities: "AKTIVITAETEN",
+        navEat: "ESSEN",
+        navBars: "BARS",
+        navShopping: "EINKAUF",
+        navEmergency: "NOTFALL",
+        navCheckout: "CHECK-OUT",
+        navContact: "KONTAKT",
+        navPdf: "PDF",
+        sWelcomeTitle: "Willkommen",
+        sWelcomeText: "White Sand Apartments sind komplett renoviert und in einer privilegierten Gegend von Albufeira, nahe Dienstleistungen und etwa 300m vom Strand entfernt.",
+        sCheckTitle: "Check-in / Check-out",
+        checkIn: "Check-in:",
+        checkOut: "Check-out:",
+        sCheckText: "Schluesseluebergabe persoenlich oder ueber Schluesseltresor (Code vor Anreise).",
+        sWifiTitle: "Wi-Fi",
+        wifiNetwork: "Netzwerk:",
+        wifiPass: "Passwort:",
+        sRulesTitle: "Hausregeln",
+        r1: "Ruhezeit von 22:00 bis 08:00 Uhr.",
+        r2: "Keine zusaetzlichen Gaeste ohne vorherige Zustimmung.",
+        r3: "Rauchen in der Wohnung verboten.",
+        r4: "Keine Inventargegenstaende mitnehmen.",
+        r5: "Haustiere sind nicht erlaubt.",
+        sSafetyTitle: "Sicherheit und Notfall",
+        sSafetyAlert: "Im Notfall 112 anrufen und diese Adresse nennen: Rua do MFA n.15 Apto B, 8200-157 Albufeira.",
+        safety1: "Gesundheitslinie: 808 24 24 24",
+        safety2: "Lusíadas Krankenhaus Albufeira: 289 892 040",
+        safety3: "Feuerwehr: 289 586 333 | Polizei: 289 590 790",
+        sTransportTitle: "Transport",
+        t1: "Flughafen Faro: 45 km (30-40 Min).",
+        t2: "Taxi Albufeira: 289 583 230.",
+        t3: "Buslinie 10 in etwa 50m Entfernung.",
+        t4: "Zug: Bahnhof Ferreiras-Albufeira (<a class='link' href='https://www.cp.pt' target='_blank' rel='noreferrer'>cp.pt</a>).",
+        sEatTitle: "Empfohlene Restaurants",
+        sContactTitle: "Schnellkontakte",
+        pdfLink: "📄 PDF-Version oeffnen",
+        footer: "White Sand Apartments • Digitales Willkommenbuch"
+      }
+    };
+
+    function updateTileLinks(lang) {
+      document.querySelectorAll(".tile[href*='detalhe.html?sec=']").forEach((link) => {
+        const href = link.getAttribute("href");
+        const url = new URL(href, window.location.href);
+        url.searchParams.set("lang", lang);
+        link.setAttribute("href", `./detalhe.html?${url.searchParams.toString()}`);
+      });
+    }
+
+    function setLang(lang) {
+      const dict = i18n[lang] || i18n.pt;
+      document.querySelectorAll("[data-i18n]").forEach((node) => {
+        const key = node.getAttribute("data-i18n");
+        const value = dict[key];
+        if (!value) return;
+        if (value.includes("<a")) {
+          node.innerHTML = value;
+        } else {
+          node.textContent = value;
+        }
+      });
+      document.documentElement.lang = lang === "pt" ? "pt-PT" : lang;
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+      updateTileLinks(lang);
+    }
+
+    const initialLang = new URLSearchParams(window.location.search).get("lang") || "pt";
+    setLang(i18n[initialLang] ? initialLang : "pt");
+
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+  </script>
+</body>
+</html>
