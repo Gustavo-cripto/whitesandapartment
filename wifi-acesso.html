@@ -52,6 +52,7 @@
       padding: 14px;
     }
     .line { margin: 8px 0; }
+    .muted { color: #5f6c7b; }
     .pill {
       display: inline-block;
       background: rgba(255, 255, 255, 0.7);
@@ -61,6 +62,46 @@
       font-size: 0.85rem;
       font-weight: 700;
       color: #5f6c7b;
+    }
+    .field {
+      width: 100%;
+      border: 1px solid #b79f72;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.92);
+      color: #1f2a37;
+    }
+    .btn-row {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border: 1px solid #b79f72;
+      background: #f7f5f2;
+      color: #1f2a37;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn.primary {
+      background: #1f2a37;
+      border-color: #1f2a37;
+      color: #fff;
+    }
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .status {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #b79f72;
+      background: rgba(255, 255, 255, 0.55);
     }
   </style>
 </head>
@@ -75,57 +116,104 @@
     <section class="card" id="content"></section>
   </main>
 
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="./supabase-config.js"></script>
   <script>
     const t = {
       pt: {
         title: "Acesso Wi-Fi por apartamento",
-        subtitle: "Validação por email concluída. Conteúdo deste apartamento.",
+        subtitle: "Acesso por email OTP para este apartamento.",
         apt: "Apartamento",
         network: "Rede",
         password: "Password",
         hidden: "Oculta até configurar credenciais.",
         status: "🔒 Aguarda configuração final",
-        note: "Depois de ativares o Cloudflare Access, este link pede email + código OTP automaticamente."
+        note: "Introduza o seu email para receber o link/codigo de acesso.",
+        emailLabel: "Email do hóspede",
+        sendAccess: "Receber acesso por email",
+        checkInbox: "Verifique o seu email. Foi enviado um link/codigo de acesso.",
+        loading: "A validar acesso...",
+        noAccess: "Sem permissao para visualizar este apartamento.",
+        configured: "Acesso autorizado para este apartamento.",
+        logout: "Terminar sessão",
+        setupNeeded: "Configuração Supabase em falta. Preencha o ficheiro supabase-config.js.",
+        notConfigured: "Credenciais deste apartamento ainda não configuradas."
       },
       en: {
         title: "Apartment Wi-Fi access",
-        subtitle: "Email validation completed. Content for this apartment.",
+        subtitle: "Email OTP access for this apartment.",
         apt: "Apartment",
         network: "Network",
         password: "Password",
         hidden: "Hidden until credentials are configured.",
         status: "🔒 Final setup pending",
-        note: "After enabling Cloudflare Access, this link will automatically request email + OTP code."
+        note: "Enter your email to receive the access link/code.",
+        emailLabel: "Guest email",
+        sendAccess: "Send access by email",
+        checkInbox: "Check your inbox. An access link/code was sent.",
+        loading: "Validating access...",
+        noAccess: "This email is not allowed for this apartment.",
+        configured: "Access granted for this apartment.",
+        logout: "Sign out",
+        setupNeeded: "Missing Supabase setup. Fill supabase-config.js first.",
+        notConfigured: "Credentials for this apartment are not configured yet."
       },
       fr: {
         title: "Acces Wi-Fi par appartement",
-        subtitle: "Validation par email terminee. Contenu de cet appartement.",
+        subtitle: "Acces OTP par email pour cet appartement.",
         apt: "Appartement",
         network: "Reseau",
         password: "Mot de passe",
         hidden: "Masque jusqu'a la configuration des identifiants.",
         status: "🔒 Configuration finale en attente",
-        note: "Apres activation de Cloudflare Access, ce lien demandera automatiquement email + code OTP."
+        note: "Saisissez votre email pour recevoir le lien/code d'acces.",
+        emailLabel: "Email du client",
+        sendAccess: "Recevoir l'acces par email",
+        checkInbox: "Verifiez votre email. Un lien/code d'acces a ete envoye.",
+        loading: "Validation de l'acces...",
+        noAccess: "Cet email n'a pas d'autorisation pour cet appartement.",
+        configured: "Acces autorise pour cet appartement.",
+        logout: "Se deconnecter",
+        setupNeeded: "Configuration Supabase manquante. Completez supabase-config.js.",
+        notConfigured: "Identifiants non configures pour cet appartement."
       },
       es: {
         title: "Acceso Wi-Fi por apartamento",
-        subtitle: "Validacion por email completada. Contenido de este apartamento.",
+        subtitle: "Acceso OTP por email para este apartamento.",
         apt: "Apartamento",
         network: "Red",
         password: "Contrasena",
         hidden: "Oculta hasta configurar credenciales.",
         status: "🔒 Configuracion final pendiente",
-        note: "Tras activar Cloudflare Access, este enlace pedira automaticamente email + codigo OTP."
+        note: "Introduce tu email para recibir el enlace/codigo de acceso.",
+        emailLabel: "Email del huesped",
+        sendAccess: "Recibir acceso por email",
+        checkInbox: "Revisa tu email. Se ha enviado un enlace/codigo de acceso.",
+        loading: "Validando acceso...",
+        noAccess: "Este email no tiene permiso para este apartamento.",
+        configured: "Acceso autorizado para este apartamento.",
+        logout: "Cerrar sesion",
+        setupNeeded: "Falta configurar Supabase. Completa supabase-config.js.",
+        notConfigured: "Las credenciales de este apartamento aun no estan configuradas."
       },
       de: {
         title: "WLAN-Zugriff pro Apartment",
-        subtitle: "E-Mail-Validierung abgeschlossen. Inhalt fuer dieses Apartment.",
+        subtitle: "E-Mail-OTP-Zugriff fuer dieses Apartment.",
         apt: "Apartment",
         network: "Netzwerk",
         password: "Passwort",
         hidden: "Versteckt bis die Zugangsdaten konfiguriert sind.",
         status: "🔒 Endkonfiguration ausstehend",
-        note: "Nach Aktivierung von Cloudflare Access fordert dieser Link automatisch E-Mail + OTP-Code an."
+        note: "Geben Sie Ihre E-Mail ein, um Link/Code fuer den Zugriff zu erhalten.",
+        emailLabel: "Gast-E-Mail",
+        sendAccess: "Zugriff per E-Mail erhalten",
+        checkInbox: "Postfach pruefen. Ein Zugriffslink/-code wurde gesendet.",
+        loading: "Zugriff wird geprueft...",
+        noAccess: "Diese E-Mail ist fuer dieses Apartment nicht freigegeben.",
+        configured: "Zugriff fuer dieses Apartment erlaubt.",
+        logout: "Abmelden",
+        setupNeeded: "Supabase ist nicht konfiguriert. Bitte supabase-config.js ausfuellen.",
+        notConfigured: "Zugangsdaten fuer dieses Apartment sind noch nicht konfiguriert."
       }
     };
 
@@ -140,11 +228,120 @@
     document.getElementById("subtitle").textContent = d.subtitle;
     document.getElementById("backLink").href = `./detalhe.html?sec=wifi&lang=${lang}`;
 
-    document.getElementById("content").innerHTML =
-      `<p class='line'><strong>${d.apt} ${apt}</strong> <span class='pill'>${d.status}</span></p>` +
-      `<p class='line'><strong>${d.network}:</strong> ${d.hidden}</p>` +
-      `<p class='line'><strong>${d.password}:</strong> ${d.hidden}</p>` +
-      `<p class='line'>${d.note}</p>`;
+    const validApt = /^[B-J]$/.test(apt) ? apt : "B";
+    const supabaseUrl = window.WS_SUPABASE_URL || "";
+    const supabaseAnonKey = window.WS_SUPABASE_ANON_KEY || "";
+    const content = document.getElementById("content");
+
+    function renderSetupNeeded() {
+      content.innerHTML =
+        `<p class='line'><strong>${d.apt} ${validApt}</strong> <span class='pill'>${d.status}</span></p>` +
+        `<div class='status'>${d.setupNeeded}</div>`;
+    }
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      renderSetupNeeded();
+    } else {
+      const sb = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+      let notice = "";
+
+      function renderLoggedOut() {
+        content.innerHTML =
+          `<p class='line'><strong>${d.apt} ${validApt}</strong> <span class='pill'>${d.status}</span></p>` +
+          `<p class='line muted'>${d.note}</p>` +
+          `<label class='line' for='emailInput'><strong>${d.emailLabel}</strong></label>` +
+          `<input id='emailInput' class='field' type='email' placeholder='name@email.com' />` +
+          `<div class='btn-row'><button id='sendBtn' class='btn primary'>${d.sendAccess}</button></div>` +
+          (notice ? `<div class='status'>${notice}</div>` : "");
+
+        document.getElementById("sendBtn").addEventListener("click", async () => {
+          const btn = document.getElementById("sendBtn");
+          const email = (document.getElementById("emailInput").value || "").trim().toLowerCase();
+          if (!email) return;
+          btn.disabled = true;
+          const redirect = `${window.location.origin}${window.location.pathname}?apt=${validApt}&lang=${lang}`;
+          const { error } = await sb.auth.signInWithOtp({
+            email,
+            options: { emailRedirectTo: redirect }
+          });
+          btn.disabled = false;
+          notice = error ? error.message : d.checkInbox;
+          renderLoggedOut();
+        });
+      }
+
+      function renderDenied() {
+        content.innerHTML =
+          `<p class='line'><strong>${d.apt} ${validApt}</strong> <span class='pill'>🔒</span></p>` +
+          `<div class='status'>${d.noAccess}</div>` +
+          `<div class='btn-row'><button id='logoutBtn' class='btn'>${d.logout}</button></div>`;
+        document.getElementById("logoutBtn").addEventListener("click", async () => {
+          await sb.auth.signOut();
+          notice = "";
+          renderLoggedOut();
+        });
+      }
+
+      function renderAuthorized(networkName, wifiPassword) {
+        content.innerHTML =
+          `<p class='line'><strong>${d.apt} ${validApt}</strong> <span class='pill'>✅</span></p>` +
+          `<div class='status'>${d.configured}</div>` +
+          `<p class='line'><strong>${d.network}:</strong> ${networkName || d.hidden}</p>` +
+          `<p class='line'><strong>${d.password}:</strong> ${wifiPassword || d.hidden}</p>` +
+          `<div class='btn-row'><button id='logoutBtn' class='btn'>${d.logout}</button></div>`;
+        document.getElementById("logoutBtn").addEventListener("click", async () => {
+          await sb.auth.signOut();
+          notice = "";
+          renderLoggedOut();
+        });
+      }
+
+      async function renderAuthenticated(session) {
+        if (!session?.user?.email) {
+          renderLoggedOut();
+          return;
+        }
+
+        content.innerHTML = `<p class='line'>${d.loading}</p>`;
+
+        const wifiData = await sb
+          .from("wifi_apartments")
+          .select("network_name,wifi_password")
+          .eq("apt", validApt)
+          .maybeSingle();
+
+        if (wifiData.error || !wifiData.data) {
+          content.innerHTML =
+            `<p class='line'><strong>${d.apt} ${validApt}</strong> <span class='pill'>⏳</span></p>` +
+            `<div class='status'>${d.notConfigured}</div>` +
+            `<div class='btn-row'><button id='logoutBtn' class='btn'>${d.logout}</button></div>`;
+          document.getElementById("logoutBtn").addEventListener("click", async () => {
+            await sb.auth.signOut();
+            notice = "";
+            renderLoggedOut();
+          });
+          return;
+        }
+
+        renderAuthorized(wifiData.data.network_name, wifiData.data.wifi_password);
+      }
+
+      sb.auth.onAuthStateChange(async (_event, session) => {
+        if (session) {
+          await renderAuthenticated(session);
+        } else {
+          renderLoggedOut();
+        }
+      });
+
+      sb.auth.getSession().then(async ({ data }) => {
+        if (data.session) {
+          await renderAuthenticated(data.session);
+        } else {
+          renderLoggedOut();
+        }
+      });
+    }
   </script>
 </body>
 </html>
