@@ -138,6 +138,8 @@
         logout: "Terminar sessão",
         setupNeeded: "Configuração Supabase em falta. Preencha o ficheiro supabase-config.js.",
         notConfigured: "Credenciais deste apartamento ainda não configuradas.",
+        fetchError: "Não foi possível validar agora. Verifique internet/configuração e tente novamente.",
+        retry: "Tentar novamente",
         configUrl: "Project URL",
         configKey: "Anon Key",
         saveConfig: "Guardar configuração",
@@ -162,6 +164,8 @@
         logout: "Sign out",
         setupNeeded: "Missing Supabase setup. Fill supabase-config.js first.",
         notConfigured: "Credentials for this apartment are not configured yet.",
+        fetchError: "Could not validate right now. Check network/configuration and try again.",
+        retry: "Try again",
         configUrl: "Project URL",
         configKey: "Anon Key",
         saveConfig: "Save configuration",
@@ -186,6 +190,8 @@
         logout: "Se deconnecter",
         setupNeeded: "Configuration Supabase manquante. Completez supabase-config.js.",
         notConfigured: "Identifiants non configures pour cet appartement.",
+        fetchError: "Validation impossible pour le moment. Verifiez la connexion/configuration et reessayez.",
+        retry: "Reessayer",
         configUrl: "Project URL",
         configKey: "Anon Key",
         saveConfig: "Enregistrer la configuration",
@@ -210,6 +216,8 @@
         logout: "Cerrar sesion",
         setupNeeded: "Falta configurar Supabase. Completa supabase-config.js.",
         notConfigured: "Las credenciales de este apartamento aun no estan configuradas.",
+        fetchError: "No se pudo validar ahora. Revisa internet/configuracion e intentalo de nuevo.",
+        retry: "Intentar de nuevo",
         configUrl: "Project URL",
         configKey: "Anon Key",
         saveConfig: "Guardar configuracion",
@@ -234,6 +242,8 @@
         logout: "Abmelden",
         setupNeeded: "Supabase ist nicht konfiguriert. Bitte supabase-config.js ausfuellen.",
         notConfigured: "Zugangsdaten fuer dieses Apartment sind noch nicht konfiguriert.",
+        fetchError: "Validierung derzeit nicht moeglich. Bitte Internet/Konfiguration pruefen und erneut versuchen.",
+        retry: "Erneut versuchen",
         configUrl: "Project URL",
         configKey: "Anon Key",
         saveConfig: "Konfiguration speichern",
@@ -256,6 +266,7 @@
     const validApt = /^[B-J]$/.test(apt) ? apt : "B";
     let supabaseUrl = window.WS_SUPABASE_URL || localStorage.getItem("WS_SUPABASE_URL") || "";
     let supabaseAnonKey = window.WS_SUPABASE_ANON_KEY || localStorage.getItem("WS_SUPABASE_ANON_KEY") || "";
+    const appOrigin = (window.WS_APP_ORIGIN || localStorage.getItem("WS_APP_ORIGIN") || window.location.origin).replace(/\/+$/, "");
     const content = document.getElementById("content");
 
     function renderSetupNeeded() {
@@ -309,7 +320,7 @@
           const email = (document.getElementById("emailInput").value || "").trim().toLowerCase();
           if (!email) return;
           btn.disabled = true;
-          const redirect = `${window.location.origin}${window.location.pathname}?apt=${validApt}&lang=${lang}`;
+          const redirect = `${appOrigin}/wifi-acesso.html?apt=${validApt}&lang=${lang}`;
           const { error } = await sb.auth.signInWithOtp({
             email,
             options: { emailRedirectTo: redirect }
@@ -353,12 +364,32 @@
         }
 
         content.innerHTML = `<p class='line'>${d.loading}</p>`;
-
-        const wifiData = await sb
-          .from("wifi_apartments")
-          .select("network_name,wifi_password")
-          .eq("apt", validApt)
-          .maybeSingle();
+        let wifiData;
+        try {
+          wifiData = await Promise.race([
+            sb
+              .from("wifi_apartments")
+              .select("network_name,wifi_password")
+              .eq("apt", validApt)
+              .maybeSingle(),
+            new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 12000))
+          ]);
+        } catch (_err) {
+          content.innerHTML =
+            `<p class='line'><strong>${d.apt} ${validApt}</strong> <span class='pill'>⚠️</span></p>` +
+            `<div class='status'>${d.fetchError}</div>` +
+            `<div class='btn-row'><button id='retryBtn' class='btn primary'>${d.retry}</button><button id='logoutBtn' class='btn'>${d.logout}</button></div>`;
+          document.getElementById("retryBtn").addEventListener("click", async () => {
+            const { data } = await sb.auth.getSession();
+            await renderAuthenticated(data.session);
+          });
+          document.getElementById("logoutBtn").addEventListener("click", async () => {
+            await sb.auth.signOut();
+            notice = "";
+            renderLoggedOut();
+          });
+          return;
+        }
 
         if (wifiData.error || !wifiData.data) {
           content.innerHTML =
