@@ -125,6 +125,21 @@
       border-radius: 999px;
       padding: 2px 8px;
     }
+    .wifi-btn {
+      display: inline-block;
+      margin-top: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #1f2a37;
+      background: #f7f5f2;
+      border: 1px solid #b79f72;
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+    .wifi-btn:hover {
+      background: #fff;
+    }
     .link {
       color: #0f7f9d;
       text-decoration: none;
@@ -593,6 +608,63 @@
     let lang = params.get("lang") || "pt";
     if (!text[lang]) lang = "pt";
 
+    const wifiApts = ["B", "C", "D", "E", "F", "G", "H", "I", "J"];
+    const wifiUi = {
+      pt: {
+        note: "As credenciais de rede estão ocultas até a ativação do acesso por email.",
+        apt: "Apartamento",
+        network: "Rede:",
+        password: "Password:",
+        hidden: "Oculta",
+        locked: "🔒 Bloqueado",
+        button: "Pedir acesso por email"
+      },
+      en: {
+        note: "Network credentials are hidden until email access is activated.",
+        apt: "Apartment",
+        network: "Network:",
+        password: "Password:",
+        hidden: "Hidden",
+        locked: "🔒 Locked",
+        button: "Request email access"
+      },
+      fr: {
+        note: "Les identifiants reseau sont masques jusqu'a l'activation de l'acces par email.",
+        apt: "Appartement",
+        network: "Reseau:",
+        password: "Mot de passe:",
+        hidden: "Masque",
+        locked: "🔒 Verrouille",
+        button: "Demander l'acces par email"
+      },
+      es: {
+        note: "Las credenciales de red estan ocultas hasta activar el acceso por email.",
+        apt: "Apartamento",
+        network: "Red:",
+        password: "Contrasena:",
+        hidden: "Oculta",
+        locked: "🔒 Bloqueado",
+        button: "Solicitar acceso por email"
+      },
+      de: {
+        note: "Die Netzwerkdaten sind ausgeblendet, bis der E-Mail-Zugriff aktiviert ist.",
+        apt: "Apartment",
+        network: "Netzwerk:",
+        password: "Passwort:",
+        hidden: "Versteckt",
+        locked: "🔒 Gesperrt",
+        button: "E-Mail-Zugriff anfordern"
+      }
+    };
+
+    function renderWifiSection(currentLang) {
+      const t = wifiUi[currentLang] || wifiUi.pt;
+      const cards = wifiApts.map((apt) =>
+        `<div class='wifi-item'><p class='wifi-apt'>${t.apt} ${apt}</p><p class='wifi-meta'><strong>${t.network}</strong> ${t.hidden}</p><p class='wifi-meta'><strong>${t.password}</strong> ${t.hidden}</p><span class='wifi-lock'>${t.locked}</span><br><a class='wifi-btn' href='./wifi-acesso.html?apt=${apt}&lang=${currentLang}'>${t.button}</a></div>`
+      ).join("");
+      return `<p class='wifi-note'>${t.note}</p><div class='wifi-list'>${cards}</div>`;
+    }
+
     function render() {
       const dict = text[lang];
       const item = dict.sections[sec];
@@ -611,7 +683,7 @@
       } else {
         title.textContent = item.title;
         subtitle.textContent = item.subtitle;
-        content.innerHTML = item.html;
+        content.innerHTML = sec === "wifi" ? renderWifiSection(lang) : item.html;
       }
 
       document.documentElement.lang = lang === "pt" ? "pt-PT" : lang;
