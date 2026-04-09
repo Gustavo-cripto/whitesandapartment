@@ -140,6 +140,7 @@
         notConfigured: "Credenciais deste apartamento ainda não configuradas.",
         fetchError: "Não foi possível validar agora. Verifique internet/configuração e tente novamente.",
         retry: "Tentar novamente",
+        switchEmail: "Entrar com outro email",
         configUrl: "Project URL",
         configKey: "Anon Key",
         saveConfig: "Guardar configuração",
@@ -166,6 +167,7 @@
         notConfigured: "Credentials for this apartment are not configured yet.",
         fetchError: "Could not validate right now. Check network/configuration and try again.",
         retry: "Try again",
+        switchEmail: "Sign in with another email",
         configUrl: "Project URL",
         configKey: "Anon Key",
         saveConfig: "Save configuration",
@@ -192,6 +194,7 @@
         notConfigured: "Identifiants non configures pour cet appartement.",
         fetchError: "Validation impossible pour le moment. Verifiez la connexion/configuration et reessayez.",
         retry: "Reessayer",
+        switchEmail: "Se connecter avec un autre email",
         configUrl: "Project URL",
         configKey: "Anon Key",
         saveConfig: "Enregistrer la configuration",
@@ -218,6 +221,7 @@
         notConfigured: "Las credenciales de este apartamento aun no estan configuradas.",
         fetchError: "No se pudo validar ahora. Revisa internet/configuracion e intentalo de nuevo.",
         retry: "Intentar de nuevo",
+        switchEmail: "Entrar con otro email",
         configUrl: "Project URL",
         configKey: "Anon Key",
         saveConfig: "Guardar configuracion",
@@ -244,6 +248,7 @@
         notConfigured: "Zugangsdaten fuer dieses Apartment sind noch nicht konfiguriert.",
         fetchError: "Validierung derzeit nicht moeglich. Bitte Internet/Konfiguration pruefen und erneut versuchen.",
         retry: "Erneut versuchen",
+        switchEmail: "Mit anderer E-Mail anmelden",
         configUrl: "Project URL",
         configKey: "Anon Key",
         saveConfig: "Konfiguration speichern",
@@ -305,6 +310,16 @@
     } else {
       const sb = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
       let notice = "";
+      async function hardSignOut() {
+        try { await sb.auth.signOut(); } catch (_e) {}
+        try {
+          Object.keys(localStorage).forEach((k) => {
+            if (k.startsWith("sb-")) localStorage.removeItem(k);
+          });
+        } catch (_e) {}
+        notice = "";
+        window.location.href = `${appOrigin}/wifi-acesso.html?apt=${validApt}&lang=${lang}`;
+      }
 
       function renderLoggedOut() {
         content.innerHTML =
@@ -336,11 +351,7 @@
           `<p class='line'><strong>${d.apt} ${validApt}</strong> <span class='pill'>🔒</span></p>` +
           `<div class='status'>${d.noAccess}</div>` +
           `<div class='btn-row'><button id='logoutBtn' class='btn'>${d.logout}</button></div>`;
-        document.getElementById("logoutBtn").addEventListener("click", async () => {
-          await sb.auth.signOut();
-          notice = "";
-          renderLoggedOut();
-        });
+        document.getElementById("logoutBtn").addEventListener("click", hardSignOut);
       }
 
       function renderAuthorized(networkName, wifiPassword) {
@@ -350,11 +361,7 @@
           `<p class='line'><strong>${d.network}:</strong> ${networkName || d.hidden}</p>` +
           `<p class='line'><strong>${d.password}:</strong> ${wifiPassword || d.hidden}</p>` +
           `<div class='btn-row'><button id='logoutBtn' class='btn'>${d.logout}</button></div>`;
-        document.getElementById("logoutBtn").addEventListener("click", async () => {
-          await sb.auth.signOut();
-          notice = "";
-          renderLoggedOut();
-        });
+        document.getElementById("logoutBtn").addEventListener("click", hardSignOut);
       }
 
       async function renderAuthenticated(session) {
@@ -378,16 +385,13 @@
           content.innerHTML =
             `<p class='line'><strong>${d.apt} ${validApt}</strong> <span class='pill'>⚠️</span></p>` +
             `<div class='status'>${d.fetchError}</div>` +
-            `<div class='btn-row'><button id='retryBtn' class='btn primary'>${d.retry}</button><button id='logoutBtn' class='btn'>${d.logout}</button></div>`;
+            `<div class='btn-row'><button id='retryBtn' class='btn primary'>${d.retry}</button><button id='switchBtn' class='btn'>${d.switchEmail}</button><button id='logoutBtn' class='btn'>${d.logout}</button></div>`;
           document.getElementById("retryBtn").addEventListener("click", async () => {
             const { data } = await sb.auth.getSession();
             await renderAuthenticated(data.session);
           });
-          document.getElementById("logoutBtn").addEventListener("click", async () => {
-            await sb.auth.signOut();
-            notice = "";
-            renderLoggedOut();
-          });
+          document.getElementById("switchBtn").addEventListener("click", hardSignOut);
+          document.getElementById("logoutBtn").addEventListener("click", hardSignOut);
           return;
         }
 
@@ -396,11 +400,7 @@
             `<p class='line'><strong>${d.apt} ${validApt}</strong> <span class='pill'>⏳</span></p>` +
             `<div class='status'>${d.notConfigured}</div>` +
             `<div class='btn-row'><button id='logoutBtn' class='btn'>${d.logout}</button></div>`;
-          document.getElementById("logoutBtn").addEventListener("click", async () => {
-            await sb.auth.signOut();
-            notice = "";
-            renderLoggedOut();
-          });
+          document.getElementById("logoutBtn").addEventListener("click", hardSignOut);
           return;
         }
 
