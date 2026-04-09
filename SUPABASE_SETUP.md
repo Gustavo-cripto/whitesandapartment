@@ -83,3 +83,6 @@ on conflict (apt, guest_email) do nothing;
 - Insere email.
 - Recebe link OTP no email.
 - Depois do login, ve apenas rede/password do apartamento autorizado.
+
+## Nota de deploy
+- Sempre que alterar `Environment Variables/Secrets` na Cloudflare Pages, faca um novo deploy (retry ou novo commit) para aplicar as mudancas em producao.
