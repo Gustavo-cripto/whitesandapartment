@@ -137,7 +137,12 @@
         configured: "Acesso autorizado para este apartamento.",
         logout: "Terminar sessão",
         setupNeeded: "Configuração Supabase em falta. Preencha o ficheiro supabase-config.js.",
-        notConfigured: "Credenciais deste apartamento ainda não configuradas."
+        notConfigured: "Credenciais deste apartamento ainda não configuradas.",
+        configUrl: "Project URL",
+        configKey: "Anon Key",
+        saveConfig: "Guardar configuração",
+        clearConfig: "Limpar",
+        configSaved: "Configuração guardada. A recarregar..."
       },
       en: {
         title: "Apartment Wi-Fi access",
@@ -156,7 +161,12 @@
         configured: "Access granted for this apartment.",
         logout: "Sign out",
         setupNeeded: "Missing Supabase setup. Fill supabase-config.js first.",
-        notConfigured: "Credentials for this apartment are not configured yet."
+        notConfigured: "Credentials for this apartment are not configured yet.",
+        configUrl: "Project URL",
+        configKey: "Anon Key",
+        saveConfig: "Save configuration",
+        clearConfig: "Clear",
+        configSaved: "Configuration saved. Reloading..."
       },
       fr: {
         title: "Acces Wi-Fi par appartement",
@@ -175,7 +185,12 @@
         configured: "Acces autorise pour cet appartement.",
         logout: "Se deconnecter",
         setupNeeded: "Configuration Supabase manquante. Completez supabase-config.js.",
-        notConfigured: "Identifiants non configures pour cet appartement."
+        notConfigured: "Identifiants non configures pour cet appartement.",
+        configUrl: "Project URL",
+        configKey: "Anon Key",
+        saveConfig: "Enregistrer la configuration",
+        clearConfig: "Effacer",
+        configSaved: "Configuration enregistree. Rechargement..."
       },
       es: {
         title: "Acceso Wi-Fi por apartamento",
@@ -194,7 +209,12 @@
         configured: "Acceso autorizado para este apartamento.",
         logout: "Cerrar sesion",
         setupNeeded: "Falta configurar Supabase. Completa supabase-config.js.",
-        notConfigured: "Las credenciales de este apartamento aun no estan configuradas."
+        notConfigured: "Las credenciales de este apartamento aun no estan configuradas.",
+        configUrl: "Project URL",
+        configKey: "Anon Key",
+        saveConfig: "Guardar configuracion",
+        clearConfig: "Limpiar",
+        configSaved: "Configuracion guardada. Recargando..."
       },
       de: {
         title: "WLAN-Zugriff pro Apartment",
@@ -213,7 +233,12 @@
         configured: "Zugriff fuer dieses Apartment erlaubt.",
         logout: "Abmelden",
         setupNeeded: "Supabase ist nicht konfiguriert. Bitte supabase-config.js ausfuellen.",
-        notConfigured: "Zugangsdaten fuer dieses Apartment sind noch nicht konfiguriert."
+        notConfigured: "Zugangsdaten fuer dieses Apartment sind noch nicht konfiguriert.",
+        configUrl: "Project URL",
+        configKey: "Anon Key",
+        saveConfig: "Konfiguration speichern",
+        clearConfig: "Leeren",
+        configSaved: "Konfiguration gespeichert. Neu laden..."
       }
     };
 
@@ -229,14 +254,39 @@
     document.getElementById("backLink").href = `./detalhe.html?sec=wifi&lang=${lang}`;
 
     const validApt = /^[B-J]$/.test(apt) ? apt : "B";
-    const supabaseUrl = window.WS_SUPABASE_URL || "";
-    const supabaseAnonKey = window.WS_SUPABASE_ANON_KEY || "";
+    let supabaseUrl = window.WS_SUPABASE_URL || localStorage.getItem("WS_SUPABASE_URL") || "";
+    let supabaseAnonKey = window.WS_SUPABASE_ANON_KEY || localStorage.getItem("WS_SUPABASE_ANON_KEY") || "";
     const content = document.getElementById("content");
 
     function renderSetupNeeded() {
       content.innerHTML =
         `<p class='line'><strong>${d.apt} ${validApt}</strong> <span class='pill'>${d.status}</span></p>` +
-        `<div class='status'>${d.setupNeeded}</div>`;
+        `<div class='status'>${d.setupNeeded}</div>` +
+        `<label class='line' for='cfgUrl'><strong>${d.configUrl}</strong></label>` +
+        `<input id='cfgUrl' class='field' type='text' placeholder='https://xxxx.supabase.co' value='${supabaseUrl}' />` +
+        `<label class='line' for='cfgKey'><strong>${d.configKey}</strong></label>` +
+        `<input id='cfgKey' class='field' type='text' placeholder='eyJhbGciOi...' value='${supabaseAnonKey}' />` +
+        `<div class='btn-row'><button id='saveCfgBtn' class='btn primary'>${d.saveConfig}</button><button id='clearCfgBtn' class='btn'>${d.clearConfig}</button></div>`;
+
+      document.getElementById("saveCfgBtn").addEventListener("click", () => {
+        const url = (document.getElementById("cfgUrl").value || "").trim();
+        const key = (document.getElementById("cfgKey").value || "").trim();
+        if (!url || !key) return;
+        localStorage.setItem("WS_SUPABASE_URL", url);
+        localStorage.setItem("WS_SUPABASE_ANON_KEY", key);
+        const msg = document.createElement("div");
+        msg.className = "status";
+        msg.textContent = d.configSaved;
+        content.appendChild(msg);
+        setTimeout(() => window.location.reload(), 600);
+      });
+
+      document.getElementById("clearCfgBtn").addEventListener("click", () => {
+        localStorage.removeItem("WS_SUPABASE_URL");
+        localStorage.removeItem("WS_SUPABASE_ANON_KEY");
+        document.getElementById("cfgUrl").value = "";
+        document.getElementById("cfgKey").value = "";
+      });
     }
 
     if (!supabaseUrl || !supabaseAnonKey) {
