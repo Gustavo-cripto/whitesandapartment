@@ -132,6 +132,8 @@
         emailLabel: "Email do hóspede",
         sendAccess: "Receber acesso por email",
         checkInbox: "Verifique o seu email. Foi enviado um link/codigo de acesso. Se não encontrar, veja a pasta Spam/Lixo eletrónico.",
+        rateLimited: "Muitos pedidos de email em pouco tempo. Aguarde alguns minutos e tente novamente.",
+        genericSendError: "Não foi possível enviar o email agora. Tente novamente em instantes.",
         loading: "A validar acesso...",
         noAccess: "Sem permissao para visualizar este apartamento.",
         configured: "Acesso autorizado para este apartamento.",
@@ -159,6 +161,8 @@
         emailLabel: "Guest email",
         sendAccess: "Send access by email",
         checkInbox: "Check your inbox. An access link/code was sent. If you cannot find it, check Spam/Junk.",
+        rateLimited: "Too many email requests in a short time. Please wait a few minutes and try again.",
+        genericSendError: "Could not send the email right now. Please try again shortly.",
         loading: "Validating access...",
         noAccess: "This email is not allowed for this apartment.",
         configured: "Access granted for this apartment.",
@@ -186,6 +190,8 @@
         emailLabel: "Email du client",
         sendAccess: "Recevoir l'acces par email",
         checkInbox: "Verifiez votre email. Un lien/code d'acces a ete envoye. Si vous ne le trouvez pas, verifiez le dossier Spam/Indesirables.",
+        rateLimited: "Trop de demandes d'email en peu de temps. Veuillez patienter quelques minutes et reessayer.",
+        genericSendError: "Impossible d'envoyer l'email pour le moment. Veuillez reessayer dans un instant.",
         loading: "Validation de l'acces...",
         noAccess: "Cet email n'a pas d'autorisation pour cet appartement.",
         configured: "Acces autorise pour cet appartement.",
@@ -213,6 +219,8 @@
         emailLabel: "Email del huesped",
         sendAccess: "Recibir acceso por email",
         checkInbox: "Revisa tu email. Se ha enviado un enlace/codigo de acceso. Si no lo encuentras, revisa Spam/Correo no deseado.",
+        rateLimited: "Demasiadas solicitudes de email en poco tiempo. Espera unos minutos e intentalo de nuevo.",
+        genericSendError: "No se pudo enviar el email ahora. Intentalo de nuevo en unos momentos.",
         loading: "Validando acceso...",
         noAccess: "Este email no tiene permiso para este apartamento.",
         configured: "Acceso autorizado para este apartamento.",
@@ -240,6 +248,8 @@
         emailLabel: "Gast-E-Mail",
         sendAccess: "Zugriff per E-Mail erhalten",
         checkInbox: "Postfach pruefen. Ein Zugriffslink/-code wurde gesendet. Falls nicht vorhanden, bitte Spam/Junk pruefen.",
+        rateLimited: "Zu viele E-Mail-Anfragen in kurzer Zeit. Bitte einige Minuten warten und erneut versuchen.",
+        genericSendError: "E-Mail konnte gerade nicht gesendet werden. Bitte gleich erneut versuchen.",
         loading: "Zugriff wird geprueft...",
         noAccess: "Diese E-Mail ist fuer dieses Apartment nicht freigegeben.",
         configured: "Zugriff fuer dieses Apartment erlaubt.",
@@ -341,7 +351,16 @@
             options: { emailRedirectTo: redirect }
           });
           btn.disabled = false;
-          notice = error ? error.message : d.checkInbox;
+          if (error) {
+            const msg = (error.message || "").toLowerCase();
+            if (msg.includes("rate limit")) {
+              notice = d.rateLimited;
+            } else {
+              notice = d.genericSendError;
+            }
+          } else {
+            notice = d.checkInbox;
+          }
           renderLoggedOut();
         });
       }
