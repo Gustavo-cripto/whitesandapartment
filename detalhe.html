@@ -445,13 +445,15 @@
       color: #1d4ed8;
     }
     .transport-bus-photo {
-      margin: 10px 0 12px;
-      border-radius: 12px;
+      margin: 8px 0 10px;
+      max-width: 140px;
+      border-radius: 8px;
       overflow: hidden;
       border: 1px solid rgba(31, 42, 55, 0.12);
     }
     .transport-bus-photo img {
       width: 100%;
+      max-width: 140px;
       height: auto;
       display: block;
       vertical-align: middle;
@@ -786,6 +788,11 @@
     const TRAIN_MAPS_URL = "https://goo.gl/maps/yvQ3TC8FTPvCvuCE6";
     const BUS_CIRCUIT_PDF_URL =
       "https://www.cm-albufeira.pt/sites/default/files/RepositorioDocumentos/2022/mapagiro2015.pdf";
+    const VAMUS_MAP_URL = "https://maps.app.goo.gl/t5o56sKjbLwMQJhs7";
+    const VAMUS_WEB_URL = "https://www.vamus.pt";
+    const VAMUS_APP_IOS_URL = "https://apps.apple.com/pt/app/vamus-algarve/id1573560855";
+    const VAMUS_APP_ANDROID_URL =
+      "https://play.google.com/store/apps/details?id=com.vizur.vamusalgarvemobile";
 
     const transportUi = {
       pt: {
@@ -813,6 +820,14 @@
         moreBusCenterTitle: "Centro Albufeira",
         moreBusGreenLine: "Linha Verde — 36",
         moreBusBlueLine: "Linha Azul — 9",
+        vamusHead: "AUTOCARROS - VAMUS",
+        vamusIntro: "Linhas para viajar para as outras cidades do Algarve.",
+        vamusStopTitle: "Paragem mais próxima",
+        vamusStopDetail: "Terminal rodoviário:",
+        vamusSchedTitle: "Para aceder aos horários e mapas das linhas:",
+        vamusWebLinkLabel: "www.vamus.pt",
+        vamusOu: "ou",
+        vamusAppName: "App Vamus Algarve",
         moreTrainHead: "COMBOIO",
         moreTrainHtml:
           "A estação de Comboio é Ferreiras - Albufeira. Poderá encontrar todos os horários em <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> ou na app Comboios de Portugal.",
@@ -844,6 +859,14 @@
         moreBusCenterTitle: "Albufeira centre",
         moreBusGreenLine: "Green line — 36",
         moreBusBlueLine: "Blue line — 9",
+        vamusHead: "BUSES - VAMUS",
+        vamusIntro: "Lines to travel to other towns in the Algarve.",
+        vamusStopTitle: "Nearest stop",
+        vamusStopDetail: "Bus terminal:",
+        vamusSchedTitle: "For timetables and line maps:",
+        vamusWebLinkLabel: "www.vamus.pt",
+        vamusOu: "or",
+        vamusAppName: "Vamus Algarve app",
         moreTrainHead: "TRAIN",
         moreTrainHtml:
           "The train station is Ferreiras - Albufeira. You can find all timetables at <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> or on the Comboios de Portugal app.",
@@ -875,6 +898,14 @@
         moreBusCenterTitle: "Centre d'Albufeira",
         moreBusGreenLine: "Ligne verte — 36",
         moreBusBlueLine: "Ligne bleue — 9",
+        vamusHead: "AUTOCARS - VAMUS",
+        vamusIntro: "Lignes pour se rendre dans d'autres villes de l'Algarve.",
+        vamusStopTitle: "Arrêt le plus proche",
+        vamusStopDetail: "Gare routière :",
+        vamusSchedTitle: "Pour les horaires et les plans des lignes :",
+        vamusWebLinkLabel: "www.vamus.pt",
+        vamusOu: "ou",
+        vamusAppName: "Application Vamus Algarve",
         moreTrainHead: "TRAIN",
         moreTrainHtml:
           "La gare est Ferreiras - Albufeira. Vous trouverez tous les horaires sur <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> ou dans l'application Comboios de Portugal.",
@@ -906,6 +937,14 @@
         moreBusCenterTitle: "Centro de Albufeira",
         moreBusGreenLine: "Línea verde — 36",
         moreBusBlueLine: "Línea azul — 9",
+        vamusHead: "AUTOBUSES - VAMUS",
+        vamusIntro: "Líneas para viajar a otras ciudades del Algarve.",
+        vamusStopTitle: "Parada más cercana",
+        vamusStopDetail: "Estación de autobuses:",
+        vamusSchedTitle: "Para consultar horarios y mapas de las líneas:",
+        vamusWebLinkLabel: "www.vamus.pt",
+        vamusOu: "o",
+        vamusAppName: "App Vamus Algarve",
         moreTrainHead: "TREN",
         moreTrainHtml:
           "La estación de tren es Ferreiras - Albufeira. Puede consultar todos los horarios en <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> o en la app Comboios de Portugal.",
@@ -937,6 +976,14 @@
         moreBusCenterTitle: "Zentrum Albufeira",
         moreBusGreenLine: "Gruene Linie — 36",
         moreBusBlueLine: "Blaue Linie — 9",
+        vamusHead: "BUSSE - VAMUS",
+        vamusIntro: "Linien zu weiteren Orten an der Algarve.",
+        vamusStopTitle: "Naechste Haltestelle",
+        vamusStopDetail: "Busbahnhof:",
+        vamusSchedTitle: "Fahrpläne und Linienpläne:",
+        vamusWebLinkLabel: "www.vamus.pt",
+        vamusOu: "oder",
+        vamusAppName: "App Vamus Algarve",
         moreTrainHead: "ZUG",
         moreTrainHtml:
           "Der Bahnhof ist Ferreiras - Albufeira. Alle Fahrpläne finden Sie auf <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> oder in der App Comboios de Portugal.",
@@ -964,12 +1011,26 @@
         "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
         `<p class='safety-title'>${t.moreBusHead}</p>` +
         `<p class='safety-note'>${t.moreBusIntro}</p>` +
-        `<div class='transport-bus-photo'><img src='./PHOTO-2026-04-11-12-42-25.jpg' alt='${t.moreBusImgAlt}' width='480' height='378' loading='lazy' /></div>` +
+        `<div class='transport-bus-photo'><img src='./PHOTO-2026-04-11-12-42-25.jpg' alt='${t.moreBusImgAlt}' width='140' height='110' loading='lazy' /></div>` +
         `<p class='safety-note'><strong>${t.moreBusCircuitTitle}</strong> — <a class='link' target='_blank' rel='noreferrer' href='${BUS_CIRCUIT_PDF_URL}'>${t.moreBusCircuitLink}</a></p>` +
         `<p class='safety-note'><strong>${t.moreBusStopTitle}</strong> ${t.moreBusStopText}</p>` +
         `<p class='safety-note'><strong>${t.moreBusCenterTitle}</strong><br>` +
         `<span class='bus-line bus-line--verde'>${t.moreBusGreenLine}</span><br>` +
         `<span class='bus-line bus-line--azul'>${t.moreBusBlueLine}</span></p>` +
+        "</div>";
+      const vamusCard =
+        "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
+        `<p class='safety-title'>${t.vamusHead}</p>` +
+        `<p class='safety-note'>${t.vamusIntro}</p>` +
+        `<p class='safety-note'><strong>${t.vamusStopTitle}</strong> — ${t.vamusStopDetail} <a class='link' target='_blank' rel='noreferrer' href='${VAMUS_MAP_URL}'>${t.taxiMapLink}</a></p>` +
+        `<p class='safety-note'><strong>${t.vamusSchedTitle}</strong></p>` +
+        `<p class='safety-note'><a class='link' target='_blank' rel='noreferrer' href='${VAMUS_WEB_URL}'>${t.vamusWebLinkLabel}</a></p>` +
+        `<p class='safety-note'>${t.vamusOu}</p>` +
+        `<p class='safety-note'><strong>${t.vamusAppName}</strong></p>` +
+        "<p class='safety-note transport-app-downloads'>" +
+        `<a class='link' target='_blank' rel='noreferrer' href='${VAMUS_APP_IOS_URL}'>${t.cpAppIos}</a><br>` +
+        `<a class='link' target='_blank' rel='noreferrer' href='${VAMUS_APP_ANDROID_URL}'>${t.cpAppAndroid}</a>` +
+        "</p>" +
         "</div>";
       const trainCard =
         "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
@@ -984,7 +1045,7 @@
       const comboioPanel =
         "<div class='transport-wrap'><div class='safety-grid'>" + trainCard + "</div></div>";
       const autocarroPanel =
-        "<div class='transport-wrap'><div class='safety-grid'>" + busCard + "</div></div>";
+        "<div class='transport-wrap'><div class='safety-grid'>" + busCard + vamusCard + "</div></div>";
       return (
         "<div class='transport-tabs'>" +
         "<div class='transport-tablist' role='tablist'>" +
