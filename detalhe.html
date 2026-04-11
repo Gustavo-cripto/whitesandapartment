@@ -433,6 +433,17 @@
       display: inline-block;
       margin-top: 4px;
     }
+    .bus-line {
+      display: inline-block;
+      margin-top: 5px;
+      font-weight: 700;
+    }
+    .bus-line--verde {
+      color: #166534;
+    }
+    .bus-line--azul {
+      color: #1d4ed8;
+    }
     @media (max-width: 760px) {
       .top-row {
         justify-content: flex-start;
@@ -786,7 +797,8 @@
         moreBusStopTitle: "Paragem mais próxima",
         moreBusStopText: "abaixo da rua (50 m).",
         moreBusCenterTitle: "Centro Albufeira",
-        moreBusCenterLines: "Linha Verde — 36<br>Linha Azul — 9",
+        moreBusGreenLine: "Linha Verde — 36",
+        moreBusBlueLine: "Linha Azul — 9",
         moreTrainHead: "COMBOIO",
         moreTrainHtml:
           "A estação de Comboio é Ferreiras - Albufeira. Poderá encontrar todos os horários em <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> ou na app Comboios de Portugal.",
@@ -814,7 +826,8 @@
         moreBusStopTitle: "Nearest stop",
         moreBusStopText: "below the street (50 m).",
         moreBusCenterTitle: "Albufeira centre",
-        moreBusCenterLines: "Green line — 36<br>Blue line — 9",
+        moreBusGreenLine: "Green line — 36",
+        moreBusBlueLine: "Blue line — 9",
         moreTrainHead: "TRAIN",
         moreTrainHtml:
           "The train station is Ferreiras - Albufeira. You can find all timetables at <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> or on the Comboios de Portugal app.",
@@ -842,7 +855,8 @@
         moreBusStopTitle: "Arrêt le plus proche",
         moreBusStopText: "en bas de la rue (50 m).",
         moreBusCenterTitle: "Centre d'Albufeira",
-        moreBusCenterLines: "Ligne verte — 36<br>Ligne bleue — 9",
+        moreBusGreenLine: "Ligne verte — 36",
+        moreBusBlueLine: "Ligne bleue — 9",
         moreTrainHead: "TRAIN",
         moreTrainHtml:
           "La gare est Ferreiras - Albufeira. Vous trouverez tous les horaires sur <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> ou dans l'application Comboios de Portugal.",
@@ -870,7 +884,8 @@
         moreBusStopTitle: "Parada más cercana",
         moreBusStopText: "debajo de la calle (50 m).",
         moreBusCenterTitle: "Centro de Albufeira",
-        moreBusCenterLines: "Línea verde — 36<br>Línea azul — 9",
+        moreBusGreenLine: "Línea verde — 36",
+        moreBusBlueLine: "Línea azul — 9",
         moreTrainHead: "TREN",
         moreTrainHtml:
           "La estación de tren es Ferreiras - Albufeira. Puede consultar todos los horarios en <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> o en la app Comboios de Portugal.",
@@ -898,7 +913,8 @@
         moreBusStopTitle: "Naechste Haltestelle",
         moreBusStopText: "unterhalb der Strasse (50 m).",
         moreBusCenterTitle: "Zentrum Albufeira",
-        moreBusCenterLines: "Gruene Linie — 36<br>Blaue Linie — 9",
+        moreBusGreenLine: "Gruene Linie — 36",
+        moreBusBlueLine: "Blaue Linie — 9",
         moreTrainHead: "ZUG",
         moreTrainHtml:
           "Der Bahnhof ist Ferreiras - Albufeira. Alle Fahrpläne finden Sie auf <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> oder in der App Comboios de Portugal.",
@@ -928,7 +944,9 @@
         `<p class='safety-note'>${t.moreBusIntro}</p>` +
         `<p class='safety-note'><strong>${t.moreBusCircuitTitle}</strong> — <a class='link' target='_blank' rel='noreferrer' href='${BUS_CIRCUIT_PDF_URL}'>${t.moreBusCircuitLink}</a></p>` +
         `<p class='safety-note'><strong>${t.moreBusStopTitle}</strong> ${t.moreBusStopText}</p>` +
-        `<p class='safety-note'><strong>${t.moreBusCenterTitle}</strong><br>${t.moreBusCenterLines}</p>` +
+        `<p class='safety-note'><strong>${t.moreBusCenterTitle}</strong><br>` +
+        `<span class='bus-line bus-line--verde'>${t.moreBusGreenLine}</span><br>` +
+        `<span class='bus-line bus-line--azul'>${t.moreBusBlueLine}</span></p>` +
         "</div>";
       const trainCard =
         "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
