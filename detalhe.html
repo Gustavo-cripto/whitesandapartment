@@ -761,6 +761,8 @@
     const CP_APP_IOS_URL = "https://apps.apple.com/pt/app/comboios-de-portugal/id1105415627";
     const CP_APP_ANDROID_URL = "https://play.google.com/store/apps/details?id=pt.cp.mobiapp";
     const TRAIN_MAPS_URL = "https://goo.gl/maps/yvQ3TC8FTPvCvuCE6";
+    const BUS_CIRCUIT_PDF_URL =
+      "https://www.cm-albufeira.pt/sites/default/files/RepositorioDocumentos/2022/mapagiro2015.pdf";
 
     const transportUi = {
       pt: {
@@ -777,8 +779,14 @@
         taxiPhone: "289 583 230",
         uberHead: "UBER",
         uberIntro: "Descarregue a App Uber para o seu telemóvel.",
-        moreBusTitle: "Autocarro",
-        moreBusDetail: "Linha 10 — paragem a cerca de 50 m.",
+        moreBusHead: "Autocarro",
+        moreBusIntro: "Linhas dentro da cidade de Albufeira e arredores.",
+        moreBusCircuitTitle: "Circuito urbano",
+        moreBusCircuitLink: "Mapa da rede (PDF)",
+        moreBusStopTitle: "Paragem mais próxima",
+        moreBusStopText: "abaixo da rua (50 m).",
+        moreBusCenterTitle: "Centro Albufeira",
+        moreBusCenterLines: "Linha Verde — 36<br>Linha Azul — 9",
         moreTrainHead: "COMBOIO",
         moreTrainHtml:
           "A estação de Comboio é Ferreiras - Albufeira. Poderá encontrar todos os horários em <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> ou na app Comboios de Portugal.",
@@ -799,8 +807,14 @@
         taxiPhone: "289 583 230",
         uberHead: "UBER",
         uberIntro: "Download the Uber app on your phone.",
-        moreBusTitle: "Bus",
-        moreBusDetail: "Line 10 — stop about 50m away.",
+        moreBusHead: "Bus",
+        moreBusIntro: "Lines within the city of Albufeira and the surrounding area.",
+        moreBusCircuitTitle: "Urban network",
+        moreBusCircuitLink: "Network map (PDF)",
+        moreBusStopTitle: "Nearest stop",
+        moreBusStopText: "below the street (50 m).",
+        moreBusCenterTitle: "Albufeira centre",
+        moreBusCenterLines: "Green line — 36<br>Blue line — 9",
         moreTrainHead: "TRAIN",
         moreTrainHtml:
           "The train station is Ferreiras - Albufeira. You can find all timetables at <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> or on the Comboios de Portugal app.",
@@ -821,8 +835,14 @@
         taxiPhone: "289 583 230",
         uberHead: "UBER",
         uberIntro: "Téléchargez l'application Uber sur votre téléphone.",
-        moreBusTitle: "Bus",
-        moreBusDetail: "Ligne 10 — arrêt à environ 50 m.",
+        moreBusHead: "Bus",
+        moreBusIntro: "Lignes dans la ville d'Albufeira et les environs.",
+        moreBusCircuitTitle: "Réseau urbain",
+        moreBusCircuitLink: "Plan du réseau (PDF)",
+        moreBusStopTitle: "Arrêt le plus proche",
+        moreBusStopText: "en bas de la rue (50 m).",
+        moreBusCenterTitle: "Centre d'Albufeira",
+        moreBusCenterLines: "Ligne verte — 36<br>Ligne bleue — 9",
         moreTrainHead: "TRAIN",
         moreTrainHtml:
           "La gare est Ferreiras - Albufeira. Vous trouverez tous les horaires sur <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> ou dans l'application Comboios de Portugal.",
@@ -843,8 +863,14 @@
         taxiPhone: "289 583 230",
         uberHead: "UBER",
         uberIntro: "Descargue la aplicación Uber en su móvil.",
-        moreBusTitle: "Autobús",
-        moreBusDetail: "Línea 10 — parada a unos 50 m.",
+        moreBusHead: "Autobús",
+        moreBusIntro: "Líneas dentro de la ciudad de Albufeira y alrededores.",
+        moreBusCircuitTitle: "Circuito urbano",
+        moreBusCircuitLink: "Mapa de la red (PDF)",
+        moreBusStopTitle: "Parada más cercana",
+        moreBusStopText: "debajo de la calle (50 m).",
+        moreBusCenterTitle: "Centro de Albufeira",
+        moreBusCenterLines: "Línea verde — 36<br>Línea azul — 9",
         moreTrainHead: "TREN",
         moreTrainHtml:
           "La estación de tren es Ferreiras - Albufeira. Puede consultar todos los horarios en <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> o en la app Comboios de Portugal.",
@@ -865,8 +891,14 @@
         taxiPhone: "289 583 230",
         uberHead: "UBER",
         uberIntro: "Laden Sie die Uber-App auf Ihr Smartphone herunter.",
-        moreBusTitle: "Bus",
-        moreBusDetail: "Linie 10 — Haltestelle ca. 50 m.",
+        moreBusHead: "Bus",
+        moreBusIntro: "Linien innerhalb der Stadt Albufeira und Umgebung.",
+        moreBusCircuitTitle: "Stadtnetz",
+        moreBusCircuitLink: "Netzplan (PDF)",
+        moreBusStopTitle: "Naechste Haltestelle",
+        moreBusStopText: "unterhalb der Strasse (50 m).",
+        moreBusCenterTitle: "Zentrum Albufeira",
+        moreBusCenterLines: "Gruene Linie — 36<br>Blaue Linie — 9",
         moreTrainHead: "ZUG",
         moreTrainHtml:
           "Der Bahnhof ist Ferreiras - Albufeira. Alle Fahrpläne finden Sie auf <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> oder in der App Comboios de Portugal.",
@@ -874,13 +906,6 @@
         cpAppAndroid: "Bei Google Play laden (Android)"
       }
     };
-
-    function transportTopicCard(title, detailHtml) {
-      return (
-        "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
-        `<p class='safety-title'>${title}</p><p class='safety-detail'>${detailHtml}</p></div>`
-      );
-    }
 
     function renderTransportSection(currentLang) {
       const t = transportUi[currentLang] || transportUi.pt;
@@ -897,6 +922,14 @@
         `<p class='safety-title'>${t.uberHead}</p>` +
         `<p class='safety-note'>${t.uberIntro}</p>` +
         "</div>";
+      const busCard =
+        "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
+        `<p class='safety-title'>${t.moreBusHead}</p>` +
+        `<p class='safety-note'>${t.moreBusIntro}</p>` +
+        `<p class='safety-note'><strong>${t.moreBusCircuitTitle}</strong> — <a class='link' target='_blank' rel='noreferrer' href='${BUS_CIRCUIT_PDF_URL}'>${t.moreBusCircuitLink}</a></p>` +
+        `<p class='safety-note'><strong>${t.moreBusStopTitle}</strong> ${t.moreBusStopText}</p>` +
+        `<p class='safety-note'><strong>${t.moreBusCenterTitle}</strong><br>${t.moreBusCenterLines}</p>` +
+        "</div>";
       const trainCard =
         "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
         `<p class='safety-title'>${t.moreTrainHead}</p>` +
@@ -909,7 +942,7 @@
         "</div>";
       const moreGrid =
         "<div class='safety-grid'>" +
-        transportTopicCard(t.moreBusTitle, t.moreBusDetail) +
+        busCard +
         trainCard +
         "</div>";
       return (
