@@ -391,6 +391,48 @@
     .transport-wrap .safety-grid {
       margin-top: 0;
     }
+    .transport-tabs {
+      text-align: left;
+    }
+    .transport-tabs .safety-grid {
+      grid-template-columns: 1fr;
+    }
+    .transport-tablist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .transport-tab {
+      border: 1px solid #b79f72;
+      background: rgba(255, 255, 255, 0.65);
+      color: #1f2a37;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .transport-tab--active {
+      background: #1f2a37;
+      color: #fff;
+      border-color: #1f2a37;
+    }
+    .transport-panel {
+      display: none;
+    }
+    .transport-panel--active {
+      display: block;
+    }
+    .transport-app-downloads {
+      margin-top: 10px;
+      line-height: 1.55;
+    }
+    .transport-app-downloads a {
+      display: inline-block;
+      margin-top: 4px;
+    }
     @media (max-width: 760px) {
       .top-row {
         justify-content: flex-start;
@@ -409,6 +451,9 @@
       }
       .rules-grid,
       .safety-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .transport-tabs .safety-grid {
+        grid-template-columns: 1fr;
+      }
       .rule-card.last {
         max-width: none;
       }
@@ -507,8 +552,7 @@
           },
           transport: {
             title: "Transportes",
-            subtitle: "Como chegar e deslocar-se na zona.",
-            html: "<div class='transport-wrap'><div class='safety-grid'><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Aeroporto de Faro</p><p class='safety-detail'>45 km (30-40 min).</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Taxi Albufeira</p><p class='safety-detail'>289 583 230</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Autocarro</p><p class='safety-detail'>Linha 10 — paragem a cerca de 50 m.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Comboio</p><p class='safety-detail'>Estação Ferreiras-Albufeira (<a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>cp.pt</a>).</p></div></div></div>"
+            subtitle: "Como chegar e deslocar-se na zona."
           },
           visit: {
             title: "Visitação",
@@ -570,7 +614,7 @@
           amenities: { title: "Amenities", subtitle: "Apartment facilities available.", html: "<p class='amenities-intro'>The apartment is equipped with all the amenities you need for a comfortable stay.</p><ul class='list amenities-list'><li>Wi-Fi</li><li>Smart TV</li><li>Coffee Machine</li><li>Hair Dryer</li><li>Bed Linen</li><li>Bath Towels</li><li>Shampoo and Shower Gel</li><li>Tableware and Kitchen Utensils</li><li>Air Conditioning</li><li>Washing Machine</li></ul>" },
           wifi: { title: "Wi-Fi", subtitle: "Internet access details.", html: "<p class='wifi-note'>Network credentials are hidden until apartment-based access is activated.</p><div class='wifi-list'><div class='wifi-item'><p class='wifi-apt'>Apartment B</p><p class='wifi-meta'><strong>Network:</strong> Hidden</p><p class='wifi-meta'><strong>Password:</strong> Hidden</p><span class='wifi-lock'>🔒 Locked</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment C</p><p class='wifi-meta'><strong>Network:</strong> Hidden</p><p class='wifi-meta'><strong>Password:</strong> Hidden</p><span class='wifi-lock'>🔒 Locked</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment D</p><p class='wifi-meta'><strong>Network:</strong> Hidden</p><p class='wifi-meta'><strong>Password:</strong> Hidden</p><span class='wifi-lock'>🔒 Locked</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment E</p><p class='wifi-meta'><strong>Network:</strong> Hidden</p><p class='wifi-meta'><strong>Password:</strong> Hidden</p><span class='wifi-lock'>🔒 Locked</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment F</p><p class='wifi-meta'><strong>Network:</strong> Hidden</p><p class='wifi-meta'><strong>Password:</strong> Hidden</p><span class='wifi-lock'>🔒 Locked</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment G</p><p class='wifi-meta'><strong>Network:</strong> Hidden</p><p class='wifi-meta'><strong>Password:</strong> Hidden</p><span class='wifi-lock'>🔒 Locked</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment H</p><p class='wifi-meta'><strong>Network:</strong> Hidden</p><p class='wifi-meta'><strong>Password:</strong> Hidden</p><span class='wifi-lock'>🔒 Locked</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment I</p><p class='wifi-meta'><strong>Network:</strong> Hidden</p><p class='wifi-meta'><strong>Password:</strong> Hidden</p><span class='wifi-lock'>🔒 Locked</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment J</p><p class='wifi-meta'><strong>Network:</strong> Hidden</p><p class='wifi-meta'><strong>Password:</strong> Hidden</p><span class='wifi-lock'>🔒 Locked</span></div></div>" },
           safety: { title: "Safety", subtitle: "Emergency and useful contacts.", html: "<div class='safety-grid'><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Emergency</p><p class='safety-detail'>112</p><p class='safety-note'>Available 24 hours a day, every day.<br>112 is the single European emergency telephone number, available throughout the European Union.<br>Calls are free.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Health line</p><p class='safety-detail'>808 24 24 24</p><p class='safety-note'>Available 24 hours a day, every day.<br>112 is the single European emergency telephone number, available throughout the European Union.<br>Calls are free.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Lusíadas Hospital Albufeira</p><p class='safety-detail'>289 892 040</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Fire brigade</p><p class='safety-detail'>289 586 333</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Police</p><p class='safety-detail'>289 590 790</p></div></div>" },
-          transport: { title: "Transport", subtitle: "How to arrive and move around.", html: "<div class='transport-wrap'><div class='safety-grid'><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Faro Airport</p><p class='safety-detail'>45 km (30-40 min).</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Taxi Albufeira</p><p class='safety-detail'>289 583 230</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Bus</p><p class='safety-detail'>Line 10 — stop about 50m away.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Train</p><p class='safety-detail'>Ferreiras-Albufeira station (<a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>cp.pt</a>).</p></div></div></div>" },
+          transport: { title: "Transport", subtitle: "How to arrive and move around." },
           visit: { title: "Sightseeing", subtitle: "Places worth visiting.", html: "<ul class='list'><li>Praia dos Pescadores and Praia da Galé.</li><li>Albufeira Marina and Praia da Falésia.</li><li>Benagil Caves and Silves Castle.</li></ul>" },
           activities: { title: "Activities", subtitle: "Ideas for your stay.", html: "<ul class='list'><li>Boat trips and cave tours.</li><li>Beach experiences and water sports.</li><li>Walks in Albufeira old town.</li></ul>" },
           eat: { title: "Eat & Drink", subtitle: "Recommended restaurants.", html: "<ul class='list'><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/rA4cq7F3agYmyYcy6'>Franguinho de Albufeira</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/w9gtzSM2WV5ixY5YA'>Tasca do Viegas</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/uXt8f8Lu8vPBQv7c6'>Clay Oven</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/5GTwm6RyKvPDEC338'>Taberna do Pescador</a></li></ul>" },
@@ -595,7 +639,7 @@
           amenities: { title: "Commodites", subtitle: "Equipements disponibles.", html: "<p class='amenities-intro'>L'appartement est equipe de toutes les commodites necessaires pour un sejour confortable.</p><ul class='list amenities-list'><li>Wi-Fi</li><li>Television intelligente (Smart TV)</li><li>Machine a cafe</li><li>Seche-cheveux</li><li>Linge de lit</li><li>Serviettes de bain</li><li>Shampooing et gel douche</li><li>Vaisselle et ustensiles de cuisine</li><li>Climatisation</li><li>Machine a laver</li></ul>" },
           wifi: { title: "Wi-Fi", subtitle: "Acces internet.", html: "<p class='wifi-note'>Les identifiants reseau sont masques jusqu'a l'activation de l'acces par appartement.</p><div class='wifi-list'><div class='wifi-item'><p class='wifi-apt'>Appartement B</p><p class='wifi-meta'><strong>Reseau:</strong> Masque</p><p class='wifi-meta'><strong>Mot de passe:</strong> Masque</p><span class='wifi-lock'>🔒 Verrouille</span></div><div class='wifi-item'><p class='wifi-apt'>Appartement C</p><p class='wifi-meta'><strong>Reseau:</strong> Masque</p><p class='wifi-meta'><strong>Mot de passe:</strong> Masque</p><span class='wifi-lock'>🔒 Verrouille</span></div><div class='wifi-item'><p class='wifi-apt'>Appartement D</p><p class='wifi-meta'><strong>Reseau:</strong> Masque</p><p class='wifi-meta'><strong>Mot de passe:</strong> Masque</p><span class='wifi-lock'>🔒 Verrouille</span></div><div class='wifi-item'><p class='wifi-apt'>Appartement E</p><p class='wifi-meta'><strong>Reseau:</strong> Masque</p><p class='wifi-meta'><strong>Mot de passe:</strong> Masque</p><span class='wifi-lock'>🔒 Verrouille</span></div><div class='wifi-item'><p class='wifi-apt'>Appartement F</p><p class='wifi-meta'><strong>Reseau:</strong> Masque</p><p class='wifi-meta'><strong>Mot de passe:</strong> Masque</p><span class='wifi-lock'>🔒 Verrouille</span></div><div class='wifi-item'><p class='wifi-apt'>Appartement G</p><p class='wifi-meta'><strong>Reseau:</strong> Masque</p><p class='wifi-meta'><strong>Mot de passe:</strong> Masque</p><span class='wifi-lock'>🔒 Verrouille</span></div><div class='wifi-item'><p class='wifi-apt'>Appartement H</p><p class='wifi-meta'><strong>Reseau:</strong> Masque</p><p class='wifi-meta'><strong>Mot de passe:</strong> Masque</p><span class='wifi-lock'>🔒 Verrouille</span></div><div class='wifi-item'><p class='wifi-apt'>Appartement I</p><p class='wifi-meta'><strong>Reseau:</strong> Masque</p><p class='wifi-meta'><strong>Mot de passe:</strong> Masque</p><span class='wifi-lock'>🔒 Verrouille</span></div><div class='wifi-item'><p class='wifi-apt'>Appartement J</p><p class='wifi-meta'><strong>Reseau:</strong> Masque</p><p class='wifi-meta'><strong>Mot de passe:</strong> Masque</p><span class='wifi-lock'>🔒 Verrouille</span></div></div>" },
           safety: { title: "Securite", subtitle: "Urgences et contacts utiles.", html: "<div class='safety-grid'><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Urgence</p><p class='safety-detail'>112</p><p class='safety-note'>Disponible 24h/24, tous les jours.<br>Le 112 est le numéro d'urgence européen unique, disponible dans toute l'Union européenne.<br>Les appels sont gratuits.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Ligne sante</p><p class='safety-detail'>808 24 24 24</p><p class='safety-note'>Disponible 24h/24, tous les jours.<br>Le 112 est le numéro d'urgence européen unique, disponible dans toute l'Union européenne.<br>Les appels sont gratuits.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Hopital Lusíadas Albufeira</p><p class='safety-detail'>289 892 040</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Pompiers</p><p class='safety-detail'>289 586 333</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Police</p><p class='safety-detail'>289 590 790</p></div></div>" },
-          transport: { title: "Transports", subtitle: "Comment arriver et se deplacer.", html: "<div class='transport-wrap'><div class='safety-grid'><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Aeroport de Faro</p><p class='safety-detail'>45 km (30-40 min).</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Taxi Albufeira</p><p class='safety-detail'>289 583 230</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Bus</p><p class='safety-detail'>Ligne 10 — arrêt à environ 50 m.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Train</p><p class='safety-detail'>Gare Ferreiras-Albufeira (<a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>cp.pt</a>).</p></div></div></div>" },
+          transport: { title: "Transports", subtitle: "Comment arriver et se deplacer." },
           visit: { title: "Visite", subtitle: "Lieux a visiter.", html: "<ul class='list'><li>Praia dos Pescadores et Praia da Galé.</li><li>Marina d'Albufeira et Praia da Falésia.</li><li>Grottes de Benagil et Chateau de Silves.</li></ul>" },
           activities: { title: "Activites", subtitle: "Idees pour votre sejour.", html: "<ul class='list'><li>Sorties en bateau et grottes.</li><li>Plage et sports nautiques.</li><li>Balades dans le centre historique.</li></ul>" },
           eat: { title: "Manger & Boire", subtitle: "Restaurants recommandes.", html: "<ul class='list'><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/rA4cq7F3agYmyYcy6'>Franguinho de Albufeira</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/w9gtzSM2WV5ixY5YA'>Tasca do Viegas</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/uXt8f8Lu8vPBQv7c6'>Clay Oven</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/5GTwm6RyKvPDEC338'>Taberna do Pescador</a></li></ul>" },
@@ -620,7 +664,7 @@
           amenities: { title: "Comodidades", subtitle: "Equipamiento disponible en el apartamento.", html: "<p class='amenities-intro'>El apartamento está equipado con todas las comodidades que necesita para una estancia cómoda.</p><ul class='list amenities-list'><li>Wi-Fi</li><li>Televisión Inteligente (Smart TV)</li><li>Máquina de Café</li><li>Secador de Pelo</li><li>Ropa de Cama</li><li>Toallas de baño</li><li>Champú y Gel de Ducha</li><li>Utensilios de Mesa y Cocina</li><li>Aire Acondicionado</li><li>Lavadora</li></ul>" },
           wifi: { title: "Wi-Fi", subtitle: "Datos de conexion a internet.", html: "<p class='wifi-note'>Las credenciales de red estan ocultas hasta activar el acceso por apartamento.</p><div class='wifi-list'><div class='wifi-item'><p class='wifi-apt'>Apartamento B</p><p class='wifi-meta'><strong>Red:</strong> Oculta</p><p class='wifi-meta'><strong>Contrasena:</strong> Oculta</p><span class='wifi-lock'>🔒 Bloqueado</span></div><div class='wifi-item'><p class='wifi-apt'>Apartamento C</p><p class='wifi-meta'><strong>Red:</strong> Oculta</p><p class='wifi-meta'><strong>Contrasena:</strong> Oculta</p><span class='wifi-lock'>🔒 Bloqueado</span></div><div class='wifi-item'><p class='wifi-apt'>Apartamento D</p><p class='wifi-meta'><strong>Red:</strong> Oculta</p><p class='wifi-meta'><strong>Contrasena:</strong> Oculta</p><span class='wifi-lock'>🔒 Bloqueado</span></div><div class='wifi-item'><p class='wifi-apt'>Apartamento E</p><p class='wifi-meta'><strong>Red:</strong> Oculta</p><p class='wifi-meta'><strong>Contrasena:</strong> Oculta</p><span class='wifi-lock'>🔒 Bloqueado</span></div><div class='wifi-item'><p class='wifi-apt'>Apartamento F</p><p class='wifi-meta'><strong>Red:</strong> Oculta</p><p class='wifi-meta'><strong>Contrasena:</strong> Oculta</p><span class='wifi-lock'>🔒 Bloqueado</span></div><div class='wifi-item'><p class='wifi-apt'>Apartamento G</p><p class='wifi-meta'><strong>Red:</strong> Oculta</p><p class='wifi-meta'><strong>Contrasena:</strong> Oculta</p><span class='wifi-lock'>🔒 Bloqueado</span></div><div class='wifi-item'><p class='wifi-apt'>Apartamento H</p><p class='wifi-meta'><strong>Red:</strong> Oculta</p><p class='wifi-meta'><strong>Contrasena:</strong> Oculta</p><span class='wifi-lock'>🔒 Bloqueado</span></div><div class='wifi-item'><p class='wifi-apt'>Apartamento I</p><p class='wifi-meta'><strong>Red:</strong> Oculta</p><p class='wifi-meta'><strong>Contrasena:</strong> Oculta</p><span class='wifi-lock'>🔒 Bloqueado</span></div><div class='wifi-item'><p class='wifi-apt'>Apartamento J</p><p class='wifi-meta'><strong>Red:</strong> Oculta</p><p class='wifi-meta'><strong>Contrasena:</strong> Oculta</p><span class='wifi-lock'>🔒 Bloqueado</span></div></div>" },
           safety: { title: "Seguridad", subtitle: "Emergencias y contactos utiles.", html: "<div class='safety-grid'><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Emergencia</p><p class='safety-detail'>112</p><p class='safety-note'>Disponible las 24 horas del día, todos los días.<br>El 112 es el número único europeo de emergencias, disponible en toda la Unión Europea.<br>Las llamadas son gratuitas.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Linea de salud</p><p class='safety-detail'>808 24 24 24</p><p class='safety-note'>Disponible las 24 horas del día, todos los días.<br>El 112 es el número único europeo de emergencias, disponible en toda la Unión Europea.<br>Las llamadas son gratuitas.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Hospital Lusíadas Albufeira</p><p class='safety-detail'>289 892 040</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Bomberos</p><p class='safety-detail'>289 586 333</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Policia</p><p class='safety-detail'>289 590 790</p></div></div>" },
-          transport: { title: "Transporte", subtitle: "Como llegar y moverse por la zona.", html: "<div class='transport-wrap'><div class='safety-grid'><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Aeropuerto de Faro</p><p class='safety-detail'>45 km (30-40 min).</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Taxi Albufeira</p><p class='safety-detail'>289 583 230</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Autobús</p><p class='safety-detail'>Línea 10 — parada a unos 50 m.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Tren</p><p class='safety-detail'>Estación Ferreiras-Albufeira (<a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>cp.pt</a>).</p></div></div></div>" },
+          transport: { title: "Transporte", subtitle: "Como llegar y moverse por la zona." },
           visit: { title: "Visitas", subtitle: "Lugares para visitar.", html: "<ul class='list'><li>Praia dos Pescadores y Praia da Galé.</li><li>Marina de Albufeira y Praia da Falésia.</li><li>Grutas de Benagil y Castillo de Silves.</li></ul>" },
           activities: { title: "Actividades", subtitle: "Ideas para disfrutar de tu estancia.", html: "<ul class='list'><li>Paseos en barco y visitas a grutas.</li><li>Experiencias de playa y deportes acuaticos.</li><li>Paseos por el centro historico de Albufeira.</li></ul>" },
           eat: { title: "Comer y Beber", subtitle: "Restaurantes recomendados.", html: "<ul class='list'><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/rA4cq7F3agYmyYcy6'>Franguinho de Albufeira</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/w9gtzSM2WV5ixY5YA'>Tasca do Viegas</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/uXt8f8Lu8vPBQv7c6'>Clay Oven</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/5GTwm6RyKvPDEC338'>Taberna do Pescador</a></li></ul>" },
@@ -645,7 +689,7 @@
           amenities: { title: "Komfort", subtitle: "Ausstattung der Unterkunft.", html: "<p class='amenities-intro'>Die Wohnung ist mit allen Annehmlichkeiten ausgestattet, die Sie fuer einen komfortablen Aufenthalt benoetigen.</p><ul class='list amenities-list'><li>Wi-Fi</li><li>Smart-TV</li><li>Kaffeemaschine</li><li>Haartrockner</li><li>Bettwaesche</li><li>Badetuecher</li><li>Shampoo und Duschgel</li><li>Tischgeschirr und Kuechenutensilien</li><li>Klimaanlage</li><li>Waschmaschine</li></ul>" },
           wifi: { title: "Wi-Fi", subtitle: "Internetzugang.", html: "<p class='wifi-note'>Die Netzwerkdaten sind ausgeblendet, bis der wohnungsbezogene Zugriff aktiviert ist.</p><div class='wifi-list'><div class='wifi-item'><p class='wifi-apt'>Apartment B</p><p class='wifi-meta'><strong>Netzwerk:</strong> Versteckt</p><p class='wifi-meta'><strong>Passwort:</strong> Versteckt</p><span class='wifi-lock'>🔒 Gesperrt</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment C</p><p class='wifi-meta'><strong>Netzwerk:</strong> Versteckt</p><p class='wifi-meta'><strong>Passwort:</strong> Versteckt</p><span class='wifi-lock'>🔒 Gesperrt</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment D</p><p class='wifi-meta'><strong>Netzwerk:</strong> Versteckt</p><p class='wifi-meta'><strong>Passwort:</strong> Versteckt</p><span class='wifi-lock'>🔒 Gesperrt</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment E</p><p class='wifi-meta'><strong>Netzwerk:</strong> Versteckt</p><p class='wifi-meta'><strong>Passwort:</strong> Versteckt</p><span class='wifi-lock'>🔒 Gesperrt</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment F</p><p class='wifi-meta'><strong>Netzwerk:</strong> Versteckt</p><p class='wifi-meta'><strong>Passwort:</strong> Versteckt</p><span class='wifi-lock'>🔒 Gesperrt</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment G</p><p class='wifi-meta'><strong>Netzwerk:</strong> Versteckt</p><p class='wifi-meta'><strong>Passwort:</strong> Versteckt</p><span class='wifi-lock'>🔒 Gesperrt</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment H</p><p class='wifi-meta'><strong>Netzwerk:</strong> Versteckt</p><p class='wifi-meta'><strong>Passwort:</strong> Versteckt</p><span class='wifi-lock'>🔒 Gesperrt</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment I</p><p class='wifi-meta'><strong>Netzwerk:</strong> Versteckt</p><p class='wifi-meta'><strong>Passwort:</strong> Versteckt</p><span class='wifi-lock'>🔒 Gesperrt</span></div><div class='wifi-item'><p class='wifi-apt'>Apartment J</p><p class='wifi-meta'><strong>Netzwerk:</strong> Versteckt</p><p class='wifi-meta'><strong>Passwort:</strong> Versteckt</p><span class='wifi-lock'>🔒 Gesperrt</span></div></div>" },
           safety: { title: "Sicherheit", subtitle: "Notfall und wichtige Kontakte.", html: "<div class='safety-grid'><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Notfall</p><p class='safety-detail'>112</p><p class='safety-note'>Rund um die Uhr an jedem Tag erreichbar.<br>112 ist die einheitliche europäische Notrufnummer in der gesamten Europäischen Union.<br>Anrufe sind kostenlos.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Gesundheitslinie</p><p class='safety-detail'>808 24 24 24</p><p class='safety-note'>Rund um die Uhr an jedem Tag erreichbar.<br>112 ist die einheitliche europäische Notrufnummer in der gesamten Europäischen Union.<br>Anrufe sind kostenlos.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Lusíadas Krankenhaus Albufeira</p><p class='safety-detail'>289 892 040</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Feuerwehr</p><p class='safety-detail'>289 586 333</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Polizei</p><p class='safety-detail'>289 590 790</p></div></div>" },
-          transport: { title: "Transport", subtitle: "Anreise und Fortbewegung.", html: "<div class='transport-wrap'><div class='safety-grid'><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Flughafen Faro</p><p class='safety-detail'>45 km (30-40 Min).</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Taxi Albufeira</p><p class='safety-detail'>289 583 230</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Bus</p><p class='safety-detail'>Linie 10 — Haltestelle ca. 50 m.</p></div><div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span><p class='safety-title'>Zug</p><p class='safety-detail'>Bahnhof Ferreiras-Albufeira (<a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>cp.pt</a>).</p></div></div></div>" },
+          transport: { title: "Transport", subtitle: "Anreise und Fortbewegung." },
           visit: { title: "Besuch", subtitle: "Sehenswerte Orte.", html: "<ul class='list'><li>Praia dos Pescadores und Praia da Galé.</li><li>Marina Albufeira und Praia da Falésia.</li><li>Benagil-Hoehlen und Burg Silves.</li></ul>" },
           activities: { title: "Aktivitaeten", subtitle: "Ideen fuer den Aufenthalt.", html: "<ul class='list'><li>Bootstouren und Hoehlenbesuche.</li><li>Strandaktivitaeten und Wassersport.</li><li>Spaziergaenge in der Altstadt von Albufeira.</li></ul>" },
           eat: { title: "Essen & Trinken", subtitle: "Empfohlene Restaurants.", html: "<ul class='list'><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/rA4cq7F3agYmyYcy6'>Franguinho de Albufeira</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/w9gtzSM2WV5ixY5YA'>Tasca do Viegas</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/uXt8f8Lu8vPBQv7c6'>Clay Oven</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/5GTwm6RyKvPDEC338'>Taberna do Pescador</a></li></ul>" },
@@ -713,6 +757,210 @@
       }
     };
 
+    const TAXI_MAPS_URL = "https://goo.gl/maps/omAkLB8aUV9axgKq7";
+    const CP_APP_IOS_URL = "https://apps.apple.com/pt/app/comboios-de-portugal/id1105415627";
+    const CP_APP_ANDROID_URL = "https://play.google.com/store/apps/details?id=pt.cp.mobiapp";
+    const TRAIN_MAPS_URL = "https://goo.gl/maps/yvQ3TC8FTPvCvuCE6";
+
+    const transportUi = {
+      pt: {
+        tabTaxi: "Taxi",
+        tabUber: "Uber",
+        tabMore: "Outros",
+        taxiHead: "TAXI ALBUFEIRA",
+        taxiIntro: "Você pode encontrar uma estação de Taxis a 150 metros (2 min a pé).",
+        taxiAddrLbl: "Morada:",
+        taxiAddr: "Av. 25 de Abril 26, 8200-096 Albufeira",
+        taxiMapLbl: "Google Maps:",
+        taxiMapLink: "Abrir no Google Maps",
+        taxiPhoneLbl: "Telefone:",
+        taxiPhone: "289 583 230",
+        uberHead: "UBER",
+        uberIntro: "Descarregue a App Uber para o seu telemóvel.",
+        moreAirTitle: "Aeroporto de Faro",
+        moreAirDetail: "45 km (30-40 min).",
+        moreBusTitle: "Autocarro",
+        moreBusDetail: "Linha 10 — paragem a cerca de 50 m.",
+        moreTrainHead: "COMBOIO",
+        moreTrainHtml:
+          "A estação de Comboio é Ferreiras - Albufeira. Poderá encontrar todos os horários em <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> ou na app Comboios de Portugal.",
+        cpAppIos: "Descarregar na App Store (iOS)",
+        cpAppAndroid: "Descarregar no Google Play (Android)"
+      },
+      en: {
+        tabTaxi: "Taxi",
+        tabUber: "Uber",
+        tabMore: "More",
+        taxiHead: "TAXI ALBUFEIRA",
+        taxiIntro: "You can find a taxi rank 150 metres away (2 min on foot).",
+        taxiAddrLbl: "Address:",
+        taxiAddr: "Av. 25 de Abril 26, 8200-096 Albufeira",
+        taxiMapLbl: "Google Maps:",
+        taxiMapLink: "Open in Google Maps",
+        taxiPhoneLbl: "Phone:",
+        taxiPhone: "289 583 230",
+        uberHead: "UBER",
+        uberIntro: "Download the Uber app on your phone.",
+        moreAirTitle: "Faro Airport",
+        moreAirDetail: "45 km (30-40 min).",
+        moreBusTitle: "Bus",
+        moreBusDetail: "Line 10 — stop about 50m away.",
+        moreTrainHead: "TRAIN",
+        moreTrainHtml:
+          "The train station is Ferreiras - Albufeira. You can find all timetables at <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> or on the Comboios de Portugal app.",
+        cpAppIos: "Download on the App Store (iOS)",
+        cpAppAndroid: "Get it on Google Play (Android)"
+      },
+      fr: {
+        tabTaxi: "Taxi",
+        tabUber: "Uber",
+        tabMore: "Plus",
+        taxiHead: "TAXI ALBUFEIRA",
+        taxiIntro: "Vous trouverez une station de taxis à 150 mètres (2 min à pied).",
+        taxiAddrLbl: "Adresse :",
+        taxiAddr: "Av. 25 de Abril 26, 8200-096 Albufeira",
+        taxiMapLbl: "Google Maps :",
+        taxiMapLink: "Ouvrir dans Google Maps",
+        taxiPhoneLbl: "Téléphone :",
+        taxiPhone: "289 583 230",
+        uberHead: "UBER",
+        uberIntro: "Téléchargez l'application Uber sur votre téléphone.",
+        moreAirTitle: "Aéroport de Faro",
+        moreAirDetail: "45 km (30-40 min).",
+        moreBusTitle: "Bus",
+        moreBusDetail: "Ligne 10 — arrêt à environ 50 m.",
+        moreTrainHead: "TRAIN",
+        moreTrainHtml:
+          "La gare est Ferreiras - Albufeira. Vous trouverez tous les horaires sur <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> ou dans l'application Comboios de Portugal.",
+        cpAppIos: "Télécharger sur l'App Store (iOS)",
+        cpAppAndroid: "Télécharger sur Google Play (Android)"
+      },
+      es: {
+        tabTaxi: "Taxi",
+        tabUber: "Uber",
+        tabMore: "Más",
+        taxiHead: "TAXI ALBUFEIRA",
+        taxiIntro: "Hay una parada de taxis a 150 metros (2 min a pie).",
+        taxiAddrLbl: "Dirección:",
+        taxiAddr: "Av. 25 de Abril 26, 8200-096 Albufeira",
+        taxiMapLbl: "Google Maps:",
+        taxiMapLink: "Abrir en Google Maps",
+        taxiPhoneLbl: "Teléfono:",
+        taxiPhone: "289 583 230",
+        uberHead: "UBER",
+        uberIntro: "Descargue la aplicación Uber en su móvil.",
+        moreAirTitle: "Aeropuerto de Faro",
+        moreAirDetail: "45 km (30-40 min).",
+        moreBusTitle: "Autobús",
+        moreBusDetail: "Línea 10 — parada a unos 50 m.",
+        moreTrainHead: "TREN",
+        moreTrainHtml:
+          "La estación de tren es Ferreiras - Albufeira. Puede consultar todos los horarios en <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> o en la app Comboios de Portugal.",
+        cpAppIos: "Descargar en App Store (iOS)",
+        cpAppAndroid: "Descargar en Google Play (Android)"
+      },
+      de: {
+        tabTaxi: "Taxi",
+        tabUber: "Uber",
+        tabMore: "Mehr",
+        taxiHead: "TAXI ALBUFEIRA",
+        taxiIntro: "Sie finden eine Taxistation in 150 Metern Entfernung (2 Min. zu Fuss).",
+        taxiAddrLbl: "Adresse:",
+        taxiAddr: "Av. 25 de Abril 26, 8200-096 Albufeira",
+        taxiMapLbl: "Google Maps:",
+        taxiMapLink: "In Google Maps oeffnen",
+        taxiPhoneLbl: "Telefon:",
+        taxiPhone: "289 583 230",
+        uberHead: "UBER",
+        uberIntro: "Laden Sie die Uber-App auf Ihr Smartphone herunter.",
+        moreAirTitle: "Flughafen Faro",
+        moreAirDetail: "45 km (30-40 Min).",
+        moreBusTitle: "Bus",
+        moreBusDetail: "Linie 10 — Haltestelle ca. 50 m.",
+        moreTrainHead: "ZUG",
+        moreTrainHtml:
+          "Der Bahnhof ist Ferreiras - Albufeira. Alle Fahrpläne finden Sie auf <a class='link' target='_blank' rel='noreferrer' href='https://www.cp.pt'>www.cp.pt</a> oder in der App Comboios de Portugal.",
+        cpAppIos: "Im App Store laden (iOS)",
+        cpAppAndroid: "Bei Google Play laden (Android)"
+      }
+    };
+
+    function transportTopicCard(title, detailHtml) {
+      return (
+        "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
+        `<p class='safety-title'>${title}</p><p class='safety-detail'>${detailHtml}</p></div>`
+      );
+    }
+
+    function renderTransportSection(currentLang) {
+      const t = transportUi[currentLang] || transportUi.pt;
+      const taxiCard =
+        "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
+        `<p class='safety-title'>${t.taxiHead}</p>` +
+        `<p class='safety-note'>${t.taxiIntro}</p>` +
+        `<p class='safety-note'><strong>${t.taxiAddrLbl}</strong> ${t.taxiAddr}</p>` +
+        `<p class='safety-note'><strong>${t.taxiMapLbl}</strong> <a class='link' target='_blank' rel='noreferrer' href='${TAXI_MAPS_URL}'>${t.taxiMapLink}</a></p>` +
+        `<p class='safety-note'><strong>${t.taxiPhoneLbl}</strong> <a class='link' href='tel:+351289583230'>${t.taxiPhone}</a></p>` +
+        "</div>";
+      const uberCard =
+        "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
+        `<p class='safety-title'>${t.uberHead}</p>` +
+        `<p class='safety-note'>${t.uberIntro}</p>` +
+        "</div>";
+      const trainCard =
+        "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
+        `<p class='safety-title'>${t.moreTrainHead}</p>` +
+        `<p class='safety-note'>${t.moreTrainHtml}</p>` +
+        `<p class='safety-note'><strong>${t.taxiMapLbl}</strong> <a class='link' target='_blank' rel='noreferrer' href='${TRAIN_MAPS_URL}'>${t.taxiMapLink}</a></p>` +
+        "<p class='safety-note transport-app-downloads'>" +
+        `<a class='link' target='_blank' rel='noreferrer' href='${CP_APP_IOS_URL}'>${t.cpAppIos}</a><br>` +
+        `<a class='link' target='_blank' rel='noreferrer' href='${CP_APP_ANDROID_URL}'>${t.cpAppAndroid}</a>` +
+        "</p>" +
+        "</div>";
+      const moreGrid =
+        "<div class='safety-grid'>" +
+        transportTopicCard(t.moreAirTitle, t.moreAirDetail) +
+        transportTopicCard(t.moreBusTitle, t.moreBusDetail) +
+        trainCard +
+        "</div>";
+      return (
+        "<div class='transport-tabs'>" +
+        "<div class='transport-tablist' role='tablist'>" +
+        "<button type='button' class='transport-tab transport-tab--active' role='tab' aria-selected='true'>" +
+        `${t.tabTaxi}</button>` +
+        `<button type='button' class='transport-tab' role='tab' aria-selected='false'>${t.tabUber}</button>` +
+        `<button type='button' class='transport-tab' role='tab' aria-selected='false'>${t.tabMore}</button>` +
+        "</div>" +
+        "<div class='transport-panel transport-panel--active' role='tabpanel'><div class='transport-wrap'><div class='safety-grid'>" +
+        taxiCard +
+        "</div></div></div>" +
+        "<div class='transport-panel' role='tabpanel'><div class='transport-wrap'><div class='safety-grid'>" +
+        uberCard +
+        "</div></div></div>" +
+        "<div class='transport-panel' role='tabpanel'><div class='transport-wrap'>" +
+        moreGrid +
+        "</div></div>" +
+        "</div>"
+      );
+    }
+
+    function setupTransportTabs() {
+      const root = document.querySelector(".transport-tabs");
+      if (!root) return;
+      const tabs = Array.from(root.querySelectorAll(".transport-tab"));
+      const panels = Array.from(root.querySelectorAll(".transport-panel"));
+      const activate = (i) => {
+        tabs.forEach((btn, j) => {
+          btn.classList.toggle("transport-tab--active", j === i);
+          btn.setAttribute("aria-selected", j === i ? "true" : "false");
+        });
+        panels.forEach((p, j) => p.classList.toggle("transport-panel--active", j === i));
+      };
+      tabs.forEach((btn, i) => {
+        btn.addEventListener("click", () => activate(i));
+      });
+    }
+
     function renderWifiSection(currentLang) {
       const t = wifiUi[currentLang] || wifiUi.pt;
       const cards = wifiApts.map((apt) =>
@@ -739,7 +987,14 @@
       } else {
         title.textContent = item.title;
         subtitle.textContent = item.subtitle;
-        content.innerHTML = sec === "wifi" ? renderWifiSection(lang) : item.html;
+        if (sec === "wifi") {
+          content.innerHTML = renderWifiSection(lang);
+        } else if (sec === "transport") {
+          content.innerHTML = renderTransportSection(lang);
+          setupTransportTabs();
+        } else {
+          content.innerHTML = item.html;
+        }
       }
 
       document.documentElement.lang = lang === "pt" ? "pt-PT" : lang;
