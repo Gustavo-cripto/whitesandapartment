@@ -444,6 +444,18 @@
     .bus-line--azul {
       color: #1d4ed8;
     }
+    .transport-bus-photo {
+      margin: 10px 0 12px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(31, 42, 55, 0.12);
+    }
+    .transport-bus-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      vertical-align: middle;
+    }
     @media (max-width: 760px) {
       .top-row {
         justify-content: flex-start;
@@ -779,7 +791,8 @@
       pt: {
         tabTaxi: "Taxi",
         tabUber: "Uber",
-        tabMore: "Outros",
+        tabComboio: "Comboio",
+        tabAutocarro: "Autocarro",
         taxiHead: "TAXI ALBUFEIRA",
         taxiIntro: "Você pode encontrar uma estação de Taxis a 150 metros (2 min a pé).",
         taxiAddrLbl: "Morada:",
@@ -792,6 +805,7 @@
         uberIntro: "Descarregue a App Uber para o seu telemóvel.",
         moreBusHead: "Autocarro",
         moreBusIntro: "Linhas dentro da cidade de Albufeira e arredores.",
+        moreBusImgAlt: "Autocarros e linhas urbanas em Albufeira.",
         moreBusCircuitTitle: "Circuito urbano",
         moreBusCircuitLink: "Mapa da rede (PDF)",
         moreBusStopTitle: "Paragem mais próxima",
@@ -808,7 +822,8 @@
       en: {
         tabTaxi: "Taxi",
         tabUber: "Uber",
-        tabMore: "More",
+        tabComboio: "Train",
+        tabAutocarro: "Bus",
         taxiHead: "TAXI ALBUFEIRA",
         taxiIntro: "You can find a taxi rank 150 metres away (2 min on foot).",
         taxiAddrLbl: "Address:",
@@ -821,6 +836,7 @@
         uberIntro: "Download the Uber app on your phone.",
         moreBusHead: "Bus",
         moreBusIntro: "Lines within the city of Albufeira and the surrounding area.",
+        moreBusImgAlt: "Urban buses and routes in Albufeira.",
         moreBusCircuitTitle: "Urban network",
         moreBusCircuitLink: "Network map (PDF)",
         moreBusStopTitle: "Nearest stop",
@@ -837,7 +853,8 @@
       fr: {
         tabTaxi: "Taxi",
         tabUber: "Uber",
-        tabMore: "Plus",
+        tabComboio: "Train",
+        tabAutocarro: "Bus",
         taxiHead: "TAXI ALBUFEIRA",
         taxiIntro: "Vous trouverez une station de taxis à 150 mètres (2 min à pied).",
         taxiAddrLbl: "Adresse :",
@@ -850,6 +867,7 @@
         uberIntro: "Téléchargez l'application Uber sur votre téléphone.",
         moreBusHead: "Bus",
         moreBusIntro: "Lignes dans la ville d'Albufeira et les environs.",
+        moreBusImgAlt: "Bus urbains et lignes à Albufeira.",
         moreBusCircuitTitle: "Réseau urbain",
         moreBusCircuitLink: "Plan du réseau (PDF)",
         moreBusStopTitle: "Arrêt le plus proche",
@@ -866,7 +884,8 @@
       es: {
         tabTaxi: "Taxi",
         tabUber: "Uber",
-        tabMore: "Más",
+        tabComboio: "Tren",
+        tabAutocarro: "Autobús",
         taxiHead: "TAXI ALBUFEIRA",
         taxiIntro: "Hay una parada de taxis a 150 metros (2 min a pie).",
         taxiAddrLbl: "Dirección:",
@@ -879,6 +898,7 @@
         uberIntro: "Descargue la aplicación Uber en su móvil.",
         moreBusHead: "Autobús",
         moreBusIntro: "Líneas dentro de la ciudad de Albufeira y alrededores.",
+        moreBusImgAlt: "Autobuses urbanos y líneas en Albufeira.",
         moreBusCircuitTitle: "Circuito urbano",
         moreBusCircuitLink: "Mapa de la red (PDF)",
         moreBusStopTitle: "Parada más cercana",
@@ -895,7 +915,8 @@
       de: {
         tabTaxi: "Taxi",
         tabUber: "Uber",
-        tabMore: "Mehr",
+        tabComboio: "Zug",
+        tabAutocarro: "Bus",
         taxiHead: "TAXI ALBUFEIRA",
         taxiIntro: "Sie finden eine Taxistation in 150 Metern Entfernung (2 Min. zu Fuss).",
         taxiAddrLbl: "Adresse:",
@@ -908,6 +929,7 @@
         uberIntro: "Laden Sie die Uber-App auf Ihr Smartphone herunter.",
         moreBusHead: "Bus",
         moreBusIntro: "Linien innerhalb der Stadt Albufeira und Umgebung.",
+        moreBusImgAlt: "Stadtbusse und Linien in Albufeira.",
         moreBusCircuitTitle: "Stadtnetz",
         moreBusCircuitLink: "Netzplan (PDF)",
         moreBusStopTitle: "Naechste Haltestelle",
@@ -942,6 +964,7 @@
         "<div class='safety-card'><span class='safety-bullet' aria-hidden='true'></span>" +
         `<p class='safety-title'>${t.moreBusHead}</p>` +
         `<p class='safety-note'>${t.moreBusIntro}</p>` +
+        `<div class='transport-bus-photo'><img src='./PHOTO-2026-04-11-12-42-25.jpg' alt='${t.moreBusImgAlt}' width='480' height='378' loading='lazy' /></div>` +
         `<p class='safety-note'><strong>${t.moreBusCircuitTitle}</strong> — <a class='link' target='_blank' rel='noreferrer' href='${BUS_CIRCUIT_PDF_URL}'>${t.moreBusCircuitLink}</a></p>` +
         `<p class='safety-note'><strong>${t.moreBusStopTitle}</strong> ${t.moreBusStopText}</p>` +
         `<p class='safety-note'><strong>${t.moreBusCenterTitle}</strong><br>` +
@@ -958,18 +981,18 @@
         `<a class='link' target='_blank' rel='noreferrer' href='${CP_APP_ANDROID_URL}'>${t.cpAppAndroid}</a>` +
         "</p>" +
         "</div>";
-      const moreGrid =
-        "<div class='safety-grid'>" +
-        busCard +
-        trainCard +
-        "</div>";
+      const comboioPanel =
+        "<div class='transport-wrap'><div class='safety-grid'>" + trainCard + "</div></div>";
+      const autocarroPanel =
+        "<div class='transport-wrap'><div class='safety-grid'>" + busCard + "</div></div>";
       return (
         "<div class='transport-tabs'>" +
         "<div class='transport-tablist' role='tablist'>" +
         "<button type='button' class='transport-tab transport-tab--active' role='tab' aria-selected='true'>" +
         `${t.tabTaxi}</button>` +
         `<button type='button' class='transport-tab' role='tab' aria-selected='false'>${t.tabUber}</button>` +
-        `<button type='button' class='transport-tab' role='tab' aria-selected='false'>${t.tabMore}</button>` +
+        `<button type='button' class='transport-tab' role='tab' aria-selected='false'>${t.tabComboio}</button>` +
+        `<button type='button' class='transport-tab' role='tab' aria-selected='false'>${t.tabAutocarro}</button>` +
         "</div>" +
         "<div class='transport-panel transport-panel--active' role='tabpanel'><div class='transport-wrap'><div class='safety-grid'>" +
         taxiCard +
@@ -977,9 +1000,12 @@
         "<div class='transport-panel' role='tabpanel'><div class='transport-wrap'><div class='safety-grid'>" +
         uberCard +
         "</div></div></div>" +
-        "<div class='transport-panel' role='tabpanel'><div class='transport-wrap'>" +
-        moreGrid +
-        "</div></div>" +
+        "<div class='transport-panel' role='tabpanel'>" +
+        comboioPanel +
+        "</div>" +
+        "<div class='transport-panel' role='tabpanel'>" +
+        autocarroPanel +
+        "</div>" +
         "</div>"
       );
     }
