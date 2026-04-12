@@ -1,0 +1,5 @@
+_worker.js
+.git/
+.netlify/
+.wrangler/
+*.zip
