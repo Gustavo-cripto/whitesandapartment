@@ -666,7 +666,7 @@
         title: "Assistente White Sand",
         placeholder: "Escreva a sua pergunta...",
         send: "Enviar",
-        hello: "Ola! Como posso ajudar com a sua estadia?",
+        hello: "Ola! Posso ajudar com:\n- tempo em Albufeira\n- pequeno-almoco, almoco, lanche e jantar\n- restaurantes tipicos e bares\n- praias, atracoes e roteiros para passear\n- atividades para criancas e familia\n- check-in, check-out, wifi, localizacao e regras",
         unknown: "Nao encontrei essa informacao. Pode ver os icones do livro digital ou contactar o anfitriao: +351 910 000 000."
       },
       en: {
@@ -674,7 +674,7 @@
         title: "White Sand Assistant",
         placeholder: "Type your question...",
         send: "Send",
-        hello: "Hello! How can I help with your stay?",
+        hello: "Hello! I can help with:\n- Albufeira weather\n- breakfast, lunch, snacks, and dinner\n- traditional restaurants and bars\n- beaches, attractions, and walking routes\n- activities for kids and families\n- check-in, check-out, wifi, location, and house rules",
         unknown: "I could not find that information. Please use the guide icons or contact the host: +351 910 000 000."
       },
       fr: {
@@ -682,7 +682,7 @@
         title: "Assistant White Sand",
         placeholder: "Ecrivez votre question...",
         send: "Envoyer",
-        hello: "Bonjour! Comment puis-je vous aider pour votre sejour?",
+        hello: "Bonjour! Je peux aider avec:\n- meteo a Albufeira\n- petit-dejeuner, dejeuner, snack et diner\n- restaurants typiques et bars\n- plages, attractions et itineraires\n- activites pour enfants et familles\n- check-in, check-out, wifi, localisation et regles",
         unknown: "Je n'ai pas trouve cette information. Consultez les icones du guide ou contactez l'hote: +351 910 000 000."
       },
       es: {
@@ -690,7 +690,7 @@
         title: "Asistente White Sand",
         placeholder: "Escribe tu pregunta...",
         send: "Enviar",
-        hello: "Hola! Como puedo ayudarte con tu estancia?",
+        hello: "Hola! Puedo ayudarte con:\n- tiempo en Albufeira\n- desayuno, almuerzo, merienda y cena\n- restaurantes tipicos y bares\n- playas, atracciones y rutas para pasear\n- actividades para ninos y familias\n- check-in, check-out, wifi, ubicacion y normas",
         unknown: "No encontre esa informacion. Consulta los iconos de la guia o contacta al anfitrion: +351 910 000 000."
       },
       de: {
@@ -698,7 +698,7 @@
         title: "White Sand Assistent",
         placeholder: "Frage eingeben...",
         send: "Senden",
-        hello: "Hallo! Wie kann ich bei deinem Aufenthalt helfen?",
+        hello: "Hallo! Ich kann helfen mit:\n- Wetter in Albufeira\n- Fruehstueck, Mittagessen, Snack und Abendessen\n- typischen Restaurants und Bars\n- Straenden, Sehenswuerdigkeiten und Spazier-Routen\n- Aktivitaeten fuer Kinder und Familien\n- Check-in, Check-out, WLAN, Lage und Hausregeln",
         unknown: "Ich habe dazu keine Information gefunden. Bitte nutze die Guide-Symbole oder kontaktiere den Gastgeber: +351 910 000 000."
       }
     };
@@ -791,16 +791,38 @@
       greeting: ["ola", "olá", "oi", "hello", "hi", "hey", "bonjour", "hola", "hallo", "guten tag", "bom dia", "boa tarde", "boa noite"],
       weather: ["tempo", "weather", "meteo", "meteo", "clima", "temperatura", "chuva", "sol", "wind", "vento"],
       dinner: ["jantar", "dinner", "restaurant", "restaurante", "comer", "eat", "ce soir", "esta noite", "tonight", "onde jantar", "where to eat"],
+      breakfast: ["pequeno almoco", "pequeno-almoco", "cafe da manha", "breakfast", "petit dejeuner", "desayuno", "fruhstuck"],
+      lunch: ["almoco", "almoçar", "lunch", "dejeuner", "comida", "mittagessen"],
+      snack: ["lanche", "snack", "brunch", "merienda", "goûter", "goûter", "coffee break"],
+      restaurant: ["restaurantes", "restaurante", "restaurant", "food", "onde comer", "eat in albufeira", "comer em albufeira"],
       beach: ["praia", "praias", "beach", "beaches", "plage", "playa", "strand", "mar"],
       bars: ["bar", "bares", "club", "clubs", "nightlife", "vida noturna", "discoteca", "cocktail"],
-      kids: ["crianca", "criancas", "kids", "children", "familia", "family", "zoomarine", "parque aquatico", "waterpark"]
+      kids: ["crianca", "criancas", "kids", "children", "familia", "family", "zoomarine", "parque aquatico", "waterpark"],
+      walk: ["passear", "passeio", "walk", "stroll", "visitar", "visit", "roteiro", "itinerario", "sightseeing"],
+      attractions: ["atracoes", "atrações", "turistico", "turisticas", "turisticos", "pontos turisticos", "what to visit", "must see", "monumentos"]
     };
     const liveReplies = {
       pt: {
         greeting: ["Ola! Bem-vindo ao White Sand. Em que posso ajudar?", "Ola! Posso ajudar com check-in, localizacao, regras, wifi e dicas locais."],
         dinner: [
-          "Para jantar esta noite, recomendo Franguinho de Albufeira, Tasca do Viegas, Clay Oven e Taberna do Pescador.",
+          "Para jantar esta noite, recomendo primeiro a opcao mais tipica: Tasca do Viegas. Depois, Taberna do Pescador, Franguinho de Albufeira e Clay Oven.",
           "Boas opcoes para hoje: Franguinho de Albufeira, Tasca do Viegas, Clay Oven ou Taberna do Pescador."
+        ],
+        breakfast: [
+          "Para pequeno-almoco, procure pastelarias/cafes no centro historico. Sao ideais para comecar o dia perto do apartamento.",
+          "Bom pequeno-almoco: cafes e pastelarias na zona da Old Town, a curta distancia a pe."
+        ],
+        lunch: [
+          "Para almocar, comecaria pela opcao mais tipica: Tasca do Viegas. Depois, Taberna do Pescador, Franguinho de Albufeira e Clay Oven.",
+          "Ao almoco, as melhores opcoes continuam a ser Franguinho, Tasca do Viegas, Clay Oven e Taberna do Pescador."
+        ],
+        snack: [
+          "Para lanche, experimente cafes e pastelarias no centro historico e zona da praia.",
+          "Um bom lanche pode ser em cafes da Old Town, com acesso facil a pe."
+        ],
+        restaurant: [
+          "Recomendo primeiro o restaurante mais tipico de Albufeira: Tasca do Viegas. Depois, Taberna do Pescador, Franguinho de Albufeira e Clay Oven.",
+          "Boas recomendacoes para comer em Albufeira: Franguinho, Tasca do Viegas, Clay Oven e Taberna do Pescador."
         ],
         beach: [
           "As praias mais recomendadas sao Praia dos Pescadores, Praia da Gale e Praia da Falesia.",
@@ -814,13 +836,37 @@
           "Com criancas, recomendo praia durante o dia, passeio de barco e Zoomarine.",
           "Para familia: Zoomarine, praias calmas e atividades nauticas leves."
         ],
+        walk: [
+          "Para passear, faca um roteiro: centro historico, Praia dos Pescadores, marina e miradouros ao fim da tarde.",
+          "Bom passeio: Old Town, ruas tipicas do Algarve, miradouros e zona da praia, tudo com acesso facil."
+        ],
+        attractions: [
+          "Atracoes turisticas (mais tipico primeiro): centro historico de Albufeira, Praia dos Pescadores, marina, Praia da Falesia, grutas de Benagil e Castelo de Silves.",
+          "Locais a visitar: Old Town, Marina de Albufeira, Praia da Falesia, passeio as grutas de Benagil e Castelo de Silves."
+        ],
         weatherFail: "Agora nao consegui obter o tempo em tempo real. Em geral, Albufeira costuma ter clima ameno e ceu limpo."
       },
       en: {
         greeting: ["Hello! Welcome to White Sand. How can I help?", "Hello! I can help with check-in, location, rules, wifi, and local tips."],
         dinner: [
-          "For dinner tonight, I recommend Franguinho de Albufeira, Tasca do Viegas, Clay Oven, and Taberna do Pescador.",
+          "For dinner tonight, start with the most traditional option: Tasca do Viegas. Then Taberna do Pescador, Franguinho de Albufeira, and Clay Oven.",
           "Good options for tonight: Franguinho de Albufeira, Tasca do Viegas, Clay Oven, or Taberna do Pescador."
+        ],
+        breakfast: [
+          "For breakfast, local cafes and bakeries in the old town are a great option close to the apartment.",
+          "Good breakfast choice: cafes and bakeries around Old Town, within walking distance."
+        ],
+        lunch: [
+          "For lunch, start with the most traditional option: Tasca do Viegas. Then Taberna do Pescador, Franguinho de Albufeira, and Clay Oven.",
+          "Lunch options: Franguinho, Tasca do Viegas, Clay Oven, or Taberna do Pescador."
+        ],
+        snack: [
+          "For a snack, try cafes and pastry shops in the old town and beach area.",
+          "A quick snack is easy in nearby cafes around Old Town."
+        ],
+        restaurant: [
+          "Restaurant recommendations in Albufeira (most traditional first): Tasca do Viegas, then Taberna do Pescador, Franguinho de Albufeira, and Clay Oven.",
+          "Great places to eat in Albufeira: Franguinho, Tasca do Viegas, Clay Oven, and Taberna do Pescador."
         ],
         beach: [
           "Top beach suggestions are Praia dos Pescadores, Praia da Gale, and Praia da Falesia.",
@@ -834,13 +880,37 @@
           "With kids, I recommend beach time, a boat trip, and Zoomarine.",
           "Family-friendly ideas: Zoomarine, calmer beaches, and light water activities."
         ],
+        walk: [
+          "For a walk, do this route: Old Town, Praia dos Pescadores, marina, and viewpoints at sunset.",
+          "Great walk plan: historic center, Algarve-style streets, viewpoints, and beach area."
+        ],
+        attractions: [
+          "Tourist attractions (most iconic first): Albufeira Old Town, Praia dos Pescadores, marina, Praia da Falesia, Benagil caves, and Silves Castle.",
+          "Must-visit spots: Old Town, Albufeira Marina, Praia da Falesia, Benagil caves, and Silves Castle."
+        ],
         weatherFail: "I could not fetch live weather right now. Albufeira usually has mild temperatures and clear skies."
       },
       fr: {
         greeting: ["Bonjour! Bienvenue chez White Sand. Comment puis-je aider?", "Bonjour! Je peux aider avec check-in, localisation, regles, wifi et conseils locaux."],
         dinner: [
-          "Pour diner ce soir, je recommande Franguinho de Albufeira, Tasca do Viegas, Clay Oven et Taberna do Pescador.",
+          "Pour diner ce soir, commencez par l'option la plus typique: Tasca do Viegas. Ensuite Taberna do Pescador, Franguinho de Albufeira et Clay Oven.",
           "Bonnes options ce soir: Franguinho de Albufeira, Tasca do Viegas, Clay Oven ou Taberna do Pescador."
+        ],
+        breakfast: [
+          "Pour le petit-dejeuner, les cafes et boulangeries de la vieille ville sont une tres bonne option.",
+          "Bon petit-dejeuner: cafes/patisseries autour de l'Old Town, accessibles a pied."
+        ],
+        lunch: [
+          "Pour le dejeuner, commencez par l'option la plus typique: Tasca do Viegas. Ensuite Taberna do Pescador, Franguinho de Albufeira et Clay Oven.",
+          "Pour midi: Franguinho, Tasca do Viegas, Clay Oven ou Taberna do Pescador."
+        ],
+        snack: [
+          "Pour un encas, essayez les cafes et patisseries du centre historique et pres de la plage.",
+          "Un snack rapide est facile dans les cafes de l'Old Town."
+        ],
+        restaurant: [
+          "Restaurants recommandes a Albufeira (plus typique d'abord): Tasca do Viegas, puis Taberna do Pescador, Franguinho de Albufeira et Clay Oven.",
+          "Bons restaurants a Albufeira: Franguinho, Tasca do Viegas, Clay Oven et Taberna do Pescador."
         ],
         beach: [
           "Je recommande surtout Praia dos Pescadores, Praia da Gale et Praia da Falesia.",
@@ -854,13 +924,37 @@
           "Avec des enfants, je conseille la plage, une sortie en bateau et Zoomarine.",
           "Pour la famille: Zoomarine, plages calmes et activites aquatiques legeres."
         ],
+        walk: [
+          "Pour se promener: vieille ville, Praia dos Pescadores, marina et points de vue en fin de journee.",
+          "Bon itineraire: centre historique, rues typiques, belvederes et zone de plage."
+        ],
+        attractions: [
+          "Attractions touristiques (plus typique d'abord): vieille ville d'Albufeira, Praia dos Pescadores, marina, Praia da Falesia, grottes de Benagil et chateau de Silves.",
+          "A voir: Old Town, marina d'Albufeira, Praia da Falesia, grottes de Benagil et chateau de Silves."
+        ],
         weatherFail: "Je n'ai pas pu recuperer la meteo en direct maintenant. Albufeira a generalement un climat doux et un ciel degage."
       },
       es: {
         greeting: ["Hola! Bienvenido a White Sand. Como puedo ayudar?", "Hola! Puedo ayudarte con check-in, ubicacion, normas, wifi y recomendaciones locales."],
         dinner: [
-          "Para cenar esta noche, recomiendo Franguinho de Albufeira, Tasca do Viegas, Clay Oven y Taberna do Pescador.",
+          "Para cenar esta noche, empieza por la opcion mas tipica: Tasca do Viegas. Luego Taberna do Pescador, Franguinho de Albufeira y Clay Oven.",
           "Buenas opciones para hoy: Franguinho de Albufeira, Tasca do Viegas, Clay Oven o Taberna do Pescador."
+        ],
+        breakfast: [
+          "Para desayunar, los cafes y pastelerias del casco antiguo son una muy buena opcion.",
+          "Buen desayuno: cafeterias y pastelerias cerca de Old Town, a poca distancia."
+        ],
+        lunch: [
+          "Para almorzar, empieza por la opcion mas tipica: Tasca do Viegas. Luego Taberna do Pescador, Franguinho de Albufeira y Clay Oven.",
+          "Opciones para el almuerzo: Franguinho, Tasca do Viegas, Clay Oven o Taberna do Pescador."
+        ],
+        snack: [
+          "Para merendar, prueba cafes y pastelerias en el centro historico y zona de playa.",
+          "Un snack rapido se encuentra facilmente en los cafes de Old Town."
+        ],
+        restaurant: [
+          "Restaurantes recomendados en Albufeira (mas tipico primero): Tasca do Viegas, despues Taberna do Pescador, Franguinho de Albufeira y Clay Oven.",
+          "Buenos sitios para comer en Albufeira: Franguinho, Tasca do Viegas, Clay Oven y Taberna do Pescador."
         ],
         beach: [
           "Las playas mas recomendadas son Praia dos Pescadores, Praia da Gale y Praia da Falesia.",
@@ -874,13 +968,37 @@
           "Con ninos, recomiendo playa, paseo en barco y Zoomarine.",
           "Para familias: Zoomarine, playas tranquilas y actividades acuaticas suaves."
         ],
+        walk: [
+          "Para pasear: casco antiguo, Praia dos Pescadores, marina y miradores al atardecer.",
+          "Buen recorrido: centro historico, calles tipicas, miradores y zona de playa."
+        ],
+        attractions: [
+          "Atracciones turisticas (mas tipico primero): casco antiguo de Albufeira, Praia dos Pescadores, marina, Praia da Falesia, cuevas de Benagil y Castillo de Silves.",
+          "Lugares para visitar: Old Town, Marina de Albufeira, Praia da Falesia, cuevas de Benagil y Castillo de Silves."
+        ],
         weatherFail: "Ahora no pude obtener el tiempo en vivo. Albufeira normalmente tiene clima suave y cielo despejado."
       },
       de: {
         greeting: ["Hallo! Willkommen bei White Sand. Wie kann ich helfen?", "Hallo! Ich helfe bei Check-in, Lage, Regeln, WLAN und lokalen Tipps."],
         dinner: [
-          "Fuer das Abendessen heute empfehle ich Franguinho de Albufeira, Tasca do Viegas, Clay Oven und Taberna do Pescador.",
+          "Fuer das Abendessen heute zuerst die typischste Option: Tasca do Viegas. Danach Taberna do Pescador, Franguinho de Albufeira und Clay Oven.",
           "Gute Optionen fuer heute Abend: Franguinho de Albufeira, Tasca do Viegas, Clay Oven oder Taberna do Pescador."
+        ],
+        breakfast: [
+          "Fuer Fruehstueck sind Cafes und Baeckereien in der Altstadt eine sehr gute Option.",
+          "Gutes Fruehstueck: Cafes/Baeckereien rund um Old Town, gut zu Fuss erreichbar."
+        ],
+        lunch: [
+          "Zum Mittagessen zuerst die typischste Option: Tasca do Viegas. Danach Taberna do Pescador, Franguinho de Albufeira und Clay Oven.",
+          "Mittagessen-Optionen: Franguinho, Tasca do Viegas, Clay Oven oder Taberna do Pescador."
+        ],
+        snack: [
+          "Fuer einen Snack probiere Cafes und Konditoreien im historischen Zentrum und Strandbereich.",
+          "Einen schnellen Snack findest du leicht in den Cafes der Old Town."
+        ],
+        restaurant: [
+          "Restaurant-Empfehlungen in Albufeira (typisch zuerst): Tasca do Viegas, dann Taberna do Pescador, Franguinho de Albufeira und Clay Oven.",
+          "Gute Restaurants in Albufeira: Franguinho, Tasca do Viegas, Clay Oven und Taberna do Pescador."
         ],
         beach: [
           "Empfohlene Straende sind Praia dos Pescadores, Praia da Gale und Praia da Falesia.",
@@ -893,6 +1011,14 @@
         kids: [
           "Mit Kindern empfehle ich Strand, Bootsausflug und Zoomarine.",
           "Familienfreundlich: Zoomarine, ruhige Straende und leichte Wasseraktivitaeten."
+        ],
+        walk: [
+          "Zum Spazieren: Altstadt, Praia dos Pescadores, Marina und Aussichtspunkte am Abend.",
+          "Gute Route: historisches Zentrum, typische Gassen, Aussichtspunkte und Strandbereich."
+        ],
+        attractions: [
+          "Sehenswuerdigkeiten (typisch zuerst): Altstadt von Albufeira, Praia dos Pescadores, Marina, Praia da Falesia, Benagil-Hoehlen und Burg Silves.",
+          "Empfohlene Highlights: Old Town, Albufeira Marina, Praia da Falesia, Benagil-Hoehlen und Burg Silves."
         ],
         weatherFail: "Ich konnte das Live-Wetter gerade nicht abrufen. In Albufeira ist das Wetter meist mild und oft sonnig."
       }
@@ -1032,6 +1158,34 @@
         return { text: liveUi.dinner[idx], matched: true };
       }
 
+      if (containsAny(normalizedMessage, liveIntentKeywords.restaurant)) {
+        const idx =
+          Math.abs([...normalizedMessage].reduce((acc, char) => acc + char.charCodeAt(0), 0)) %
+          liveUi.restaurant.length;
+        return { text: liveUi.restaurant[idx], matched: true };
+      }
+
+      if (containsAny(normalizedMessage, liveIntentKeywords.breakfast)) {
+        const idx =
+          Math.abs([...normalizedMessage].reduce((acc, char) => acc + char.charCodeAt(0), 0)) %
+          liveUi.breakfast.length;
+        return { text: liveUi.breakfast[idx], matched: true };
+      }
+
+      if (containsAny(normalizedMessage, liveIntentKeywords.lunch)) {
+        const idx =
+          Math.abs([...normalizedMessage].reduce((acc, char) => acc + char.charCodeAt(0), 0)) %
+          liveUi.lunch.length;
+        return { text: liveUi.lunch[idx], matched: true };
+      }
+
+      if (containsAny(normalizedMessage, liveIntentKeywords.snack)) {
+        const idx =
+          Math.abs([...normalizedMessage].reduce((acc, char) => acc + char.charCodeAt(0), 0)) %
+          liveUi.snack.length;
+        return { text: liveUi.snack[idx], matched: true };
+      }
+
       if (containsAny(normalizedMessage, liveIntentKeywords.beach)) {
         const idx =
           Math.abs([...normalizedMessage].reduce((acc, char) => acc + char.charCodeAt(0), 0)) %
@@ -1051,6 +1205,20 @@
           Math.abs([...normalizedMessage].reduce((acc, char) => acc + char.charCodeAt(0), 0)) %
           liveUi.kids.length;
         return { text: liveUi.kids[idx], matched: true };
+      }
+
+      if (containsAny(normalizedMessage, liveIntentKeywords.walk)) {
+        const idx =
+          Math.abs([...normalizedMessage].reduce((acc, char) => acc + char.charCodeAt(0), 0)) %
+          liveUi.walk.length;
+        return { text: liveUi.walk[idx], matched: true };
+      }
+
+      if (containsAny(normalizedMessage, liveIntentKeywords.attractions)) {
+        const idx =
+          Math.abs([...normalizedMessage].reduce((acc, char) => acc + char.charCodeAt(0), 0)) %
+          liveUi.attractions.length;
+        return { text: liveUi.attractions[idx], matched: true };
       }
 
       return pickFaqReply(userMessage, lang);
