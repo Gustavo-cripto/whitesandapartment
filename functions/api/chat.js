@@ -34,7 +34,7 @@ export async function onRequestPost(context) {
       return jsonResponse({ error: "Pedido inválido (JSON)." }, 400);
     }
 
-    const userMessage = String(payload?.message || "").trim();
+    const userMessage = String(payload?.message || payload?.userMessage || "").trim();
     if (!userMessage) {
       return jsonResponse({ error: "Mensagem vazia." }, 400);
     }

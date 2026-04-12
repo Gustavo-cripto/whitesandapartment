@@ -226,7 +226,7 @@
     }
     .chat-launcher {
       position: fixed;
-      right: 16px;
+      right: 28px;
       bottom: 16px;
       z-index: 70;
       border: 0;
@@ -240,7 +240,7 @@
     }
     .chat-panel {
       position: fixed;
-      right: 16px;
+      right: 28px;
       bottom: 70px;
       width: min(360px, calc(100vw - 24px));
       height: 480px;
@@ -784,7 +784,7 @@
         const response = await fetch("/api/chat", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ userMessage, lang: chatLang() })
+          body: JSON.stringify({ message: userMessage, lang: chatLang() })
         });
 
         const payload = await response.json().catch(() => ({}));
