@@ -291,6 +291,11 @@
       background: #e9eaf0;
       color: #111827;
     }
+    .chat-msg a {
+      color: #1d4ed8;
+      font-weight: 700;
+      text-decoration: underline;
+    }
     .chat-form {
       display: flex;
       gap: 8px;
@@ -667,7 +672,7 @@
         placeholder: "Escreva a sua pergunta...",
         send: "Enviar",
         hello: "Ola! Posso ajudar com:\n- tempo em Albufeira\n- pequeno-almoco, almoco, lanche e jantar\n- restaurantes tipicos e bares\n- praias, atracoes e roteiros para passear\n- atividades para criancas e familia\n- check-in, check-out, wifi, localizacao e regras",
-        unknown: "Nao encontrei essa informacao. Pode ver os icones do livro digital ou contactar o anfitriao: +351 910 000 000."
+        unknown: "Nao encontrei essa informacao. Pode ver os icones do livro digital ou falar diretamente com o anfitriao no <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>."
       },
       en: {
         launcher: "AI Chat",
@@ -675,7 +680,7 @@
         placeholder: "Type your question...",
         send: "Send",
         hello: "Hello! I can help with:\n- Albufeira weather\n- breakfast, lunch, snacks, and dinner\n- traditional restaurants and bars\n- beaches, attractions, and walking routes\n- activities for kids and families\n- check-in, check-out, wifi, location, and house rules",
-        unknown: "I could not find that information. Please use the guide icons or contact the host: +351 910 000 000."
+        unknown: "I could not find that information. Please use the guide icons or contact the host directly on <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>."
       },
       fr: {
         launcher: "Chat IA",
@@ -683,7 +688,7 @@
         placeholder: "Ecrivez votre question...",
         send: "Envoyer",
         hello: "Bonjour! Je peux aider avec:\n- meteo a Albufeira\n- petit-dejeuner, dejeuner, snack et diner\n- restaurants typiques et bars\n- plages, attractions et itineraires\n- activites pour enfants et familles\n- check-in, check-out, wifi, localisation et regles",
-        unknown: "Je n'ai pas trouve cette information. Consultez les icones du guide ou contactez l'hote: +351 910 000 000."
+        unknown: "Je n'ai pas trouve cette information. Consultez les icones du guide ou contactez directement l'hote sur <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>."
       },
       es: {
         launcher: "Chat IA",
@@ -691,7 +696,7 @@
         placeholder: "Escribe tu pregunta...",
         send: "Enviar",
         hello: "Hola! Puedo ayudarte con:\n- tiempo en Albufeira\n- desayuno, almuerzo, merienda y cena\n- restaurantes tipicos y bares\n- playas, atracciones y rutas para pasear\n- actividades para ninos y familias\n- check-in, check-out, wifi, ubicacion y normas",
-        unknown: "No encontre esa informacion. Consulta los iconos de la guia o contacta al anfitrion: +351 910 000 000."
+        unknown: "No encontre esa informacion. Consulta los iconos de la guia o habla directamente con el anfitrion por <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>."
       },
       de: {
         launcher: "KI-Chat",
@@ -699,7 +704,7 @@
         placeholder: "Frage eingeben...",
         send: "Senden",
         hello: "Hallo! Ich kann helfen mit:\n- Wetter in Albufeira\n- Fruehstueck, Mittagessen, Snack und Abendessen\n- typischen Restaurants und Bars\n- Straenden, Sehenswuerdigkeiten und Spazier-Routen\n- Aktivitaeten fuer Kinder und Familien\n- Check-in, Check-out, WLAN, Lage und Hausregeln",
-        unknown: "Ich habe dazu keine Information gefunden. Bitte nutze die Guide-Symbole oder kontaktiere den Gastgeber: +351 910 000 000."
+        unknown: "Ich habe dazu keine Information gefunden. Bitte nutze die Guide-Symbole oder kontaktiere den Gastgeber direkt per <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>."
       }
     };
 
@@ -795,6 +800,7 @@
       lunch: ["almoco", "almoçar", "lunch", "dejeuner", "comida", "mittagessen"],
       snack: ["lanche", "snack", "brunch", "merienda", "goûter", "goûter", "coffee break"],
       restaurant: ["restaurantes", "restaurante", "restaurant", "food", "onde comer", "eat in albufeira", "comer em albufeira"],
+      souvenir: ["souvenir", "souvenires", "lembrancas", "lembrança", "gift shop", "presentes", "artesanato", "magnete", "imans"],
       beach: ["praia", "praias", "beach", "beaches", "plage", "playa", "strand", "mar"],
       bars: ["bar", "bares", "club", "clubs", "nightlife", "vida noturna", "discoteca", "cocktail"],
       kids: ["crianca", "criancas", "kids", "children", "familia", "family", "zoomarine", "parque aquatico", "waterpark"],
@@ -823,6 +829,10 @@
         restaurant: [
           "Recomendo primeiro o restaurante mais tipico de Albufeira: Tasca do Viegas. Depois, Taberna do Pescador, Franguinho de Albufeira e Clay Oven.",
           "Boas recomendacoes para comer em Albufeira: Franguinho, Tasca do Viegas, Clay Oven e Taberna do Pescador."
+        ],
+        souvenir: [
+          "Para comprar souvenirs, recomendo as lojas do centro historico (Old Town), especialmente perto da Praca e das ruas principais.",
+          "As melhores lojas de lembrancas ficam na Old Town de Albufeira. Pode encontrar artesanato, imans, azulejos e produtos regionais."
         ],
         beach: [
           "As praias mais recomendadas sao Praia dos Pescadores, Praia da Gale e Praia da Falesia.",
@@ -868,6 +878,10 @@
           "Restaurant recommendations in Albufeira (most traditional first): Tasca do Viegas, then Taberna do Pescador, Franguinho de Albufeira, and Clay Oven.",
           "Great places to eat in Albufeira: Franguinho, Tasca do Viegas, Clay Oven, and Taberna do Pescador."
         ],
+        souvenir: [
+          "For souvenirs, I recommend the Old Town shops, especially around the main square and central streets.",
+          "The best souvenir spots are in Albufeira Old Town, where you can find local crafts, magnets, tiles, and regional products."
+        ],
         beach: [
           "Top beach suggestions are Praia dos Pescadores, Praia da Gale, and Praia da Falesia.",
           "For a beach day, I suggest Praia dos Pescadores, Gale, and Falesia."
@@ -911,6 +925,10 @@
         restaurant: [
           "Restaurants recommandes a Albufeira (plus typique d'abord): Tasca do Viegas, puis Taberna do Pescador, Franguinho de Albufeira et Clay Oven.",
           "Bons restaurants a Albufeira: Franguinho, Tasca do Viegas, Clay Oven et Taberna do Pescador."
+        ],
+        souvenir: [
+          "Pour acheter des souvenirs, je recommande les boutiques de la vieille ville (Old Town), surtout autour de la place principale.",
+          "Les meilleurs souvenirs se trouvent dans l'Old Town d'Albufeira: artisanat local, aimants, azulejos et produits regionaux."
         ],
         beach: [
           "Je recommande surtout Praia dos Pescadores, Praia da Gale et Praia da Falesia.",
@@ -956,6 +974,10 @@
           "Restaurantes recomendados en Albufeira (mas tipico primero): Tasca do Viegas, despues Taberna do Pescador, Franguinho de Albufeira y Clay Oven.",
           "Buenos sitios para comer en Albufeira: Franguinho, Tasca do Viegas, Clay Oven y Taberna do Pescador."
         ],
+        souvenir: [
+          "Para comprar souvenirs, te recomiendo las tiendas del casco antiguo (Old Town), sobre todo cerca de la plaza principal.",
+          "Los mejores recuerdos se encuentran en Old Town de Albufeira: artesania local, imanes, azulejos y productos regionales."
+        ],
         beach: [
           "Las playas mas recomendadas son Praia dos Pescadores, Praia da Gale y Praia da Falesia.",
           "Para un dia de playa, sugiero Pescadores, Gale y Falesia."
@@ -1000,6 +1022,10 @@
           "Restaurant-Empfehlungen in Albufeira (typisch zuerst): Tasca do Viegas, dann Taberna do Pescador, Franguinho de Albufeira und Clay Oven.",
           "Gute Restaurants in Albufeira: Franguinho, Tasca do Viegas, Clay Oven und Taberna do Pescador."
         ],
+        souvenir: [
+          "Fuer Souvenirs empfehle ich die Geschaefte in der Altstadt (Old Town), besonders rund um den Hauptplatz.",
+          "Die besten Souvenir-Laeden sind in Albufeira Old Town: lokales Kunsthandwerk, Magnete, Azulejos und regionale Produkte."
+        ],
         beach: [
           "Empfohlene Straende sind Praia dos Pescadores, Praia da Gale und Praia da Falesia.",
           "Fuer einen Strandtag empfehle ich Pescadores, Gale und Falesia."
@@ -1031,7 +1057,11 @@
     function addChatMessage(text, role) {
       const bubble = document.createElement("div");
       bubble.className = `chat-msg ${role}`;
-      bubble.textContent = text;
+      if (role === "bot" && String(text).includes("<a ")) {
+        bubble.innerHTML = text;
+      } else {
+        bubble.textContent = text;
+      }
       chatMessages.appendChild(bubble);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -1163,6 +1193,13 @@
           Math.abs([...normalizedMessage].reduce((acc, char) => acc + char.charCodeAt(0), 0)) %
           liveUi.restaurant.length;
         return { text: liveUi.restaurant[idx], matched: true };
+      }
+
+      if (containsAny(normalizedMessage, liveIntentKeywords.souvenir)) {
+        const idx =
+          Math.abs([...normalizedMessage].reduce((acc, char) => acc + char.charCodeAt(0), 0)) %
+          liveUi.souvenir.length;
+        return { text: liveUi.souvenir[idx], matched: true };
       }
 
       if (containsAny(normalizedMessage, liveIntentKeywords.breakfast)) {
