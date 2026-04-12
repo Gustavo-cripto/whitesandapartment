@@ -1318,10 +1318,31 @@
       chatInput.value = "";
 
       const lang = chatLang();
-      const picked = await resolveSmartReply(userMessage, lang);
-      const answer = humanizeReply(picked.text, lang, userMessage, picked.matched);
+      let finalAnswer = "";
+      let usedApi = false;
+
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ message: userMessage, lang })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (response.ok && payload?.answer) {
+          finalAnswer = String(payload.answer).trim();
+          usedApi = true;
+        }
+      } catch (_error) {
+        // fallback local abaixo
+      }
+
+      if (!usedApi) {
+        const picked = await resolveSmartReply(userMessage, lang);
+        finalAnswer = humanizeReply(picked.text, lang, userMessage, picked.matched);
+      }
+
       await new Promise((resolve) => setTimeout(resolve, 220));
-      addChatMessage(answer, "bot");
+      addChatMessage(finalAnswer || "Nao foi possivel responder agora.", "bot");
       chatBusy = false;
       chatSend.disabled = false;
       chatInput.focus();
