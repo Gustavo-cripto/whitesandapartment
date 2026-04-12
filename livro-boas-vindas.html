@@ -666,36 +666,94 @@
         title: "Assistente White Sand",
         placeholder: "Escreva a sua pergunta...",
         send: "Enviar",
-        hello: "Ola! Como posso ajudar com a sua estadia?"
+        hello: "Ola! Como posso ajudar com a sua estadia?",
+        unknown: "Nao encontrei essa informacao. Pode ver os icones do livro digital ou contactar o anfitriao: +351 910 000 000."
       },
       en: {
         launcher: "AI Chat",
         title: "White Sand Assistant",
         placeholder: "Type your question...",
         send: "Send",
-        hello: "Hello! How can I help with your stay?"
+        hello: "Hello! How can I help with your stay?",
+        unknown: "I could not find that information. Please use the guide icons or contact the host: +351 910 000 000."
       },
       fr: {
         launcher: "Chat IA",
         title: "Assistant White Sand",
         placeholder: "Ecrivez votre question...",
         send: "Envoyer",
-        hello: "Bonjour! Comment puis-je vous aider pour votre sejour?"
+        hello: "Bonjour! Comment puis-je vous aider pour votre sejour?",
+        unknown: "Je n'ai pas trouve cette information. Consultez les icones du guide ou contactez l'hote: +351 910 000 000."
       },
       es: {
         launcher: "Chat IA",
         title: "Asistente White Sand",
         placeholder: "Escribe tu pregunta...",
         send: "Enviar",
-        hello: "Hola! Como puedo ayudarte con tu estancia?"
+        hello: "Hola! Como puedo ayudarte con tu estancia?",
+        unknown: "No encontre esa informacion. Consulta los iconos de la guia o contacta al anfitrion: +351 910 000 000."
       },
       de: {
         launcher: "KI-Chat",
         title: "White Sand Assistent",
         placeholder: "Frage eingeben...",
         send: "Senden",
-        hello: "Hallo! Wie kann ich bei deinem Aufenthalt helfen?"
+        hello: "Hallo! Wie kann ich bei deinem Aufenthalt helfen?",
+        unknown: "Ich habe dazu keine Information gefunden. Bitte nutze die Guide-Symbole oder kontaktiere den Gastgeber: +351 910 000 000."
       }
+    };
+
+    const localFaq = {
+      pt: [
+        { keys: ["check in", "entrada", "hora entrada", "chegada"], answers: ["O check-in e a partir das 16:00. O codigo/cofre e enviado no dia da chegada.", "Entrada (check-in) a partir das 16:00, com instrucoes enviadas no proprio dia."] },
+        { keys: ["check out", "saida", "hora saida"], answers: ["O check-out e entre as 08:00 e as 10:00.", "A hora de saida e ate as 10:00."] },
+        { keys: ["wifi", "wi-fi", "internet", "password"], answers: ["O acesso Wi-Fi e por apartamento e fica disponivel apos validacao por email.", "Para ver a rede e password, use a area Wi-Fi e siga o acesso por email."] },
+        { keys: ["morada", "endereco", "localizacao", "mapa"], answers: ["Morada: Rua do MFA, n.15 Apto (letra do seu apartamento), 8200-157 Albufeira.", "Estamos na Rua do MFA, n.15, Albufeira. Coordenadas: 37.0891053, -8.2507170."] },
+        { keys: ["silencio", "barulho", "regras", "fumar", "festa"], answers: ["Regras principais: sem festas/eventos, nao fumar no interior e reduzir ruido nas horas de silencio.", "Pedimos respeito pelas regras da casa: sem festas, sem fumo no interior e baixo ruido a noite."] },
+        { keys: ["emergencia", "112", "hospital", "policia", "bombeiros"], answers: ["Em emergencia ligue 112. Hospital Lusíadas Albufeira: 289 892 040.", "Para urgencias use 112. Bombeiros: 289 586 333 | Policia: 289 590 790."] },
+        { keys: ["taxi", "autocarro", "comboio", "transporte", "aeroporto"], answers: ["Aeroporto de Faro: 45 km. Taxi Albufeira: 289 583 230. Linha de autocarro a cerca de 50 m.", "Transportes: Faro a 45 km, taxi local 289 583 230 e estacao de comboio em Ferreiras-Albufeira."] },
+        { keys: ["contacto", "anfitriao", "telefone", "whatsapp", "email"], answers: ["Contacto do anfitriao: +351 910 000 000 | WhatsApp disponivel.", "Pode contactar: +351 910 000 000 ou por email reservas@whitesand.pt."] }
+      ],
+      en: [
+        { keys: ["check in", "arrival"], answers: ["Check-in starts at 16:00. Key safe/code details are shared on arrival day.", "Check-in is from 16:00, with access instructions sent on the same day."] },
+        { keys: ["check out", "departure"], answers: ["Check-out is between 08:00 and 10:00.", "Departure time is by 10:00."] },
+        { keys: ["wifi", "wi-fi", "internet", "password"], answers: ["Wi-Fi access is apartment-based and shown after email validation.", "To view network and password, open the Wi-Fi section and complete email access."] },
+        { keys: ["address", "location", "map"], answers: ["Address: Rua do MFA, n.15 Apto (your apartment letter), 8200-157 Albufeira.", "We are at Rua do MFA, n.15, Albufeira. Coordinates: 37.0891053, -8.2507170."] },
+        { keys: ["rules", "quiet", "smoking", "party"], answers: ["Main rules: no parties/events, no indoor smoking, and keep noise low during quiet hours.", "Please follow house rules: no parties, no indoor smoking, and minimal noise at night."] },
+        { keys: ["emergency", "112", "hospital", "police", "fire"], answers: ["In emergencies call 112. Lusíadas Hospital Albufeira: 289 892 040.", "For urgent help call 112. Fire brigade: 289 586 333 | Police: 289 590 790."] },
+        { keys: ["taxi", "bus", "train", "transport", "airport"], answers: ["Faro Airport is 45 km away. Taxi Albufeira: 289 583 230. Bus stop is around 50 m away.", "Transport: Faro 45 km, local taxi 289 583 230, and train station in Ferreiras-Albufeira."] },
+        { keys: ["contact", "host", "phone", "whatsapp", "email"], answers: ["Host contact: +351 910 000 000 | WhatsApp available.", "You can contact us at +351 910 000 000 or reservas@whitesand.pt."] }
+      ],
+      fr: [
+        { keys: ["check in", "arrivee"], answers: ["Le check-in commence a 16:00. Les instructions d'acces sont envoyees le jour d'arrivee.", "Arrivee a partir de 16:00, avec code/coffre envoye le meme jour."] },
+        { keys: ["check out", "depart"], answers: ["Le check-out est entre 08:00 et 10:00.", "Le depart doit etre fait avant 10:00."] },
+        { keys: ["wifi", "wi-fi", "internet", "mot de passe"], answers: ["L'acces Wi-Fi est gere par appartement apres validation par email.", "Pour voir reseau et mot de passe, utilisez la section Wi-Fi et validez par email."] },
+        { keys: ["adresse", "localisation", "carte"], answers: ["Adresse: Rua do MFA, n.15 Apto (lettre de votre appartement), 8200-157 Albufeira.", "Nous sommes a Rua do MFA, n.15, Albufeira. Coordonnees: 37.0891053, -8.2507170."] },
+        { keys: ["regles", "silence", "fumer", "fete"], answers: ["Regles principales: pas de fetes/evenements, pas de fumee a l'interieur, bruit reduit la nuit.", "Merci de respecter les regles: pas de fetes, pas de fumee a l'interieur et calme la nuit."] },
+        { keys: ["urgence", "112", "hopital", "police", "pompiers"], answers: ["En cas d'urgence, appelez le 112. Hopital Lusíadas Albufeira: 289 892 040.", "Pour une urgence: 112. Pompiers: 289 586 333 | Police: 289 590 790."] },
+        { keys: ["taxi", "bus", "train", "transport", "aeroport"], answers: ["Aeroport de Faro: 45 km. Taxi Albufeira: 289 583 230. Arret de bus a environ 50 m.", "Transports: Faro 45 km, taxi local 289 583 230 et gare a Ferreiras-Albufeira."] },
+        { keys: ["contact", "hote", "telephone", "whatsapp", "email"], answers: ["Contact hote: +351 910 000 000 | WhatsApp disponible.", "Vous pouvez contacter +351 910 000 000 ou reservas@whitesand.pt."] }
+      ],
+      es: [
+        { keys: ["check in", "llegada", "entrada"], answers: ["El check-in empieza a las 16:00. El codigo/acceso se envia el dia de llegada.", "Entrada a partir de las 16:00, con instrucciones enviadas el mismo dia."] },
+        { keys: ["check out", "salida"], answers: ["El check-out es entre las 08:00 y las 10:00.", "La salida es hasta las 10:00."] },
+        { keys: ["wifi", "wi-fi", "internet", "contrasena"], answers: ["El acceso Wi-Fi es por apartamento tras validacion por email.", "Para ver red y contrasena, usa la seccion Wi-Fi y completa el acceso por email."] },
+        { keys: ["direccion", "ubicacion", "mapa"], answers: ["Direccion: Rua do MFA, n.15 Apto (letra de su apartamento), 8200-157 Albufeira.", "Estamos en Rua do MFA, n.15, Albufeira. Coordenadas: 37.0891053, -8.2507170."] },
+        { keys: ["normas", "silencio", "fumar", "fiesta"], answers: ["Normas principales: sin fiestas/eventos, no fumar dentro y ruido minimo en horas de silencio.", "Por favor, respeta las normas: sin fiestas, sin humo interior y poco ruido por la noche."] },
+        { keys: ["emergencia", "112", "hospital", "policia", "bomberos"], answers: ["En emergencia llama al 112. Hospital Lusíadas Albufeira: 289 892 040.", "Para urgencias: 112. Bomberos: 289 586 333 | Policia: 289 590 790."] },
+        { keys: ["taxi", "autobus", "tren", "transporte", "aeropuerto"], answers: ["Aeropuerto de Faro: 45 km. Taxi Albufeira: 289 583 230. Parada de bus a unos 50 m.", "Transportes: Faro 45 km, taxi local 289 583 230 y estacion de tren en Ferreiras-Albufeira."] },
+        { keys: ["contacto", "anfitrion", "telefono", "whatsapp", "email"], answers: ["Contacto anfitrion: +351 910 000 000 | WhatsApp disponible.", "Puedes contactar +351 910 000 000 o reservas@whitesand.pt."] }
+      ],
+      de: [
+        { keys: ["check in", "ankunft"], answers: ["Check-in ist ab 16:00. Zugangscode/Schluesselinfos kommen am Anreisetag.", "Anreise ab 16:00, mit Zugangsinformationen am selben Tag."] },
+        { keys: ["check out", "abreise"], answers: ["Check-out ist zwischen 08:00 und 10:00.", "Abreise ist bis 10:00 Uhr."] },
+        { keys: ["wifi", "wi-fi", "internet", "passwort"], answers: ["Der Wi-Fi-Zugang ist wohnungsbezogen und wird nach E-Mail-Validierung angezeigt.", "Fuer Netzwerk und Passwort bitte den Wi-Fi-Bereich und E-Mail-Zugang nutzen."] },
+        { keys: ["adresse", "lage", "karte"], answers: ["Adresse: Rua do MFA, n.15 Apto (Buchstabe Ihrer Wohnung), 8200-157 Albufeira.", "Wir sind in der Rua do MFA, n.15, Albufeira. Koordinaten: 37.0891053, -8.2507170."] },
+        { keys: ["regeln", "ruhe", "rauchen", "party"], answers: ["Wichtige Regeln: keine Partys/Events, kein Rauchen innen und wenig Laerm in Ruhezeiten.", "Bitte Hausregeln beachten: keine Partys, nicht innen rauchen und nachts ruhig sein."] },
+        { keys: ["notfall", "112", "krankenhaus", "polizei", "feuerwehr"], answers: ["Im Notfall 112 anrufen. Lusíadas Krankenhaus Albufeira: 289 892 040.", "Fuer Notfaelle: 112. Feuerwehr: 289 586 333 | Polizei: 289 590 790."] },
+        { keys: ["taxi", "bus", "zug", "transport", "flughafen"], answers: ["Flughafen Faro: 45 km. Taxi Albufeira: 289 583 230. Bushaltestelle in ca. 50 m.", "Transport: Faro 45 km, Taxi 289 583 230 und Bahnhof in Ferreiras-Albufeira."] },
+        { keys: ["kontakt", "gastgeber", "telefon", "whatsapp", "email"], answers: ["Gastgeber Kontakt: +351 910 000 000 | WhatsApp verfuegbar.", "Kontakt: +351 910 000 000 oder reservas@whitesand.pt."] }
+      ]
     };
 
     const chatLauncher = document.getElementById("chatLauncher");
@@ -707,6 +765,28 @@
     const chatSend = document.getElementById("chatSend");
     let chatStarted = false;
     let chatBusy = false;
+    const replyTone = {
+      pt: {
+        intro: ["Claro.", "Com todo o gosto.", "Boa pergunta."],
+        outro: ["Se quiser, explico com mais detalhe.", "Se precisar, posso ajudar com mais alguma coisa."]
+      },
+      en: {
+        intro: ["Sure.", "Great question.", "Happy to help."],
+        outro: ["If you want, I can add more detail.", "If needed, I can help with anything else."]
+      },
+      fr: {
+        intro: ["Bien sur.", "Bonne question.", "Avec plaisir."],
+        outro: ["Si vous voulez, je peux detailler davantage.", "Si besoin, je peux aider sur autre chose."]
+      },
+      es: {
+        intro: ["Claro.", "Buena pregunta.", "Con gusto."],
+        outro: ["Si quieres, te doy mas detalle.", "Si hace falta, te ayudo con algo mas."]
+      },
+      de: {
+        intro: ["Klar.", "Gute Frage.", "Gerne."],
+        outro: ["Wenn du moechtest, erklaere ich es genauer.", "Wenn noetig, helfe ich bei weiteren Fragen."]
+      }
+    };
 
     function chatLang() {
       return document.querySelector(".lang-btn.active")?.dataset.lang || "pt";
@@ -726,6 +806,53 @@
       chatTitle.textContent = d.title;
       chatInput.placeholder = d.placeholder;
       chatSend.textContent = d.send;
+    }
+
+    function normalizeText(value) {
+      return String(value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function pickFaqReply(userMessage, lang) {
+      const normalizedMessage = normalizeText(userMessage);
+      const topics = localFaq[lang] || localFaq.pt;
+      let bestTopic = null;
+      let bestScore = 0;
+
+      topics.forEach((topic) => {
+        let score = 0;
+        topic.keys.forEach((key) => {
+          const normalizedKey = normalizeText(key);
+          if (normalizedMessage.includes(normalizedKey)) score += 1;
+        });
+        if (score > bestScore) {
+          bestScore = score;
+          bestTopic = topic;
+        }
+      });
+
+      if (!bestTopic || bestScore === 0) {
+        return { text: (chatI18n[lang] || chatI18n.pt).unknown, matched: false };
+      }
+
+      const variantIndex =
+        Math.abs(
+          [...normalizedMessage].reduce((acc, char) => acc + char.charCodeAt(0), 0)
+        ) % bestTopic.answers.length;
+      return { text: bestTopic.answers[variantIndex], matched: true };
+    }
+
+    function humanizeReply(baseText, lang, userMessage, matched) {
+      if (!matched) return baseText;
+      const tone = replyTone[lang] || replyTone.pt;
+      const seed = Math.abs(
+        [...normalizeText(userMessage)].reduce((acc, char) => acc + char.charCodeAt(0), 0)
+      );
+      const intro = tone.intro[seed % tone.intro.length];
+      const outro = tone.outro[seed % tone.outro.length];
+      return `${intro} ${baseText} ${outro}`;
     }
 
     function updateTileLinks(lang) {
@@ -784,32 +911,14 @@
       addChatMessage(userMessage, "user");
       chatInput.value = "";
 
-      try {
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({ message: userMessage, lang: chatLang() })
-        });
-
-        const payload = await response.json().catch(() => ({}));
-        if (!response.ok) {
-          const failText = payload?.error || "Nao foi possivel responder agora.";
-          const detailText = String(payload?.details || "").trim();
-          if (detailText) {
-            addChatMessage(`${failText}\n(${detailText})`, "bot");
-          } else {
-            addChatMessage(failText, "bot");
-          }
-        } else {
-          addChatMessage(payload?.answer || "Sem resposta no momento.", "bot");
-        }
-      } catch (_error) {
-        addChatMessage("Erro de ligacao ao chat. Tente novamente em instantes.", "bot");
-      } finally {
-        chatBusy = false;
-        chatSend.disabled = false;
-        chatInput.focus();
-      }
+      const lang = chatLang();
+      const picked = pickFaqReply(userMessage, lang);
+      const answer = humanizeReply(picked.text, lang, userMessage, picked.matched);
+      await new Promise((resolve) => setTimeout(resolve, 220));
+      addChatMessage(answer, "bot");
+      chatBusy = false;
+      chatSend.disabled = false;
+      chatInput.focus();
     });
   </script>
 </body>
