@@ -47,39 +47,61 @@ export async function onRequestPost(context) {
       "Responde em português claro, curto e útil para hóspedes. " +
       "Se não souberes algo específico, orienta o hóspede a contactar o anfitrião.";
 
-    const xaiResponse = await fetch("https://api.x.ai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${env.XAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: env.XAI_MODEL || "grok-2-latest",
-        temperature: 0.3,
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: userMessage }
-        ]
-      })
-    });
+    const modelCandidates = [
+      env.XAI_MODEL,
+      "grok-beta",
+      "grok-2",
+      "grok-2-1212",
+      "grok-3-mini-beta",
+      "grok-3-fast-beta"
+    ].filter(Boolean);
 
-    if (!xaiResponse.ok) {
-      const details = await xaiResponse.text();
-      return jsonResponse(
-        {
-          error: "Falha ao obter resposta da IA.",
-          details
+    let lastErrorDetails = "";
+
+    for (const model of modelCandidates) {
+      const xaiResponse = await fetch("https://api.x.ai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${env.XAI_API_KEY}`
         },
-        502
-      );
+        body: JSON.stringify({
+          model,
+          temperature: 0.3,
+          messages: [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: userMessage }
+          ]
+        })
+      });
+
+      if (!xaiResponse.ok) {
+        const details = await xaiResponse.text();
+        lastErrorDetails = details;
+        if (details.includes("Model not found")) continue;
+        return jsonResponse(
+          {
+            error: "Falha ao obter resposta da IA.",
+            details
+          },
+          502
+        );
+      }
+
+      const data = await xaiResponse.json();
+      const answer =
+        data?.choices?.[0]?.message?.content?.trim() ||
+        "Não consegui gerar resposta agora.";
+      return jsonResponse({ answer, model });
     }
 
-    const data = await xaiResponse.json();
-    const answer =
-      data?.choices?.[0]?.message?.content?.trim() ||
-      "Não consegui gerar resposta agora.";
-
-    return jsonResponse({ answer });
+    return jsonResponse(
+      {
+        error: "Nenhum modelo Grok válido encontrado.",
+        details: lastErrorDetails || "Configure XAI_MODEL com um modelo disponível na sua conta."
+      },
+      502
+    );
   } catch (error) {
     return jsonResponse(
       {

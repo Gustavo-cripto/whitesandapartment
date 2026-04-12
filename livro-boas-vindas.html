@@ -224,6 +224,97 @@
       font-weight: 600;
       color: #1f2a37;
     }
+    .chat-launcher {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 70;
+      border: 0;
+      border-radius: 999px;
+      padding: 11px 16px;
+      background: #1f2a37;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+    }
+    .chat-panel {
+      position: fixed;
+      right: 16px;
+      bottom: 70px;
+      width: min(360px, calc(100vw - 24px));
+      height: 480px;
+      max-height: calc(100dvh - 90px);
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 80;
+    }
+    .chat-panel.hide { display: none; }
+    .chat-head {
+      padding: 12px 14px;
+      background: #e9dbc0;
+      font-weight: 800;
+      color: #1f2a37;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background: #f8f5ef;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .chat-msg {
+      max-width: 85%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      line-height: 1.4;
+      font-size: .95rem;
+      white-space: pre-wrap;
+    }
+    .chat-msg.user {
+      align-self: flex-end;
+      background: #1f2a37;
+      color: #fff;
+    }
+    .chat-msg.bot {
+      align-self: flex-start;
+      background: #e9eaf0;
+      color: #111827;
+    }
+    .chat-form {
+      display: flex;
+      gap: 8px;
+      padding: 10px;
+      border-top: 1px solid #e5e7eb;
+      background: #fff;
+    }
+    .chat-input {
+      flex: 1;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: .95rem;
+      outline: none;
+    }
+    .chat-send {
+      border: 0;
+      border-radius: 10px;
+      background: #2563eb;
+      color: #fff;
+      font-weight: 700;
+      padding: 0 14px;
+      cursor: pointer;
+    }
+    .chat-send:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -266,6 +357,15 @@
       Livro digital interativo para hóspedes com informação essencial sempre disponível no telemóvel.
     </p>
   </main>
+  <button id="chatLauncher" class="chat-launcher">Chat IA</button>
+  <section id="chatPanel" class="chat-panel hide">
+    <div id="chatTitle" class="chat-head">Assistente White Sand</div>
+    <div id="chatMessages" class="chat-messages"></div>
+    <form id="chatForm" class="chat-form">
+      <input id="chatInput" class="chat-input" type="text" maxlength="500" placeholder="Escreva a sua pergunta..." />
+      <button id="chatSend" class="chat-send" type="submit">Enviar</button>
+    </form>
+  </section>
 
   <script>
     const i18n = {
@@ -556,6 +656,74 @@
       }
     };
 
+    const chatI18n = {
+      pt: {
+        launcher: "Chat IA",
+        title: "Assistente White Sand",
+        placeholder: "Escreva a sua pergunta...",
+        send: "Enviar",
+        hello: "Ola! Como posso ajudar com a sua estadia?"
+      },
+      en: {
+        launcher: "AI Chat",
+        title: "White Sand Assistant",
+        placeholder: "Type your question...",
+        send: "Send",
+        hello: "Hello! How can I help with your stay?"
+      },
+      fr: {
+        launcher: "Chat IA",
+        title: "Assistant White Sand",
+        placeholder: "Ecrivez votre question...",
+        send: "Envoyer",
+        hello: "Bonjour! Comment puis-je vous aider pour votre sejour?"
+      },
+      es: {
+        launcher: "Chat IA",
+        title: "Asistente White Sand",
+        placeholder: "Escribe tu pregunta...",
+        send: "Enviar",
+        hello: "Hola! Como puedo ayudarte con tu estancia?"
+      },
+      de: {
+        launcher: "KI-Chat",
+        title: "White Sand Assistent",
+        placeholder: "Frage eingeben...",
+        send: "Senden",
+        hello: "Hallo! Wie kann ich bei deinem Aufenthalt helfen?"
+      }
+    };
+
+    const chatLauncher = document.getElementById("chatLauncher");
+    const chatPanel = document.getElementById("chatPanel");
+    const chatTitle = document.getElementById("chatTitle");
+    const chatMessages = document.getElementById("chatMessages");
+    const chatForm = document.getElementById("chatForm");
+    const chatInput = document.getElementById("chatInput");
+    const chatSend = document.getElementById("chatSend");
+    let chatStarted = false;
+    let chatBusy = false;
+
+    function chatLang() {
+      return document.querySelector(".lang-btn.active")?.dataset.lang || "pt";
+    }
+
+    function addChatMessage(text, role) {
+      const bubble = document.createElement("div");
+      bubble.className = `chat-msg ${role}`;
+      bubble.textContent = text;
+      chatMessages.appendChild(bubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function updateChatUiText(lang) {
+      const d = chatI18n[lang] || chatI18n.pt;
+      chatLauncher.textContent = d.launcher;
+      chatTitle.textContent = d.title;
+      chatInput.placeholder = d.placeholder;
+      chatSend.textContent = d.send;
+    }
+
     function updateTileLinks(lang) {
       document.querySelectorAll(".tile[href*='detalhe.html?sec=']").forEach((link) => {
         const href = link.getAttribute("href");
@@ -582,6 +750,7 @@
         btn.classList.toggle("active", btn.dataset.lang === lang);
       });
       updateTileLinks(lang);
+      updateChatUiText(lang);
     }
 
     const initialLang = new URLSearchParams(window.location.search).get("lang") || "pt";
@@ -589,6 +758,49 @@
 
     document.querySelectorAll(".lang-btn").forEach((btn) => {
       btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+
+    chatLauncher.addEventListener("click", () => {
+      chatPanel.classList.toggle("hide");
+      if (!chatStarted) {
+        const d = chatI18n[chatLang()] || chatI18n.pt;
+        addChatMessage(d.hello, "bot");
+        chatStarted = true;
+      }
+      if (!chatPanel.classList.contains("hide")) chatInput.focus();
+    });
+
+    chatForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const userMessage = chatInput.value.trim();
+      if (!userMessage || chatBusy) return;
+
+      chatBusy = true;
+      chatSend.disabled = true;
+      addChatMessage(userMessage, "user");
+      chatInput.value = "";
+
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ userMessage, lang: chatLang() })
+        });
+
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          const failText = payload?.error || "Nao foi possivel responder agora.";
+          addChatMessage(failText, "bot");
+        } else {
+          addChatMessage(payload?.answer || "Sem resposta no momento.", "bot");
+        }
+      } catch (_error) {
+        addChatMessage("Erro de ligacao ao chat. Tente novamente em instantes.", "bot");
+      } finally {
+        chatBusy = false;
+        chatSend.disabled = false;
+        chatInput.focus();
+      }
     });
   </script>
 </body>
