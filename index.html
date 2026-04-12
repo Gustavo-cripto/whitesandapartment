@@ -224,14 +224,18 @@
       font-weight: 600;
       color: #1f2a37;
     }
+    :root {
+      --chat-right: clamp(18px, 6vw, 56px);
+    }
     .chat-launcher {
       position: fixed;
-      right: 28px;
+      right: var(--chat-right);
       bottom: 16px;
       z-index: 70;
       border: 0;
       border-radius: 999px;
-      padding: 11px 16px;
+      padding: 14px 22px;
+      font-size: 1rem;
       background: #1f2a37;
       color: #fff;
       font-weight: 700;
@@ -240,9 +244,9 @@
     }
     .chat-panel {
       position: fixed;
-      right: 28px;
+      right: var(--chat-right);
       bottom: 70px;
-      width: min(360px, calc(100vw - 24px));
+      width: min(360px, calc(100vw - (var(--chat-right) * 2)));
       height: 480px;
       max-height: calc(100dvh - 90px);
       background: #fff;
@@ -790,7 +794,12 @@
         const payload = await response.json().catch(() => ({}));
         if (!response.ok) {
           const failText = payload?.error || "Nao foi possivel responder agora.";
-          addChatMessage(failText, "bot");
+          const detailText = String(payload?.details || "").trim();
+          if (detailText) {
+            addChatMessage(`${failText}\n(${detailText})`, "bot");
+          } else {
+            addChatMessage(failText, "bot");
+          }
         } else {
           addChatMessage(payload?.answer || "Sem resposta no momento.", "bot");
         }

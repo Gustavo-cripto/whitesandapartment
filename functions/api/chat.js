@@ -12,6 +12,44 @@ function jsonResponse(payload, status = 200) {
   });
 }
 
+function parseXaiDetails(detailsText) {
+  const raw = String(detailsText || "").trim();
+  if (!raw) return "";
+  try {
+    const parsed = JSON.parse(raw);
+    return String(parsed?.error?.message || parsed?.message || raw);
+  } catch {
+    return raw;
+  }
+}
+
+function buildXaiErrorPayload(detailsText, statusCode, model) {
+  const details = parseXaiDetails(detailsText);
+  const lower = details.toLowerCase();
+
+  if (statusCode === 401 || lower.includes("api key") || lower.includes("unauthorized") || lower.includes("invalid_api_key")) {
+    return {
+      error: "A chave da IA parece inválida ou expirada.",
+      details,
+      model
+    };
+  }
+
+  if (statusCode === 429 || lower.includes("rate limit") || lower.includes("quota") || lower.includes("too many requests")) {
+    return {
+      error: "A IA está com limite de pedidos neste momento.",
+      details,
+      model
+    };
+  }
+
+  return {
+    error: "Falha ao obter resposta da IA.",
+    details,
+    model
+  };
+}
+
 export function onRequestOptions() {
   return new Response(null, { status: 204, headers: JSON_HEADERS });
 }
@@ -79,13 +117,7 @@ export async function onRequestPost(context) {
         const details = await xaiResponse.text();
         lastErrorDetails = details;
         if (details.includes("Model not found")) continue;
-        return jsonResponse(
-          {
-            error: "Falha ao obter resposta da IA.",
-            details
-          },
-          502
-        );
+        return jsonResponse(buildXaiErrorPayload(details, xaiResponse.status, model), 502);
       }
 
       const data = await xaiResponse.json();
