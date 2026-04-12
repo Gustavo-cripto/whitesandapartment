@@ -12,6 +12,12 @@ function jsonResponse(payload, status = 200) {
   });
 }
 
+function normalizeApiKey(rawKey) {
+  return String(rawKey || "")
+    .trim()
+    .replace(/^['"]+|['"]+$/g, "");
+}
+
 function parseXaiDetails(detailsText) {
   const raw = String(detailsText || "").trim();
   if (!raw) return "";
@@ -57,8 +63,9 @@ export function onRequestOptions() {
 export async function onRequestPost(context) {
   try {
     const { request, env } = context;
+    const apiKey = normalizeApiKey(env.XAI_API_KEY);
 
-    if (!env.XAI_API_KEY) {
+    if (!apiKey) {
       return jsonResponse(
         { error: "XAI_API_KEY não configurada no Cloudflare." },
         500
@@ -101,7 +108,7 @@ export async function onRequestPost(context) {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          authorization: `Bearer ${env.XAI_API_KEY}`
+          authorization: `Bearer ${apiKey}`
         },
         body: JSON.stringify({
           model,
