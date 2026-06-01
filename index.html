@@ -247,76 +247,228 @@
       color: #1f2a37;
     }
     :root {
-      --chat-right: clamp(34px, 10vw, 92px);
+      --chat-right: clamp(12px, 4vw, 28px);
+    }
+    @keyframes pulse-ring {
+      0%   { transform: scale(1);   opacity: .6; }
+      70%  { transform: scale(1.55); opacity: 0; }
+      100% { transform: scale(1.55); opacity: 0; }
     }
     .chat-launcher {
       position: fixed;
       right: var(--chat-right);
-      bottom: 16px;
+      bottom: 18px;
       z-index: 70;
       border: 0;
       border-radius: 999px;
-      padding: 14px 22px;
-      font-size: 1rem;
-      background: #1f2a37;
-      color: #fff;
-      font-weight: 700;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+      padding: 0;
+      background: none;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .chat-launcher-inner {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: linear-gradient(135deg, #1f2a37 0%, #2d4a6a 100%);
+      color: #fff;
+      border-radius: 999px;
+      padding: 13px 20px 13px 16px;
+      font-size: .97rem;
+      font-weight: 800;
+      letter-spacing: .2px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.32), 0 2px 8px rgba(0,0,0,0.18);
+      position: relative;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .chat-launcher:hover .chat-launcher-inner {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.36);
+    }
+    .chat-launcher-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e9dbc0 0%, #c9b99a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .chat-pulse {
+      position: absolute;
+      top: 4px; right: 4px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      border: 2px solid #fff;
+    }
+    .chat-pulse::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse-ring 2s ease-out infinite;
     }
     .chat-panel {
       position: fixed;
       right: var(--chat-right);
-      bottom: 70px;
-      width: min(360px, calc(100vw - (var(--chat-right) * 2)));
-      height: 480px;
-      max-height: calc(100dvh - 90px);
+      bottom: 84px;
+      width: min(370px, calc(100vw - 24px));
+      height: 520px;
+      max-height: calc(100dvh - 100px);
       background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28), 0 4px 12px rgba(0,0,0,0.12);
       display: flex;
       flex-direction: column;
       overflow: hidden;
       z-index: 80;
+      transform-origin: bottom right;
+      transition: transform .2s cubic-bezier(.34,1.56,.64,1), opacity .18s ease;
     }
-    .chat-panel.hide { display: none; }
+    .chat-panel.hide {
+      display: none;
+    }
+    .chat-panel.opening {
+      animation: chat-pop-in .22s cubic-bezier(.34,1.56,.64,1) forwards;
+    }
+    @keyframes chat-pop-in {
+      from { transform: scale(.85); opacity: 0; }
+      to   { transform: scale(1);  opacity: 1; }
+    }
     .chat-head {
-      padding: 12px 14px;
-      background: #e9dbc0;
-      font-weight: 800;
-      color: #1f2a37;
+      padding: 13px 14px 11px;
+      background: linear-gradient(135deg, #1f2a37 0%, #2d4a6a 100%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
+    .chat-head-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e9dbc0 0%, #c9b99a 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .chat-head-info { flex: 1; }
+    .chat-head-name {
+      font-weight: 800;
+      color: #fff;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+    .chat-head-status {
+      font-size: .75rem;
+      color: #a0cfb8;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .chat-head-status::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      display: inline-block;
+    }
+    .chat-close {
+      background: none;
+      border: 0;
+      color: rgba(255,255,255,.7);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+    .chat-close:hover { color: #fff; }
     .chat-messages {
       flex: 1;
-      padding: 10px;
+      padding: 12px 10px 8px;
       overflow-y: auto;
-      background: #f8f5ef;
+      background: #f6f4f0;
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
     .chat-msg {
-      max-width: 85%;
-      padding: 10px 12px;
-      border-radius: 12px;
-      line-height: 1.4;
-      font-size: .95rem;
+      max-width: 86%;
+      padding: 10px 13px;
+      border-radius: 16px;
+      line-height: 1.45;
+      font-size: .93rem;
       white-space: pre-wrap;
     }
     .chat-msg.user {
       align-self: flex-end;
       background: #1f2a37;
       color: #fff;
+      border-bottom-right-radius: 4px;
     }
     .chat-msg.bot {
       align-self: flex-start;
-      background: #e9eaf0;
+      background: #fff;
       color: #111827;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
     }
     .chat-msg a {
       color: #1d4ed8;
       font-weight: 700;
       text-decoration: underline;
+    }
+    .chat-typing {
+      align-self: flex-start;
+      background: #fff;
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      padding: 12px 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+    .chat-typing span {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #94a3b8;
+      animation: bounce-dot .9s infinite;
+    }
+    .chat-typing span:nth-child(2) { animation-delay: .15s; }
+    .chat-typing span:nth-child(3) { animation-delay: .3s; }
+    @keyframes bounce-dot {
+      0%,80%,100% { transform: translateY(0); }
+      40% { transform: translateY(-6px); }
+    }
+    .chat-quick {
+      padding: 8px 10px 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      background: #f6f4f0;
+      border-top: 1px solid #ede9e2;
+    }
+    .chat-quick-btn {
+      background: #fff;
+      border: 1.5px solid #d4c9b5;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #1f2a37;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .12s, border-color .12s;
+    }
+    .chat-quick-btn:hover {
+      background: #1f2a37;
+      color: #fff;
+      border-color: #1f2a37;
     }
     .chat-form {
       display: flex;
@@ -327,23 +479,30 @@
     }
     .chat-input {
       flex: 1;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      padding: 10px;
-      font-size: .95rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: .93rem;
       outline: none;
+      transition: border-color .15s;
     }
+    .chat-input:focus { border-color: #2d4a6a; }
     .chat-send {
       border: 0;
-      border-radius: 10px;
-      background: #2563eb;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1f2a37 0%, #2d4a6a 100%);
       color: #fff;
       font-weight: 700;
-      padding: 0 14px;
+      padding: 0 16px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .93rem;
+      transition: opacity .15s;
     }
     .chat-send:disabled {
-      opacity: .6;
+      opacity: .5;
       cursor: not-allowed;
     }
   </style>
@@ -387,13 +546,27 @@
       Livro digital interativo para hóspedes com informação essencial sempre disponível no telemóvel.
     </p>
   </main>
-  <button id="chatLauncher" class="chat-launcher">Chat IA</button>
+  <button id="chatLauncher" class="chat-launcher" aria-label="Abrir chat Sandy">
+    <div class="chat-launcher-inner">
+      <div class="chat-launcher-avatar">🌊</div>
+      <span id="chatLauncherLabel">Sandy</span>
+      <div class="chat-pulse"></div>
+    </div>
+  </button>
   <section id="chatPanel" class="chat-panel hide">
-    <div id="chatTitle" class="chat-head">Assistente White Sand</div>
+    <div class="chat-head">
+      <div class="chat-head-avatar">🌊</div>
+      <div class="chat-head-info">
+        <div id="chatTitle" class="chat-head-name">Sandy</div>
+        <div id="chatHeadStatus" class="chat-head-status">Online</div>
+      </div>
+      <button id="chatCloseBtn" class="chat-close" aria-label="Fechar">✕</button>
+    </div>
     <div id="chatMessages" class="chat-messages"></div>
+    <div id="chatQuick" class="chat-quick"></div>
     <form id="chatForm" class="chat-form">
       <input id="chatInput" class="chat-input" type="text" maxlength="500" placeholder="Escreva a sua pergunta..." />
-      <button id="chatSend" class="chat-send" type="submit">Enviar</button>
+      <button id="chatSend" class="chat-send" type="submit"><span>➤</span></button>
     </form>
   </section>
 
@@ -688,45 +861,58 @@
 
     const chatI18n = {
       pt: {
-        launcher: "Chat IA",
-        title: "Assistente White Sand",
+        launcher: "Sandy",
+        title: "Sandy",
+        status: "Online agora",
         placeholder: "Escreva a sua pergunta...",
-        send: "Enviar",
-        hello: "Ola! Posso ajudar com:\n- tempo em Albufeira\n- pequeno-almoco, almoco, lanche e jantar\n- restaurantes tipicos e bares\n- praias, atracoes e roteiros para passear\n- atividades para criancas e familia\n- check-in, check-out, wifi, localizacao e regras",
-        unknown: "Nao encontrei essa informacao. Pode ver os icones do livro digital ou falar diretamente com o anfitriao no <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>."
+        hello: "Ola! Sou a Sandy, a assistente virtual do White Sand 🌊\nPosso ajudar com check-in, wifi, restaurantes, praias, transportes e muito mais!\nO que queres saber?",
+        unknown: "Nao encontrei essa informacao. Podes ver os icones do guia ou falar diretamente com o anfitriao no <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>.",
+        quickLabels: ["🕐 Check-in/out", "📶 Wi-Fi", "🏖️ Praias", "🍽️ Restaurantes", "🚗 Transportes", "🔑 Acesso / Cofre", "🌤️ Tempo", "🛒 Compras"]
       },
       en: {
-        launcher: "AI Chat",
-        title: "White Sand Assistant",
+        launcher: "Sandy",
+        title: "Sandy",
+        status: "Online now",
         placeholder: "Type your question...",
-        send: "Send",
-        hello: "Hello! I can help with:\n- Albufeira weather\n- breakfast, lunch, snacks, and dinner\n- traditional restaurants and bars\n- beaches, attractions, and walking routes\n- activities for kids and families\n- check-in, check-out, wifi, location, and house rules",
-        unknown: "I could not find that information. Please use the guide icons or contact the host directly on <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>."
+        hello: "Hello! I'm Sandy, the White Sand virtual assistant 🌊\nI can help with check-in, wifi, restaurants, beaches, transport and much more!\nWhat would you like to know?",
+        unknown: "I could not find that information. Please use the guide icons or contact the host on <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>.",
+        quickLabels: ["🕐 Check-in/out", "📶 Wi-Fi", "🏖️ Beaches", "🍽️ Restaurants", "🚗 Transport", "🔑 Key access", "🌤️ Weather", "🛒 Shopping"]
       },
       fr: {
-        launcher: "Chat IA",
-        title: "Assistant White Sand",
+        launcher: "Sandy",
+        title: "Sandy",
+        status: "En ligne maintenant",
         placeholder: "Ecrivez votre question...",
-        send: "Envoyer",
-        hello: "Bonjour! Je peux aider avec:\n- meteo a Albufeira\n- petit-dejeuner, dejeuner, snack et diner\n- restaurants typiques et bars\n- plages, attractions et itineraires\n- activites pour enfants et familles\n- check-in, check-out, wifi, localisation et regles",
-        unknown: "Je n'ai pas trouve cette information. Consultez les icones du guide ou contactez directement l'hote sur <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>."
+        hello: "Bonjour! Je suis Sandy, l'assistante virtuelle de White Sand 🌊\nJe peux aider avec le check-in, wifi, restaurants, plages, transports et plus!\nQue voulez-vous savoir?",
+        unknown: "Je n'ai pas trouve cette information. Consultez les icones ou contactez l'hote sur <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>.",
+        quickLabels: ["🕐 Check-in/out", "📶 Wi-Fi", "🏖️ Plages", "🍽️ Restaurants", "🚗 Transports", "🔑 Acces cles", "🌤️ Meteo", "🛒 Shopping"]
       },
       es: {
-        launcher: "Chat IA",
-        title: "Asistente White Sand",
+        launcher: "Sandy",
+        title: "Sandy",
+        status: "En linea ahora",
         placeholder: "Escribe tu pregunta...",
-        send: "Enviar",
-        hello: "Hola! Puedo ayudarte con:\n- tiempo en Albufeira\n- desayuno, almuerzo, merienda y cena\n- restaurantes tipicos y bares\n- playas, atracciones y rutas para pasear\n- actividades para ninos y familias\n- check-in, check-out, wifi, ubicacion y normas",
-        unknown: "No encontre esa informacion. Consulta los iconos de la guia o habla directamente con el anfitrion por <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>."
+        hello: "Hola! Soy Sandy, la asistente virtual de White Sand 🌊\nPuedo ayudarte con check-in, wifi, restaurantes, playas, transporte y mucho mas!\n¿Que quieres saber?",
+        unknown: "No encontre esa informacion. Consulta los iconos o habla con el anfitrion por <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>.",
+        quickLabels: ["🕐 Check-in/out", "📶 Wi-Fi", "🏖️ Playas", "🍽️ Restaurantes", "🚗 Transporte", "🔑 Acceso llaves", "🌤️ Tiempo", "🛒 Compras"]
       },
       de: {
-        launcher: "KI-Chat",
-        title: "White Sand Assistent",
+        launcher: "Sandy",
+        title: "Sandy",
+        status: "Jetzt online",
         placeholder: "Frage eingeben...",
-        send: "Senden",
-        hello: "Hallo! Ich kann helfen mit:\n- Wetter in Albufeira\n- Fruehstueck, Mittagessen, Snack und Abendessen\n- typischen Restaurants und Bars\n- Straenden, Sehenswuerdigkeiten und Spazier-Routen\n- Aktivitaeten fuer Kinder und Familien\n- Check-in, Check-out, WLAN, Lage und Hausregeln",
-        unknown: "Ich habe dazu keine Information gefunden. Bitte nutze die Guide-Symbole oder kontaktiere den Gastgeber direkt per <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>."
+        hello: "Hallo! Ich bin Sandy, die virtuelle Assistentin von White Sand 🌊\nIch helfe bei Check-in, WLAN, Restaurants, Straenden, Transport und mehr!\nWas moechtest du wissen?",
+        unknown: "Ich habe dazu keine Information. Bitte nutze die Guide-Symbole oder kontaktiere den Gastgeber per <a href='https://wa.me/351910000000' target='_blank' rel='noreferrer'>WhatsApp</a>.",
+        quickLabels: ["🕐 Check-in/out", "📶 WLAN", "🏖️ Straende", "🍽️ Restaurants", "🚗 Transport", "🔑 Schluessel", "🌤️ Wetter", "🛒 Einkauf"]
       }
+    };
+
+    const quickQueries = {
+      pt: ["check-in check-out", "wifi password", "praias perto", "restaurantes recomendados", "transportes aeroporto", "cofre chave acesso", "tempo clima", "compras supermercado"],
+      en: ["check-in check-out", "wifi password", "beaches nearby", "recommended restaurants", "transport airport", "key safe access", "weather today", "shopping supermarket"],
+      fr: ["check-in check-out", "mot de passe wifi", "plages proches", "restaurants recommandes", "transport aeroport", "acces cles coffre", "meteo aujourd'hui", "shopping supermarche"],
+      es: ["check-in check-out", "contraseña wifi", "playas cercanas", "restaurantes recomendados", "transporte aeropuerto", "acceso caja de llaves", "tiempo hoy", "compras supermercado"],
+      de: ["check-in check-out", "wlan passwort", "nahe straende", "empfohlene restaurants", "transport flughafen", "schluesselkasten zugang", "wetter heute", "einkauf supermarkt"]
     };
 
     const localFaq = {
@@ -785,12 +971,47 @@
     const chatLauncher = document.getElementById("chatLauncher");
     const chatPanel = document.getElementById("chatPanel");
     const chatTitle = document.getElementById("chatTitle");
+    const chatHeadStatus = document.getElementById("chatHeadStatus");
     const chatMessages = document.getElementById("chatMessages");
+    const chatQuick = document.getElementById("chatQuick");
     const chatForm = document.getElementById("chatForm");
     const chatInput = document.getElementById("chatInput");
     const chatSend = document.getElementById("chatSend");
+    const chatCloseBtn = document.getElementById("chatCloseBtn");
     let chatStarted = false;
     let chatBusy = false;
+
+    function buildQuickButtons(lang) {
+      const d = chatI18n[lang] || chatI18n.pt;
+      const queries = quickQueries[lang] || quickQueries.pt;
+      chatQuick.innerHTML = "";
+      d.quickLabels.forEach((label, i) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "chat-quick-btn";
+        btn.textContent = label;
+        btn.addEventListener("click", () => {
+          chatInput.value = queries[i] || label;
+          chatInput.focus();
+          chatForm.dispatchEvent(new Event("submit"));
+        });
+        chatQuick.appendChild(btn);
+      });
+    }
+
+    function showTyping() {
+      const el = document.createElement("div");
+      el.className = "chat-typing";
+      el.id = "chatTyping";
+      el.innerHTML = "<span></span><span></span><span></span>";
+      chatMessages.appendChild(el);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return el;
+    }
+
+    chatCloseBtn.addEventListener("click", () => {
+      chatPanel.classList.add("hide");
+    });
     const replyTone = {
       pt: {
         intro: ["Claro.", "Com todo o gosto.", "Boa pergunta."],
@@ -1119,10 +1340,11 @@
 
     function updateChatUiText(lang) {
       const d = chatI18n[lang] || chatI18n.pt;
-      chatLauncher.textContent = d.launcher;
+      document.getElementById("chatLauncherLabel").textContent = d.launcher;
       chatTitle.textContent = d.title;
+      if (chatHeadStatus) chatHeadStatus.textContent = d.status || "Online";
       chatInput.placeholder = d.placeholder;
-      chatSend.textContent = d.send;
+      buildQuickButtons(lang);
     }
 
     function normalizeText(value) {
@@ -1360,13 +1582,18 @@
     });
 
     chatLauncher.addEventListener("click", () => {
+      const isHidden = chatPanel.classList.contains("hide");
       chatPanel.classList.toggle("hide");
-      if (!chatStarted) {
-        const d = chatI18n[chatLang()] || chatI18n.pt;
-        addChatMessage(d.hello, "bot");
-        chatStarted = true;
+      if (isHidden) {
+        chatPanel.classList.add("opening");
+        chatPanel.addEventListener("animationend", () => chatPanel.classList.remove("opening"), { once: true });
+        if (!chatStarted) {
+          const d = chatI18n[chatLang()] || chatI18n.pt;
+          addChatMessage(d.hello, "bot");
+          chatStarted = true;
+        }
+        chatInput.focus();
       }
-      if (!chatPanel.classList.contains("hide")) chatInput.focus();
     });
 
     chatForm.addEventListener("submit", async (event) => {
@@ -1403,7 +1630,9 @@
         finalAnswer = humanizeReply(picked.text, lang, userMessage, picked.matched);
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 220));
+      const typingEl = showTyping();
+      await new Promise((resolve) => setTimeout(resolve, 700));
+      typingEl.remove();
       addChatMessage(finalAnswer || "Nao foi possivel responder agora.", "bot");
       chatBusy = false;
       chatSend.disabled = false;
