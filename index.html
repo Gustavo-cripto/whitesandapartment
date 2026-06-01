@@ -49,21 +49,24 @@
     }
     .hero {
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.28)),
+        linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.22)),
         url("./logo-whitesand.png");
-      background-size: contain;
-      background-position: center 44%;
+      background-size: 85%;
+      background-position: center center;
       background-repeat: no-repeat;
       color: #1f2a37;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 18px 18px 12px;
-      min-height: 250px;
+      min-height: 300px;
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+    }
+    @media (min-width: 540px) {
+      .hero { background-size: 60%; min-height: 320px; }
     }
     h1 {
       margin: 0;
