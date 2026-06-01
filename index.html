@@ -130,47 +130,69 @@
       text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
     }
     .screen {
-      padding: 16px;
+      padding: 14px 10px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(92px, 108px));
+      grid-template-columns: repeat(3, 1fr);
       justify-content: center;
-      gap: 14px;
+      gap: 16px 12px;
       background: transparent;
       min-height: calc(100vh - 270px);
     }
-    .tile {
-      border: 0;
-      background: rgba(255, 255, 255, 0.96);
-      border-radius: 8px;
-      text-decoration: none;
-      color: var(--text);
-      aspect-ratio: 1 / 1;
-      width: 108px;
+    @media (min-width: 540px) {
+      .screen {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px 16px;
+      }
+    }
+    @media (min-width: 900px) {
+      .screen {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 130px));
+        gap: 24px 20px;
+      }
+    }
+    .tile-wrap {
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 7px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .tile-wrap:hover .tile {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
+    }
+    .tile {
+      border: 0;
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 22px;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 100px;
+      display: flex;
+      align-items: center;
       justify-content: center;
-      padding: 8px 6px;
-      text-align: center;
-      gap: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
       transition: transform .15s ease, box-shadow .15s ease;
     }
-    .tile:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    @media (min-width: 900px) {
+      .tile { max-width: 120px; border-radius: 26px; }
     }
     .icon {
       font-family: "Material Symbols Rounded";
-      font-size: 46px;
+      font-size: clamp(36px, 8vw, 52px);
       line-height: 1;
       color: #111;
       font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 24;
     }
     .label {
-      font-size: .62rem;
-      font-weight: 700;
-      letter-spacing: .2px;
-      color: #111;
+      font-size: clamp(.6rem, 2vw, .72rem);
+      font-weight: 800;
+      letter-spacing: .3px;
+      color: #1f2a37;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(255,255,255,0.7);
+      line-height: 1.2;
     }
     .section {
       margin-top: 14px;
@@ -342,22 +364,22 @@
       <article class="phone">
         <div class="phone-head" data-i18n="bookTitle">Livro de Boas vindas</div>
         <div class="screen">
-          <a class="tile" href="./detalhe.html?sec=welcome"><span class="icon">home</span><span class="label" data-i18n="navWelcome">WELCOME</span></a>
-          <a class="tile" href="./detalhe.html?sec=check"><span class="icon">key</span><span class="label" data-i18n="navCheck">CHECK-IN</span></a>
-          <a class="tile" href="./detalhe.html?sec=location"><span class="icon">location_on</span><span class="label" data-i18n="navLocation">LOCATION</span></a>
-          <a class="tile" href="./detalhe.html?sec=info"><span class="icon">chat</span><span class="label" data-i18n="navInfo">INFO</span></a>
-          <a class="tile" href="./detalhe.html?sec=rules"><span class="icon">edit_note</span><span class="label" data-i18n="navRules">HOUSE RULES</span></a>
-          <a class="tile" href="./detalhe.html?sec=amenities"><span class="icon">weekend</span><span class="label" data-i18n="navAmenities">AMENITIES</span></a>
-          <a class="tile" href="./detalhe.html?sec=wifi"><span class="icon">wifi</span><span class="label" data-i18n="navWifi">WI-FI</span></a>
-          <a class="tile" href="./detalhe.html?sec=safety"><span class="icon">priority_high</span><span class="label" data-i18n="navEmergency">EMERGENCY</span></a>
-          <a class="tile" href="./detalhe.html?sec=transport"><span class="icon">train</span><span class="label" data-i18n="navTransport">TRANSPORT</span></a>
-          <a class="tile" href="./detalhe.html?sec=visit"><span class="icon">photo_camera</span><span class="label" data-i18n="navVisit">VISIT</span></a>
-          <a class="tile" href="./detalhe.html?sec=activities"><span class="icon">map</span><span class="label" data-i18n="navActivities">ACTIVITIES</span></a>
-          <a class="tile" href="./detalhe.html?sec=eat"><span class="icon">restaurant</span><span class="label" data-i18n="navEat">EAT</span></a>
-          <a class="tile" href="./detalhe.html?sec=shopping"><span class="icon">shopping_bag</span><span class="label" data-i18n="navShopping">SHOPPING</span></a>
-          <a class="tile" href="./detalhe.html?sec=checkout"><span class="icon">luggage</span><span class="label" data-i18n="navCheckout">CHECK-OUT</span></a>
-          <a class="tile" href="./detalhe.html?sec=contacts"><span class="icon">call</span><span class="label" data-i18n="navContact">CONTACT</span></a>
-          <a class="tile" href="./Book-WS-B.pdf" target="_blank" rel="noreferrer"><span class="icon">description</span><span class="label" data-i18n="navPdf">PDF</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=welcome"><div class="tile"><span class="icon">home</span></div><span class="label" data-i18n="navWelcome">WELCOME</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=check"><div class="tile"><span class="icon">key</span></div><span class="label" data-i18n="navCheck">CHECK-IN</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=location"><div class="tile"><span class="icon">location_on</span></div><span class="label" data-i18n="navLocation">LOCATION</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=info"><div class="tile"><span class="icon">info</span></div><span class="label" data-i18n="navInfo">INFO</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=rules"><div class="tile"><span class="icon">do_not_disturb_on</span></div><span class="label" data-i18n="navRules">HOUSE RULES</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=amenities"><div class="tile"><span class="icon">weekend</span></div><span class="label" data-i18n="navAmenities">AMENITIES</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=wifi"><div class="tile"><span class="icon">wifi</span></div><span class="label" data-i18n="navWifi">WI-FI</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=safety"><div class="tile"><span class="icon">local_hospital</span></div><span class="label" data-i18n="navEmergency">EMERGENCY</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=transport"><div class="tile"><span class="icon">train</span></div><span class="label" data-i18n="navTransport">TRANSPORT</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=visit"><div class="tile"><span class="icon">photo_camera</span></div><span class="label" data-i18n="navVisit">VISIT</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=activities"><div class="tile"><span class="icon">beach_access</span></div><span class="label" data-i18n="navActivities">ACTIVITIES</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=eat"><div class="tile"><span class="icon">restaurant</span></div><span class="label" data-i18n="navEat">EAT</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=shopping"><div class="tile"><span class="icon">shopping_cart</span></div><span class="label" data-i18n="navShopping">SHOPPING</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=checkout"><div class="tile"><span class="icon">luggage</span></div><span class="label" data-i18n="navCheckout">CHECK-OUT</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=contacts"><div class="tile"><span class="icon">call</span></div><span class="label" data-i18n="navContact">CONTACT</span></a>
+          <a class="tile-wrap" href="./Book-WS-B.pdf" target="_blank" rel="noreferrer"><div class="tile"><span class="icon">description</span></div><span class="label" data-i18n="navPdf">PDF</span></a>
         </div>
       </article>
     </section>
@@ -792,11 +814,16 @@
       }
     };
     const liveIntentKeywords = {
-      greeting: ["ola", "olá", "oi", "hello", "hi", "hey", "bonjour", "hola", "hallo", "guten tag", "bom dia", "boa tarde", "boa noite"],
-      weather: ["tempo", "weather", "meteo", "meteo", "clima", "temperatura", "chuva", "sol", "wind", "vento"],
-      dinner: ["jantar", "dinner", "restaurant", "restaurante", "comer", "eat", "ce soir", "esta noite", "tonight", "onde jantar", "where to eat"],
-      breakfast: ["pequeno almoco", "pequeno-almoco", "cafe da manha", "breakfast", "petit dejeuner", "desayuno", "fruhstuck"],
-      lunch: ["almoco", "almoçar", "lunch", "dejeuner", "comida", "mittagessen"],
+      greeting: ["ola", "olá", "oi", "hello", "hi", "hey", "bonjour", "hola", "hallo", "guten tag", "bom dia", "boa tarde", "boa noite", "good morning", "good afternoon", "good evening"],
+      weather: ["tempo", "weather", "meteo", "météo", "clima", "temperatura", "chuva", "sol", "wind", "vento", "calor", "frio", "hot", "cold", "rain", "sunny"],
+      dinner: ["jantar", "dinner", "cear", "ceia", "ce soir", "esta noite", "tonight", "onde jantar", "where to eat", "abendessen"],
+      breakfast: ["pequeno almoco", "pequeno-almoco", "cafe da manha", "breakfast", "petit dejeuner", "desayuno", "fruhstuck", "matin"],
+      lunch: ["almoco", "almoçar", "lunch", "dejeuner", "comida", "mittagessen", "mediodía"],
+      parking: ["estacionamento", "parque", "parking", "carro", "car", "voiture", "stationnement", "aparcar", "parkplatz"],
+      pool: ["piscina", "pool", "swimming", "nadar", "swim", "pisine", "schwimmbad"],
+      safe: ["cofre", "safe", "chave", "key", "entrada", "access", "acceso", "acesso", "porta", "door", "code", "codigo"],
+      pets: ["animal", "animais", "pets", "cachorro", "cao", "gato", "dog", "cat", "chien", "chat", "perro", "gato", "haustier"],
+      noise: ["silencio", "barulho", "ruido", "noise", "quiet", "bruit", "larm", "hora", "regra"],
       snack: ["lanche", "snack", "brunch", "merienda", "goûter", "goûter", "coffee break"],
       restaurant: ["restaurantes", "restaurante", "restaurant", "food", "onde comer", "eat in albufeira", "comer em albufeira"],
       souvenir: ["souvenir", "souvenires", "lembrancas", "lembrança", "gift shop", "presentes", "artesanato", "magnete", "imans"],
@@ -853,6 +880,11 @@
           "Atracoes turisticas (mais tipico primeiro): centro historico de Albufeira, Praia dos Pescadores, marina, Praia da Falesia, grutas de Benagil e Castelo de Silves.",
           "Locais a visitar: Old Town, Marina de Albufeira, Praia da Falesia, passeio as grutas de Benagil e Castelo de Silves."
         ],
+        parking: ["Estacionamento gratuito disponível na rua em frente ao apartamento. Pode também usar o parque de estacionamento do centro comercial próximo.", "Há estacionamento na rua sem custo. Coordenadas do apartamento: 37.0891053, -8.2507170."],
+        pool: ["O apartamento não dispõe de piscina privada. A praia fica a apenas 300 m — Praia dos Pescadores é a mais próxima.", "Sem piscina no apartamento, mas a praia está a 5 minutos a pé."],
+        safe: ["O acesso é feito por cofre de chaves. O código é enviado por mensagem no dia da chegada. Check-in a partir das 16:00.", "Receberá o código do cofre de chaves por SMS/WhatsApp antes de chegar. Entrada a partir das 16:00."],
+        pets: ["Lamentamos, mas não são permitidos animais de estimação no apartamento.", "Animais não são permitidos. Consulte o anfitrião se tiver dúvidas: +351 910 000 000."],
+        noise: ["Horas de silêncio: das 22:00 às 08:00. Pedimos respeito pelos vizinhos e pelas regras da casa.", "Por favor respeite o silêncio entre as 22:00 e as 08:00. Sem festas ou eventos."],
         weatherFail: "Agora nao consegui obter o tempo em tempo real. Em geral, Albufeira costuma ter clima ameno e ceu limpo."
       },
       en: {
@@ -901,6 +933,11 @@
           "Tourist attractions (most iconic first): Albufeira Old Town, Praia dos Pescadores, marina, Praia da Falesia, Benagil caves, and Silves Castle.",
           "Must-visit spots: Old Town, Albufeira Marina, Praia da Falesia, Benagil caves, and Silves Castle."
         ],
+        parking: ["Free street parking is available in front of the apartment. You can also use the nearby shopping centre car park.", "Street parking at no cost. Apartment coordinates: 37.0891053, -8.2507170."],
+        pool: ["The apartment does not have a private pool. The beach is only 300 m away — Praia dos Pescadores is the closest.", "No pool, but the beach is a 5-minute walk away."],
+        safe: ["Access is via a key safe. The code will be sent by message on arrival day. Check-in from 16:00.", "You will receive the key safe code by SMS/WhatsApp before you arrive. Entry from 16:00."],
+        pets: ["Sorry, pets are not allowed in the apartment.", "Pets are not permitted. Contact the host if you have questions: +351 910 000 000."],
+        noise: ["Quiet hours: 22:00 to 08:00. Please respect neighbours and house rules.", "Please keep noise down between 22:00 and 08:00. No parties or events."],
         weatherFail: "I could not fetch live weather right now. Albufeira usually has mild temperatures and clear skies."
       },
       fr: {
@@ -949,6 +986,11 @@
           "Attractions touristiques (plus typique d'abord): vieille ville d'Albufeira, Praia dos Pescadores, marina, Praia da Falesia, grottes de Benagil et chateau de Silves.",
           "A voir: Old Town, marina d'Albufeira, Praia da Falesia, grottes de Benagil et chateau de Silves."
         ],
+        parking: ["Stationnement gratuit disponible dans la rue devant l'appartement. Vous pouvez aussi utiliser le parking du centre commercial voisin.", "Parking en rue sans frais. Coordonnees de l'appartement: 37.0891053, -8.2507170."],
+        pool: ["L'appartement n'a pas de piscine privee. La plage est a seulement 300 m — Praia dos Pescadores est la plus proche.", "Pas de piscine, mais la plage est a 5 minutes a pied."],
+        safe: ["L'acces se fait par coffre a cles. Le code vous sera envoye par message le jour d'arrivee. Check-in a partir de 16:00.", "Vous recevrez le code du coffre par SMS/WhatsApp avant votre arrivee. Entree a partir de 16:00."],
+        pets: ["Desolee, les animaux ne sont pas autorises dans l'appartement.", "Animaux non autorises. Contactez l'hote si vous avez des questions: +351 910 000 000."],
+        noise: ["Heures de silence: 22:00 a 08:00. Merci de respecter le voisinage et les regles de la maison.", "Veuillez garder le calme entre 22:00 et 08:00. Pas de fetes ni d'evenements."],
         weatherFail: "Je n'ai pas pu recuperer la meteo en direct maintenant. Albufeira a generalement un climat doux et un ciel degage."
       },
       es: {
@@ -997,6 +1039,11 @@
           "Atracciones turisticas (mas tipico primero): casco antiguo de Albufeira, Praia dos Pescadores, marina, Praia da Falesia, cuevas de Benagil y Castillo de Silves.",
           "Lugares para visitar: Old Town, Marina de Albufeira, Praia da Falesia, cuevas de Benagil y Castillo de Silves."
         ],
+        parking: ["Aparcamiento gratuito disponible en la calle frente al apartamento. Tambien puedes usar el parking del centro comercial cercano.", "Aparcamiento en calle sin coste. Coordenadas del apartamento: 37.0891053, -8.2507170."],
+        pool: ["El apartamento no dispone de piscina privada. La playa esta a solo 300 m — Praia dos Pescadores es la mas cercana.", "Sin piscina, pero la playa esta a 5 minutos andando."],
+        safe: ["El acceso es mediante caja de llaves. El codigo se enviara por mensaje el dia de llegada. Check-in desde las 16:00.", "Recibiras el codigo de la caja de llaves por SMS/WhatsApp antes de llegar. Entrada desde las 16:00."],
+        pets: ["Lo sentimos, no se admiten animales en el apartamento.", "Animales no permitidos. Contacta al anfitriOn si tienes preguntas: +351 910 000 000."],
+        noise: ["Horas de silencio: de 22:00 a 08:00. Por favor respeta a los vecinos y las normas de la casa.", "Por favor mantén el ruido bajo entre las 22:00 y las 08:00. Sin fiestas ni eventos."],
         weatherFail: "Ahora no pude obtener el tiempo en vivo. Albufeira normalmente tiene clima suave y cielo despejado."
       },
       de: {
@@ -1045,6 +1092,11 @@
           "Sehenswuerdigkeiten (typisch zuerst): Altstadt von Albufeira, Praia dos Pescadores, Marina, Praia da Falesia, Benagil-Hoehlen und Burg Silves.",
           "Empfohlene Highlights: Old Town, Albufeira Marina, Praia da Falesia, Benagil-Hoehlen und Burg Silves."
         ],
+        parking: ["Kostenloser Parkplatz direkt vor dem Apartment auf der Strasse. Alternativ gibt es ein Parkhaus beim nahegelegenen Einkaufszentrum.", "Strassenparken kostenlos moeglich. Adresse: 37.0891053, -8.2507170."],
+        pool: ["Das Apartment hat keinen privaten Pool. Der Strand ist nur 300 m entfernt — Praia dos Pescadores ist am naechsten.", "Kein Pool, aber der Strand ist 5 Gehminuten entfernt."],
+        safe: ["Der Zugang erfolgt ueber einen Schluesselkasten. Der Code wird am Anreisetag per Nachricht gesendet. Check-in ab 16:00.", "Sie erhalten den Code des Schlueselkastens per SMS/WhatsApp vor der Ankunft. Einlass ab 16:00."],
+        pets: ["Leider sind keine Haustiere im Apartment erlaubt.", "Haustiere nicht erlaubt. Kontaktieren Sie den Gastgeber bei Fragen: +351 910 000 000."],
+        noise: ["Ruhezeiten: 22:00 bis 08:00. Bitte Nachbarn und Hausregeln respektieren.", "Bitte halten Sie von 22:00 bis 08:00 Uhr die Ruhe. Keine Partys oder Veranstaltungen."],
         weatherFail: "Ich konnte das Live-Wetter gerade nicht abrufen. In Albufeira ist das Wetter meist mild und oft sonnig."
       }
     };
@@ -1257,11 +1309,22 @@
         return { text: liveUi.attractions[idx], matched: true };
       }
 
+      const simpleIntents = ["parking", "pool", "safe", "pets", "noise", "attractions", "walk", "kids", "bars", "beach", "snack", "souvenir"];
+      for (const intent of simpleIntents) {
+        if (liveIntentKeywords[intent] && containsAny(normalizedMessage, liveIntentKeywords[intent])) {
+          const replies = liveUi[intent];
+          if (replies && replies.length) {
+            const idx = Math.abs([...normalizedMessage].reduce((acc, c) => acc + c.charCodeAt(0), 0)) % replies.length;
+            return { text: replies[idx], matched: true };
+          }
+        }
+      }
+
       return pickFaqReply(userMessage, lang);
     }
 
     function updateTileLinks(lang) {
-      document.querySelectorAll(".tile[href*='detalhe.html?sec=']").forEach((link) => {
+      document.querySelectorAll(".tile-wrap[href*='detalhe.html?sec=']").forEach((link) => {
         const href = link.getAttribute("href");
         const url = new URL(href, window.location.href);
         url.searchParams.set("lang", lang);
