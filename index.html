@@ -161,37 +161,32 @@
       background: rgba(255, 255, 255, 0.97);
       border-radius: 22px;
       width: 100%;
-      aspect-ratio: 1 / 1.18;
+      aspect-ratio: 1 / 1;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      padding: 10px 6px 8px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.11);
       transition: transform .15s ease, box-shadow .15s ease;
-      overflow: hidden;
     }
     @media (min-width: 900px) {
-      .tile { border-radius: 26px; aspect-ratio: 1 / 1.15; }
+      .tile { border-radius: 26px; }
     }
     .icon {
       font-family: "Material Symbols Rounded";
-      font-size: clamp(34px, 9vw, 50px);
+      font-size: clamp(42px, 11vw, 58px);
       line-height: 1;
       color: #111;
       font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 24;
-      flex-shrink: 0;
     }
     .label {
-      font-size: clamp(.58rem, 2.2vw, .72rem);
+      font-size: clamp(.6rem, 2.1vw, .73rem);
       font-weight: 800;
       letter-spacing: .4px;
       color: #1f2a37;
       text-align: center;
-      line-height: 1.15;
-      width: 100%;
-      padding: 0 2px;
+      text-shadow: 0 1px 3px rgba(255,255,255,0.8);
+      line-height: 1.2;
+      margin-top: 5px;
     }
     .section {
       margin-top: 14px;
@@ -522,22 +517,22 @@
       <article class="phone">
         <div class="phone-head" data-i18n="bookTitle">Livro de Boas vindas</div>
         <div class="screen">
-          <a class="tile-wrap" href="./detalhe.html?sec=welcome"><div class="tile"><span class="icon">home</span><span class="label" data-i18n="navWelcome">BEM-VINDO</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=check"><div class="tile"><span class="icon">key</span><span class="label" data-i18n="navCheck">CHECK-IN</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=location"><div class="tile"><span class="icon">location_on</span><span class="label" data-i18n="navLocation">LOCALIZAÇÃO</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=wifi"><div class="tile"><span class="icon">wifi</span><span class="label" data-i18n="navWifi">WI-FI</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=rules"><div class="tile"><span class="icon">smoke_free</span><span class="label" data-i18n="navRules">REGRAS</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=transport"><div class="tile"><span class="icon">train</span><span class="label" data-i18n="navTransport">TRANSPORTES</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=amenities"><div class="tile"><span class="icon">weekend</span><span class="label" data-i18n="navAmenities">COMODIDADES</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=visit"><div class="tile"><span class="icon">photo_camera</span><span class="label" data-i18n="navVisit">LOCAIS</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=info"><div class="tile"><span class="icon">contact_support</span><span class="label" data-i18n="navInfo">INFO</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=activities"><div class="tile"><span class="icon">local_bar</span><span class="label" data-i18n="navBars">BARES</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=eat"><div class="tile"><span class="icon">restaurant</span><span class="label" data-i18n="navEat">COMER</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=shopping"><div class="tile"><span class="icon">shopping_cart</span><span class="label" data-i18n="navShopping">COMPRAS</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=safety"><div class="tile"><span class="icon">emergency</span><span class="label" data-i18n="navEmergency">EMERGÊNCIA</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=checkout"><div class="tile"><span class="icon">luggage</span><span class="label" data-i18n="navCheckout">CHECK-OUT</span></div></a>
-          <a class="tile-wrap" href="./detalhe.html?sec=contacts"><div class="tile"><span class="icon">call</span><span class="label" data-i18n="navContact">CONTACTO</span></div></a>
-          <a class="tile-wrap" href="./Book-WS-B.pdf" target="_blank" rel="noreferrer"><div class="tile"><span class="icon">description</span><span class="label" data-i18n="navPdf">PDF</span></div></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=welcome"><div class="tile"><span class="icon">home</span></div><span class="label" data-i18n="navWelcome">BEM-VINDO</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=check"><div class="tile"><span class="icon">key</span></div><span class="label" data-i18n="navCheck">CHECK-IN</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=location"><div class="tile"><span class="icon">location_on</span></div><span class="label" data-i18n="navLocation">LOCALIZAÇÃO</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=wifi"><div class="tile"><span class="icon">wifi</span></div><span class="label" data-i18n="navWifi">WI-FI</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=rules"><div class="tile"><span class="icon">smoke_free</span></div><span class="label" data-i18n="navRules">REGRAS</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=transport"><div class="tile"><span class="icon">train</span></div><span class="label" data-i18n="navTransport">TRANSPORTES</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=amenities"><div class="tile"><span class="icon">weekend</span></div><span class="label" data-i18n="navAmenities">COMODIDADES</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=visit"><div class="tile"><span class="icon">photo_camera</span></div><span class="label" data-i18n="navVisit">LOCAIS</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=info"><div class="tile"><span class="icon">contact_support</span></div><span class="label" data-i18n="navInfo">INFO</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=activities"><div class="tile"><span class="icon">local_bar</span></div><span class="label" data-i18n="navBars">BARES</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=eat"><div class="tile"><span class="icon">restaurant</span></div><span class="label" data-i18n="navEat">COMER</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=shopping"><div class="tile"><span class="icon">shopping_cart</span></div><span class="label" data-i18n="navShopping">COMPRAS</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=safety"><div class="tile"><span class="icon">emergency</span></div><span class="label" data-i18n="navEmergency">EMERGÊNCIA</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=checkout"><div class="tile"><span class="icon">luggage</span></div><span class="label" data-i18n="navCheckout">CHECK-OUT</span></a>
+          <a class="tile-wrap" href="./detalhe.html?sec=contacts"><div class="tile"><span class="icon">call</span></div><span class="label" data-i18n="navContact">CONTACTO</span></a>
+          <a class="tile-wrap" href="./Book-WS-B.pdf" target="_blank" rel="noreferrer"><div class="tile"><span class="icon">description</span></div><span class="label" data-i18n="navPdf">PDF</span></a>
         </div>
       </article>
     </section>
