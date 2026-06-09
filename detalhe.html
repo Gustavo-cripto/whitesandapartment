@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>White Sand Apartments | Detalhe</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <style>
+    .material-symbols-rounded { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
     :root {
       --bg: #f0f7ff;
       --panel: #ffffff;
@@ -562,6 +564,22 @@
     .place-body { padding: 10px 12px 12px; }
     .place-name { font-size: 0.93rem; font-weight: 800; color: #1a3040; margin: 0 0 5px; }
     .place-desc { font-size: 0.79rem; color: #5f6c7b; margin: 0 0 8px; line-height: 1.45; }
+    /* ── Manuals ── */
+    .manuals-apt-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+    .manuals-apt-tab { padding: 7px 16px; border-radius: 20px; border: 1.5px solid var(--line); background: var(--panel); color: var(--muted); font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all 0.18s; letter-spacing: 0.03em; }
+    .manuals-apt-tab.active { background: var(--main); color: #fff; border-color: var(--main); }
+    .manuals-apt-panel { display: none; }
+    .manuals-apt-panel.active { display: block; }
+    .equip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .equip-card { background: var(--panel); border: 1.5px solid var(--line); border-radius: 14px; padding: 16px 8px 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center; transition: box-shadow 0.2s, transform 0.15s; }
+    .equip-card:active { transform: scale(0.96); }
+    .equip-icon { font-size: 2rem; color: var(--main); font-family: 'Material Symbols Rounded'; line-height: 1; }
+    .equip-label { font-size: 0.7rem; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.3; }
+    .equip-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 999; display: flex; align-items: flex-end; justify-content: center; }
+    .equip-modal { background: var(--panel); border-radius: 20px 20px 0 0; padding: 24px 20px 32px; width: 100%; max-width: 480px; max-height: 80vh; overflow-y: auto; }
+    .equip-modal-title { font-size: 1.1rem; font-weight: 800; color: var(--text); margin: 0 0 12px; display: flex; align-items: center; gap: 10px; }
+    .equip-modal-body { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+    .equip-modal-close { float: right; background: var(--line); border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
   </style>
 </head>
 <body>
@@ -675,6 +693,7 @@
             subtitle: "Canais de contacto rápido.",
             html: "<ul class='list'><li><a class='link' href='tel:+351965473795'>+351 965 473 795</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://wa.me/351965473795'>WhatsApp</a></li><li><a class='link' href='mailto:whitesandapartments.reservas@hotmail.com'>whitesandapartments.reservas@hotmail.com</a></li></ul>"
           },
+          manuals: { title: "Manuais", subtitle: "Instruções dos equipamentos por apartamento." },
           pdf: {
             title: "Versão PDF",
             subtitle: "Abrir ou descarregar o folheto em PDF.",
@@ -704,6 +723,7 @@
           emergency: { title: "Emergency", subtitle: "Immediate contacts for urgent situations.", html: "<ul class='list'><li><strong>112</strong> (ambulance, police, firefighters).</li><li>State address: Rua do MFA n.15 Apto B, Albufeira.</li><li>After 112, contact the host.</li></ul>" },
           checkout: { title: "Check-out", subtitle: "Before leaving the apartment.", html: "<div class='info-sections'><div class='info-item'><p class='info-item-title'><span class='icon'>🕗</span>Check-out Time</p><p class='info-item-text'>Check-out by <strong>10:00</strong>.</p></div><div class='info-item'><p class='info-item-title'><span class='icon'>✅</span>Before you leave</p><ul class='checklist'><li>💡 Turn off lights and air conditioning</li><li>🗑️ Place rubbish in the street bins — <a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/8zArwo3XzZMA7AqZA'>Bin location</a></li><li>🎒 Make sure you have not left any personal belongings</li></ul></div><div class='info-item'><p class='info-item-title'><span class='icon'>🗝️</span>Key Return</p><p class='info-item-text'>Leave the keys on the kitchen counter inside the apartment. Exit and close the door securely.</p></div></div><div class='checkout-farewell'><img src='./logo-whitesand.png' alt='White Sand Apartments' class='farewell-logo'><p class='farewell-msg'>It was a pleasure having you! 🌟<br>We hope you enjoyed every moment.</p></div>" },
           contacts: { title: "Contacts", subtitle: "Quick contact channels.", html: "<ul class='list'><li><a class='link' href='tel:+351965473795'>+351 965 473 795</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://wa.me/351965473795'>WhatsApp</a></li><li><a class='link' href='mailto:whitesandapartments.reservas@hotmail.com'>whitesandapartments.reservas@hotmail.com</a></li></ul>" },
+          manuals: { title: "Manuals", subtitle: "Equipment instructions per apartment." },
           pdf: { title: "PDF Version", subtitle: "Open or download the PDF guide.", html: "<p class='line'><a class='link' target='_blank' rel='noreferrer' href='./Book-WS-B.pdf'>Open PDF</a></p>" }
         }
       },
@@ -729,6 +749,7 @@
           emergency: { title: "Urgence", subtitle: "Contacts immediats.", html: "<ul class='list'><li><strong>112</strong> (ambulance, police, pompiers).</li><li>Indiquer l'adresse: Rua do MFA n.15 Apto B, Albufeira.</li><li>Apres 112, contacter l'hote.</li></ul>" },
           checkout: { title: "Check-out", subtitle: "Avant de quitter l'appartement.", html: "<div class='info-sections'><div class='info-item'><p class='info-item-title'><span class='icon'>🕗</span>Heure de Check-out</p><p class='info-item-text'>Check-out avant <strong>10h00</strong>.</p></div><div class='info-item'><p class='info-item-title'><span class='icon'>✅</span>Avant de partir</p><ul class='checklist'><li>💡 Éteindre les lumières et la climatisation</li><li>🗑️ Déposer les poubelles dans les conteneurs de la rue — <a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/8zArwo3XzZMA7AqZA'>Localisation des conteneurs</a></li><li>🎒 Vérifier que vous n'avez rien oublié</li></ul></div><div class='info-item'><p class='info-item-title'><span class='icon'>🗝️</span>Remise des Clés</p><p class='info-item-text'>Laisser les clés sur le comptoir de la cuisine dans l'appartement. Sortir et fermer bien la porte.</p></div></div><div class='checkout-farewell'><img src='./logo-whitesand.png' alt='White Sand Apartments' class='farewell-logo'><p class='farewell-msg'>C'était un plaisir de vous accueillir ! 🌟<br>Nous espérons que vous avez profité de chaque instant.</p></div>" },
           contacts: { title: "Contacts", subtitle: "Canaux de contact rapide.", html: "<ul class='list'><li><a class='link' href='tel:+351965473795'>+351 965 473 795</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://wa.me/351965473795'>WhatsApp</a></li><li><a class='link' href='mailto:whitesandapartments.reservas@hotmail.com'>whitesandapartments.reservas@hotmail.com</a></li></ul>" },
+          manuals: { title: "Manuels", subtitle: "Instructions des équipements par appartement." },
           pdf: { title: "Version PDF", subtitle: "Ouvrir ou telecharger le guide en PDF.", html: "<p class='line'><a class='link' target='_blank' rel='noreferrer' href='./Book-WS-B.pdf'>Ouvrir le PDF</a></p>" }
         }
       },
@@ -754,6 +775,7 @@
           emergency: { title: "Emergencia", subtitle: "Contactos inmediatos para casos urgentes.", html: "<ul class='list'><li><strong>112</strong> (ambulancia, policia, bomberos).</li><li>Indica la direccion: Rua do MFA n.15 Apto B, Albufeira.</li><li>Despues del 112, contacta al anfitrion.</li></ul>" },
           checkout: { title: "Check-out", subtitle: "Antes de salir del alojamiento.", html: "<div class='info-sections'><div class='info-item'><p class='info-item-title'><span class='icon'>🕗</span>Horario de Check-out</p><p class='info-item-text'>Check-out antes de las <strong>10:00</strong>.</p></div><div class='info-item'><p class='info-item-title'><span class='icon'>✅</span>Antes de salir</p><ul class='checklist'><li>💡 Apagar luces y aire acondicionado</li><li>🗑️ Depositar la basura en los contenedores de la calle — <a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/8zArwo3XzZMA7AqZA'>Localización de los contenedores</a></li><li>🎒 Asegurarse de no dejar pertenencias personales</li></ul></div><div class='info-item'><p class='info-item-title'><span class='icon'>🗝️</span>Devolución de las Llaves</p><p class='info-item-text'>Dejar las llaves sobre el mostrador de la cocina dentro del apartamento. Salir y cerrar bien la puerta.</p></div></div><div class='checkout-farewell'><img src='./logo-whitesand.png' alt='White Sand Apartments' class='farewell-logo'><p class='farewell-msg'>¡Fue un placer tenerte aquí! 🌟<br>Esperamos que hayas disfrutado cada momento.</p></div>" },
           contacts: { title: "Contactos", subtitle: "Canales de contacto rapido.", html: "<ul class='list'><li><a class='link' href='tel:+351965473795'>+351 965 473 795</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://wa.me/351965473795'>WhatsApp</a></li><li><a class='link' href='mailto:whitesandapartments.reservas@hotmail.com'>whitesandapartments.reservas@hotmail.com</a></li></ul>" },
+          manuals: { title: "Manuales", subtitle: "Instrucciones de los equipos por apartamento." },
           pdf: { title: "Version PDF", subtitle: "Abrir o descargar la guia en PDF.", html: "<p class='line'><a class='link' target='_blank' rel='noreferrer' href='./Book-WS-B.pdf'>Abrir PDF</a></p>" }
         }
       },
@@ -779,6 +801,7 @@
           emergency: { title: "Notfall", subtitle: "Sofortige Kontakte.", html: "<ul class='list'><li><strong>112</strong> (Krankenwagen, Polizei, Feuerwehr).</li><li>Adresse nennen: Rua do MFA n.15 Apto B, Albufeira.</li><li>Nach 112 den Gastgeber kontaktieren.</li></ul>" },
           checkout: { title: "Check-out", subtitle: "Vor dem Verlassen der Unterkunft.", html: "<div class='info-sections'><div class='info-item'><p class='info-item-title'><span class='icon'>🕗</span>Check-out-Zeit</p><p class='info-item-text'>Check-out bis <strong>10:00 Uhr</strong>.</p></div><div class='info-item'><p class='info-item-title'><span class='icon'>✅</span>Vor der Abreise</p><ul class='checklist'><li>💡 Licht und Klimaanlage ausschalten</li><li>🗑️ Müll in die Straßencontainer geben — <a class='link' target='_blank' rel='noreferrer' href='https://maps.app.goo.gl/8zArwo3XzZMA7AqZA'>Standort der Container</a></li><li>🎒 Sicherstellen, dass keine persönlichen Gegenstände zurückgelassen wurden</li></ul></div><div class='info-item'><p class='info-item-title'><span class='icon'>🗝️</span>Schlüsselrückgabe</p><p class='info-item-text'>Schlüssel auf der Küchentheke in der Wohnung lassen. Hinausgehen und die Tür gut schließen.</p></div></div><div class='checkout-farewell'><img src='./logo-whitesand.png' alt='White Sand Apartments' class='farewell-logo'><p class='farewell-msg'>Es war uns eine Freude, Sie zu empfangen! 🌟<br>Wir hoffen, dass Sie jeden Moment genossen haben.</p></div>" },
           contacts: { title: "Kontakte", subtitle: "Schnellkontakt-Kanaele.", html: "<ul class='list'><li><a class='link' href='tel:+351965473795'>+351 965 473 795</a></li><li><a class='link' target='_blank' rel='noreferrer' href='https://wa.me/351965473795'>WhatsApp</a></li><li><a class='link' href='mailto:whitesandapartments.reservas@hotmail.com'>whitesandapartments.reservas@hotmail.com</a></li></ul>" },
+          manuals: { title: "Anleitungen", subtitle: "Geräteanweisungen pro Apartment." },
           pdf: { title: "PDF-Version", subtitle: "PDF-Flyer oeffnen oder herunterladen.", html: "<p class='line'><a class='link' target='_blank' rel='noreferrer' href='./Book-WS-B.pdf'>PDF oeffnen</a></p>" }
         }
       }
@@ -1053,6 +1076,69 @@
       }
     };
 
+    /* ── Manuals data ── */
+    const manualsApts = ['B','C','D','E','F','G','H','I','J'];
+    const manualsEquipment = {
+      B: [
+        { icon: 'local_laundry_service', label: { pt: 'Máquina de lavar', en: 'Washing machine', fr: 'Lave-linge', es: 'Lavadora', de: 'Waschmaschine' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+        { icon: 'tv', label: { pt: 'TV', en: 'TV', fr: 'TV', es: 'TV', de: 'TV' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+        { icon: 'kitchen', label: { pt: 'Forno', en: 'Oven', fr: 'Four', es: 'Horno', de: 'Backofen' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+        { icon: 'countertops', label: { pt: 'Placa elétrica', en: 'Electric hob', fr: 'Plaque électrique', es: 'Placa eléctrica', de: 'Kochfeld' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+        { icon: 'ac_unit', label: { pt: 'Ar condicionado', en: 'Air conditioning', fr: 'Climatisation', es: 'Aire acondicionado', de: 'Klimaanlage' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+        { icon: 'coffee_maker', label: { pt: 'Máquina de café', en: 'Coffee machine', fr: 'Cafetière', es: 'Cafetera', de: 'Kaffeemaschine' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+      ],
+      C: [
+        { icon: 'local_laundry_service', label: { pt: 'Máquina de lavar', en: 'Washing machine', fr: 'Lave-linge', es: 'Lavadora', de: 'Waschmaschine' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+        { icon: 'tv', label: { pt: 'TV', en: 'TV', fr: 'TV', es: 'TV', de: 'TV' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+        { icon: 'kitchen', label: { pt: 'Forno', en: 'Oven', fr: 'Four', es: 'Horno', de: 'Backofen' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+        { icon: 'countertops', label: { pt: 'Placa elétrica', en: 'Electric hob', fr: 'Plaque électrique', es: 'Placa eléctrica', de: 'Kochfeld' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+        { icon: 'ac_unit', label: { pt: 'Ar condicionado', en: 'Air conditioning', fr: 'Climatisation', es: 'Aire acondicionado', de: 'Klimaanlage' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+        { icon: 'coffee_maker', label: { pt: 'Máquina de café', en: 'Coffee machine', fr: 'Cafetière', es: 'Cafetera', de: 'Kaffeemaschine' }, instructions: { pt: 'Em breve...', en: 'Coming soon...', fr: 'Bientôt...', es: 'Próximamente...', de: 'Demnächst...' } },
+      ],
+    };
+    // Default equipment for apts D-J (same base set)
+    ['D','E','F','G','H','I','J'].forEach(a => { manualsEquipment[a] = manualsEquipment.C.map(e => ({...e})); });
+
+    function openEquipModal(aptId, idx, currentLang) {
+      const equip = manualsEquipment[aptId][idx];
+      const label = equip.label[currentLang] || equip.label.pt;
+      const instructions = equip.instructions[currentLang] || equip.instructions.pt;
+      const overlay = document.createElement('div');
+      overlay.className = 'equip-modal-overlay';
+      overlay.innerHTML = `<div class='equip-modal'><p class='equip-modal-title'><span class='material-symbols-rounded' style='color:var(--main)'>${equip.icon}</span>${label}<button class='equip-modal-close' onclick='this.closest(".equip-modal-overlay").remove()'>✕</button></p><div class='equip-modal-body'>${instructions}</div></div>`;
+      overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+      document.body.appendChild(overlay);
+    }
+
+    function renderManualsSection(currentLang) {
+      const l = currentLang || 'pt';
+      const aptLabels = { pt: 'Apartamento', en: 'Apartment', fr: 'Appartement', es: 'Apartamento', de: 'Apartment' };
+      const aptLabel = aptLabels[l] || 'Apartamento';
+      let tabs = `<div class='manuals-apt-tabs'>`;
+      let panels = '';
+      manualsApts.forEach((apt, i) => {
+        const equip = manualsEquipment[apt] || manualsEquipment.C;
+        tabs += `<button class='manuals-apt-tab${i===0?' active':''}' data-apt='${apt}'>${aptLabel} ${apt}</button>`;
+        let cards = equip.map((e, idx) => {
+          const label = e.label[l] || e.label.pt;
+          return `<div class='equip-card' onclick='openEquipModal("${apt}",${idx},"${l}")'><span class='material-symbols-rounded equip-icon'>${e.icon}</span><span class='equip-label'>${label}</span></div>`;
+        }).join('');
+        panels += `<div class='manuals-apt-panel${i===0?' active':''}' data-apt='${apt}'><div class='equip-grid'>${cards}</div></div>`;
+      });
+      tabs += `</div>`;
+      return tabs + panels;
+    }
+
+    function setupManualsSection() {
+      document.querySelectorAll('.manuals-apt-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const apt = btn.dataset.apt;
+          document.querySelectorAll('.manuals-apt-tab').forEach(b => b.classList.toggle('active', b.dataset.apt === apt));
+          document.querySelectorAll('.manuals-apt-panel').forEach(p => p.classList.toggle('active', p.dataset.apt === apt));
+        });
+      });
+    }
+
     function renderTransportSection(currentLang) {
       const t = transportUi[currentLang] || transportUi.pt;
       const taxiCard =
@@ -1181,6 +1267,9 @@
         } else if (sec === "transport") {
           content.innerHTML = renderTransportSection(lang);
           setupTransportTabs();
+        } else if (sec === "manuals") {
+          content.innerHTML = renderManualsSection(lang);
+          setupManualsSection();
         } else {
           content.innerHTML = item.html;
         }
